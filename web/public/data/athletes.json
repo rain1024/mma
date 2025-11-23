@@ -1,0 +1,2142 @@
+{
+  "divisions": [
+    {
+      "value": "pfp",
+      "label": "Pound-for-Pound"
+    },
+    {
+      "value": "heavyweight",
+      "label": "Heavyweight"
+    },
+    {
+      "value": "light-heavyweight",
+      "label": "Light Heavyweight"
+    },
+    {
+      "value": "middleweight",
+      "label": "Middleweight"
+    },
+    {
+      "value": "welterweight",
+      "label": "Welterweight"
+    },
+    {
+      "value": "lightweight",
+      "label": "Lightweight"
+    },
+    {
+      "value": "featherweight",
+      "label": "Featherweight"
+    },
+    {
+      "value": "bantamweight",
+      "label": "Bantamweight"
+    },
+    {
+      "value": "flyweight",
+      "label": "Flyweight"
+    },
+    {
+      "value": "women-bantamweight",
+      "label": "Women's Bantamweight"
+    },
+    {
+      "value": "women-flyweight",
+      "label": "Women's Flyweight"
+    },
+    {
+      "value": "women-strawweight",
+      "label": "Women's Strawweight"
+    }
+  ],
+  "athletes": [
+    {
+      "id": 1,
+      "name": "Kouzi",
+      "record": "18-2-0",
+      "nickname": "The Lion King",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 2,
+      "name": "Takeru Segawa",
+      "record": "25-3-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 3,
+      "name": "Taiga Kawabe",
+      "record": "15-4-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 4,
+      "name": "Masato Kobayashi",
+      "record": "14-3-1",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 5,
+      "name": "Yuki Nishimura",
+      "record": "12-5-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 6,
+      "name": "Kenta Takizawa",
+      "record": "16-2-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 7,
+      "name": "Trương Cao Minh Phát",
+      "record": "9-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 8,
+      "name": "Nguyễn Hợp Hải",
+      "record": "13-3-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 9,
+      "name": "Trần Trọng Kim",
+      "record": "11-2-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 10,
+      "name": "Nguyễn Quốc Huy",
+      "record": "10-4-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 11,
+      "name": "Aaron Clarke",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Ireland",
+      "flag": "🇮🇪",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 12,
+      "name": "Danh Quốc",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 13,
+      "name": "Nguyễn Phi Thịnh",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 14,
+      "name": "Nguyễn Trung Hải",
+      "record": "0-2-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 15,
+      "name": "Đỗ Nguyễn Minh Quyền",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 16,
+      "name": "Nguyễn Tiến Phát",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 17,
+      "name": "Phan Vũ Bảo",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇲🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 18,
+      "name": "Von Kimcheng",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Cambodia",
+      "flag": "🇰🇭",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 19,
+      "name": "Võ Minh Nghĩa",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 20,
+      "name": "Tha Vanthorn",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Cambodia",
+      "flag": "🇰🇭",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 21,
+      "name": "Lý Văn Huỳnh",
+      "record": "1-1-0",
+      "nickname": "",
+      "division": "middleweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 22,
+      "name": "Đỗ Thành Chương",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "middleweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 23,
+      "name": "Trần Quốc Tuấn",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 24,
+      "name": "Vorapon Jayamram",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Thailand",
+      "flag": "🇹🇭",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 25,
+      "name": "Phạm Văn Hào",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 26,
+      "name": "Trần Văn Trọng",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 27,
+      "name": "Võ Vũ Lê",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 28,
+      "name": "Trần Lê Phi Khanh",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 29,
+      "name": "Đinh Văn Khuyên",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 30,
+      "name": "Bùi Đình Khải",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 31,
+      "name": "KPA Thuận",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 32,
+      "name": "Nguyễn Tấn An",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 33,
+      "name": "Nguyễn Văn Lâm",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 34,
+      "name": "Lưu Huy Đức",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 35,
+      "name": "Võ Tiến Đạt",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 36,
+      "name": "Trần Huy Hải",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 37,
+      "name": "Phan Trọng Hiếu",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 38,
+      "name": "Trần Vĩ Quang",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 39,
+      "name": "Trần Quang Lộc",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 40,
+      "name": "Michael Kamil Nguyễn Văn",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 41,
+      "name": "Nghiêm Văn Ý",
+      "record": "3-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 42,
+      "name": "Trịnh Xuân Anh",
+      "record": "1-1-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 43,
+      "name": "Nguyễn Trần Duy Nhất",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 44,
+      "name": "Nguyễn Tiến Long",
+      "record": "0-2-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 45,
+      "name": "Aleksei Filonenko",
+      "record": "4-0-0",
+      "nickname": "",
+      "division": "middleweight",
+      "country": "Russia",
+      "flag": "🇷🇺",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 46,
+      "name": "Dương Thị Thanh Bình",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 47,
+      "name": "Nguyễn Thị Uyển Nhi",
+      "record": "1-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 48,
+      "name": "Phạm Văn Nam",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 49,
+      "name": "Đỗ Huy Hoàng",
+      "record": "1-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 50,
+      "name": "Nguyễn Thị Thanh Trúc",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 51,
+      "name": "Nguyễn Vũ Quỳnh Hoa",
+      "record": "1-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 52,
+      "name": "Nghiêm Tùng Lâm",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 53,
+      "name": "Phan Huy Hoàng",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 54,
+      "name": "Vũ Lê Văn",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 55,
+      "name": "Phạm Ngọc Cảnh",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 56,
+      "name": "Dương Đức Tùng",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "middleweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 57,
+      "name": "Nguyễn Thành Đô",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 58,
+      "name": "Quách Thị Khánh Linh",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 59,
+      "name": "Võ Thành Trung Tín",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 60,
+      "name": "Lê Văn Tuần",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 61,
+      "name": "Bernard Tiffany",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 62,
+      "name": "Nguyễn Văn Kamil",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 63,
+      "name": "Phạm Thị Nhung",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 64,
+      "name": "Trần Thị Ngọc Ánh",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 65,
+      "name": "Lê Thị Thúy Vi",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 66,
+      "name": "Hồ Thị Ngọc Bích",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 67,
+      "name": "Lưu Nhân Nghĩa",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "middleweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 68,
+      "name": "Trần Ngọc Lượng",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 69,
+      "name": "Phạm Công Minh",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 70,
+      "name": "Jovidon Khojaev",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Uzbekistan",
+      "flag": "🇺🇿",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 71,
+      "name": "Lê Văn Tuấn",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 72,
+      "name": "Quảng Văn Minh",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 73,
+      "name": "Felipe Negochadle",
+      "record": "3-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Brazil",
+      "flag": "🇧🇷",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/202850-felipe-nego",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 74,
+      "name": "Phan Thành Tùng",
+      "record": "0-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 75,
+      "name": "Chelsey Cashwell",
+      "record": "6-0-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "USA",
+      "flag": "🇺🇸",
+      "gender": "female",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/404813-chelsey-cashwell",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 76,
+      "name": "Van Minh Quang",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 77,
+      "name": "Elias Kopp",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Germany",
+      "flag": "🇩🇪",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 78,
+      "name": "Ngoc Luong Tran",
+      "record": "9-0-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/393936-ngoc-luong-tran",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 79,
+      "name": "Rin Saroth",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Cambodia",
+      "flag": "🇰🇭",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 80,
+      "name": "Thi Tam Lo",
+      "record": "0-2-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 81,
+      "name": "Tra My Tran",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 82,
+      "name": "Phu Thinh Nguyen",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 83,
+      "name": "Armando De Crescenzo",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Italy",
+      "flag": "🇮🇹",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 84,
+      "name": "Van Huynh Ly",
+      "record": "1-2-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 85,
+      "name": "Rhino Casipe",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Philippines",
+      "flag": "🇵🇭",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 86,
+      "name": "Zakhar Dzmitrychenka",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "light-heavyweight",
+      "country": "Belarus",
+      "flag": "🇧🇾",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 87,
+      "name": "Quoc Toan Tran",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "light-heavyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 88,
+      "name": "Trong Kim Tran",
+      "record": "2-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 89,
+      "name": "Viet Anh Tran",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 90,
+      "name": "Trung Hải Nguyễn",
+      "record": "0-9-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/393933-trung-hai-nguyen",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 91,
+      "name": "Van Nghia Bach",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 92,
+      "name": "Huy Hoàng Phan",
+      "record": "0-2-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 93,
+      "name": "Thanh Ngan Pham",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 94,
+      "name": "Harry Smith",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "UK",
+      "flag": "🇬🇧",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 95,
+      "name": "Felype Morais",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Brazil",
+      "flag": "🇧🇷",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 96,
+      "name": "Manh Hai Nguyen",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 97,
+      "name": "Chi Cong Dinh",
+      "record": "0-5-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/399392-chi-cong-dinh",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 98,
+      "name": "Ba Nhi Nguyen",
+      "record": "1-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 99,
+      "name": "Van Luong Pham",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 100,
+      "name": "Van Quy Dang",
+      "record": "0-2-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 101,
+      "name": "Huu Han Nguyen",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 102,
+      "name": "Quoc Cong Dam Vu",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 103,
+      "name": "Liam James Arnold",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "USA",
+      "flag": "🇺🇸",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 104,
+      "name": "Van Quyen Pham",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 105,
+      "name": "Bianka Balajti",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Hungary",
+      "flag": "🇭🇺",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 106,
+      "name": "Jesse Bernal",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "USA",
+      "flag": "🇺🇸",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 107,
+      "name": "Duc Tung Duong",
+      "record": "1-2-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 108,
+      "name": "Thanh Chuong Do",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 109,
+      "name": "Nhat Long Le Hoang",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 110,
+      "name": "Hong Giang Le",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "light-heavyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 111,
+      "name": "H. Nguyen Trường",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 112,
+      "name": "Hoang Lam Nguyen",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 113,
+      "name": "Thanh Tu Do",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 114,
+      "name": "Van Trinh Le",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 115,
+      "name": "Trần Duy Nhất Nguyễn",
+      "record": "3-0-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 116,
+      "name": "Tuan Van Le",
+      "record": "0-8-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/358389-tuan-van-le",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 117,
+      "name": "Ngọc Cảnh Phạm",
+      "record": "1-7-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/393939-ngoc-canh-pham",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 118,
+      "name": "Ba Hoi Pham",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 119,
+      "name": "Xuan Anh Trinh",
+      "record": "2-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 120,
+      "name": "Phuc Hau Do",
+      "record": "1-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 121,
+      "name": "Thanh Trúc Nguyễn Thị",
+      "record": "6-0-0",
+      "nickname": "",
+      "division": "strawweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/358392-truc-thanh",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 122,
+      "name": "Thuy Nga Vu Thi",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "strawweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 123,
+      "name": "Tung Lam Nghiem",
+      "record": "1-2-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 124,
+      "name": "Van Y Nghiem",
+      "record": "3-0-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 125,
+      "name": "Nam Thang Hoang",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 126,
+      "name": "Van Vu Le",
+      "record": "1-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 127,
+      "name": "Minh Nhựt Trần",
+      "record": "6-1-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/393934-minh-nhut-tran",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 128,
+      "name": "Uyen Nhi Nguyen Thi",
+      "record": "2-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 129,
+      "name": "Tra Vy Bui",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 130,
+      "name": "Thanh Do Nguyen",
+      "record": "7-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/393938-thanh-do-nguyen",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 131,
+      "name": "Quang Lộc Trần",
+      "record": "3-0-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 132,
+      "name": "Van Nam Pham",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 133,
+      "name": "Tiến Long Nguyễn",
+      "record": "0-5-0",
+      "nickname": "",
+      "division": "featherweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/358388-tien-long-nguyen",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 134,
+      "name": "Cuc Ha Thi",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 135,
+      "name": "Huy Hoang Do",
+      "record": "1-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 136,
+      "name": "Thanh Binh Duong Thi",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 137,
+      "name": "Khanh Linh Quach Thi",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 138,
+      "name": "Trung Tin Thanh Vo",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 139,
+      "name": "Tiffany Bernard",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "strawweight",
+      "country": "USA",
+      "flag": "🇺🇸",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 140,
+      "name": "Văn Kamil Nguyễn",
+      "record": "2-1-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 141,
+      "name": "Thi Nhung Pham",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 142,
+      "name": "Ngoc Anh Tran Thi",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 143,
+      "name": "Thuy Vy Le Thi",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 144,
+      "name": "Quynh Hoa Nguyen Vu",
+      "record": "1-1-0",
+      "nickname": "",
+      "division": "strawweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "promotion": "lion"
+    },
+    {
+      "id": 145,
+      "name": "Ngoc Bich Ho Thi",
+      "record": "0-4-0",
+      "nickname": "",
+      "division": "strawweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "female",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/393957-ho-thi-ngoc-bich",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 146,
+      "name": "Nhan Nghia Luu",
+      "record": "0-2-0",
+      "nickname": "",
+      "division": "welterweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 147,
+      "name": "Xiaolong Li",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "China",
+      "flag": "🇨🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 148,
+      "name": "Van Hoang Ban",
+      "record": "7-0-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/384840-van-hoang-ban",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 149,
+      "name": "Thang Nguyen Dang",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 150,
+      "name": "Ngoc Lam Tran",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 151,
+      "name": "The Toan Lai",
+      "record": "0-1-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 152,
+      "name": "Huy Hoàng Lê",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 153,
+      "name": "Thanh Tùng Võ",
+      "record": "0-4-0",
+      "nickname": "",
+      "division": "flyweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/358390-thang-tung-vo",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 154,
+      "name": "Quoc Dung Dinh",
+      "record": "1-0-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "promotion": "lion"
+    },
+    {
+      "id": 155,
+      "name": "Robson de Oliveira",
+      "record": "0-3-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "alternativeNames": [
+        "Robson de Oliveira"
+      ],
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/376729-robson-de-oliveira",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 156,
+      "name": "The Anh Le Van",
+      "record": "0-3-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "alternativeNames": [
+        "The Anh Le Van"
+      ],
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/393935-the-anh-le-van",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 157,
+      "name": "Truong Sinh Bui",
+      "record": "3-0-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "alternativeNames": [
+        "Truong Sinh Bui"
+      ],
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/393932-truong-sinh-bui",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 158,
+      "name": "Hoang Thach Nguyen",
+      "record": "3-0-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "alternativeNames": [
+        "Hoang Thach Nguyen"
+      ],
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/393931-hoang-thach-nguyen",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 159,
+      "name": "Phu Quy Nguyen",
+      "record": "0-3-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "alternativeNames": [
+        "Phu Quy Nguyen"
+      ],
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/393930-phu-quy-nguyen",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 160,
+      "name": "Thi Huong Nguyen",
+      "record": "0-2-0",
+      "nickname": "",
+      "division": "bantamweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "alternativeNames": [
+        "Thi Huong Nguyen"
+      ],
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/399407-thi-huong-nguyen",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 161,
+      "name": "Cong Minh Pham",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "alternativeNames": [
+        "Cong Minh Pham"
+      ],
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/401253-cong-minh-pham",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 162,
+      "name": "Hong Giang Ngo",
+      "record": "0-2-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "alternativeNames": [
+        "Hong Giang Ngo"
+      ],
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/358393-hong-giang-ngo",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 163,
+      "name": "Thanh Tung Phan",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "alternativeNames": [
+        "Thanh Tung Phan"
+      ],
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/399310-thanh-tung-phan",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 164,
+      "name": "Hop Hai Nguyen",
+      "record": "2-0-0",
+      "nickname": "",
+      "division": "lightweight",
+      "country": "Vietnam",
+      "flag": "🇻🇳",
+      "gender": "male",
+      "alternativeNames": [
+        "Hop Hai Nguyen"
+      ],
+      "urls": [
+        {
+          "link": "https://www.tapology.com/fightcenter/fighters/399474-hop-hai-nguyen",
+          "type": "tapology"
+        }
+      ],
+      "promotion": "lion"
+    },
+    {
+      "id": 1,
+      "name": "Islam Makhachev",
+      "record": "26-1-0",
+      "nickname": "The Eagle",
+      "division": "lightweight",
+      "country": "Russia",
+      "flag": "🇷🇺",
+      "promotion": "ufc",
+      "gender": "male"
+    },
+    {
+      "id": 2,
+      "name": "Jon Jones",
+      "record": "27-1-0",
+      "nickname": "Bones",
+      "division": "heavyweight",
+      "country": "USA",
+      "flag": "🇺🇸",
+      "promotion": "ufc",
+      "gender": "male"
+    },
+    {
+      "id": 3,
+      "name": "Alex Pereira",
+      "record": "11-2-0",
+      "nickname": "Poatan",
+      "division": "light-heavyweight",
+      "country": "Brazil",
+      "flag": "🇧🇷",
+      "promotion": "ufc",
+      "gender": "male"
+    },
+    {
+      "id": 4,
+      "name": "Ilia Topuria",
+      "record": "16-0-0",
+      "nickname": "El Matador",
+      "division": "featherweight",
+      "country": "Georgia",
+      "flag": "🇬🇪",
+      "promotion": "ufc",
+      "gender": "male"
+    },
+    {
+      "id": 5,
+      "name": "Dricus Du Plessis",
+      "record": "22-2-0",
+      "nickname": "Stillknocks",
+      "division": "middleweight",
+      "country": "South Africa",
+      "flag": "🇿🇦",
+      "promotion": "ufc",
+      "gender": "male"
+    },
+    {
+      "id": 6,
+      "name": "Arman Tsarukyan",
+      "record": "21-3-0",
+      "nickname": "Ahalkalakets",
+      "division": "lightweight",
+      "country": "Armenia",
+      "flag": "🇦🇲",
+      "promotion": "ufc",
+      "gender": "male"
+    },
+    {
+      "id": 7,
+      "name": "Charles Oliveira",
+      "record": "34-10-0",
+      "nickname": "Do Bronx",
+      "division": "lightweight",
+      "country": "Brazil",
+      "flag": "🇧🇷",
+      "promotion": "ufc",
+      "gender": "male"
+    },
+    {
+      "id": 8,
+      "name": "Justin Gaethje",
+      "record": "25-5-0",
+      "nickname": "The Highlight",
+      "division": "lightweight",
+      "country": "USA",
+      "flag": "🇺🇸",
+      "promotion": "ufc",
+      "gender": "male"
+    },
+    {
+      "id": 9,
+      "name": "Michael Chandler",
+      "record": "23-8-0",
+      "nickname": "Iron",
+      "division": "lightweight",
+      "country": "USA",
+      "flag": "🇺🇸",
+      "promotion": "ufc",
+      "gender": "male"
+    },
+    {
+      "id": 10,
+      "name": "Dustin Poirier",
+      "record": "30-9-0",
+      "nickname": "The Diamond",
+      "division": "lightweight",
+      "country": "USA",
+      "flag": "🇺🇸",
+      "promotion": "ufc",
+      "gender": "male"
+    }
+  ]
+}

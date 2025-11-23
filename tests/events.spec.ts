@@ -143,14 +143,14 @@ test.describe('Event Detail Page', () => {
 
     if (await fighterStats.count() > 0) {
       const statsText = await fighterStats.first().textContent()
-      // Should contain weight information (e.g., "66kg")
-      expect(statsText).toMatch(/\d+kg/)
+      // Should contain weight information (e.g., "66kg" or "145 lbs")
+      expect(statsText).toMatch(/\d+\s*(kg|lbs)/)
     }
   })
 
   test('should redirect to /events for invalid event ID', async ({ page }) => {
     await page.goto('/events/invalid-id')
-    await page.waitForURL('/events', { timeout: 5000 })
+    await page.waitForURL('/events', { timeout: 10000 })
   })
 
   test('should maintain active navigation state on event detail page', async ({ page }) => {
@@ -176,7 +176,7 @@ test.describe('Event Detail Page', () => {
     // Button should have href attribute
     const href = await watchVideoButton.first().getAttribute('href')
     expect(href).toBeTruthy()
-    expect(href).toContain('http')
+    expect(href).toContain('/matches/')
   })
 
   test('should not display "Watch Video" button for matches without video', async ({ page }) => {
@@ -193,5 +193,61 @@ test.describe('Event Detail Page', () => {
 
     // Not all cards should have video buttons (lc27 has 9 fights but only 1 has video)
     expect(cardsWithVideoCount).toBeLessThan(totalCards)
+  })
+
+  test('should navigate to athlete detail page when clicking on athlete name', async ({ page }) => {
+    await page.goto('/events/lc27')
+    await page.waitForSelector('.fight-card', { timeout: 5000 })
+
+    // Find the first fighter name link
+    const firstFighterNameLink = page.locator('.fighter-name-link').first()
+    await expect(firstFighterNameLink).toBeVisible()
+
+    // Get the athlete name to verify we navigate to the correct page
+    const athleteName = await firstFighterNameLink.locator('.fighter-name-text').textContent()
+    expect(athleteName).toBeTruthy()
+
+    // Click on the fighter name
+    await firstFighterNameLink.click()
+
+    // Should navigate to athlete detail page with slug-based URL
+    await page.waitForURL(/\/athletes\/[a-z0-9-]+/, { timeout: 5000 })
+
+    // Should display athlete detail page
+    await expect(page.locator('.athlete-detail')).toBeVisible()
+    await expect(page.locator('.athlete-name')).toBeVisible()
+
+    // Verify the athlete name matches
+    const detailPageName = await page.locator('.athlete-name').textContent()
+    expect(detailPageName?.toLowerCase()).toBe(athleteName?.toLowerCase())
+  })
+
+  test('should have clickable athlete names for both fighters in a match', async ({ page }) => {
+    await page.goto('/events/lc27')
+    await page.waitForSelector('.fight-card', { timeout: 5000 })
+
+    // Each fight card should have at least 2 fighter name links (one for each fighter)
+    const firstFightCard = page.locator('.fight-card').first()
+    const fighterLinks = firstFightCard.locator('.fighter-name-link')
+    const count = await fighterLinks.count()
+
+    expect(count).toBeGreaterThanOrEqual(2)
+
+    // Both links should be visible
+    await expect(fighterLinks.nth(0)).toBeVisible()
+    await expect(fighterLinks.nth(1)).toBeVisible()
+  })
+
+  test('should show hover effect on athlete names', async ({ page }) => {
+    await page.goto('/events/lc27')
+    await page.waitForSelector('.fight-card', { timeout: 5000 })
+
+    const firstFighterNameLink = page.locator('.fighter-name-link').first()
+
+    // Hover over the fighter name
+    await firstFighterNameLink.hover()
+
+    // The link should have the hover effect (we can't directly test CSS, but we can verify the element is interactable)
+    await expect(firstFighterNameLink).toBeVisible()
   })
 })

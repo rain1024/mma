@@ -1,0 +1,120 @@
+{
+  "id": "lc17",
+  "logo": "LC17",
+  "title": "Lion Championship 2024",
+  "date": "19:00 | 08.09.2024",
+  "location": "Nhà Thi Đấu Tây Hồ, Hà Nội",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 7",
+          "fighter1": {
+            "name": "Thanh Ngan Pham",
+            "stats": "Trận 7 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Harry Smith",
+            "stats": "145 lbs - Nam",
+            "flag": "🇬🇧",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 6",
+          "fighter1": {
+            "name": "Ngoc Luong Tran",
+            "stats": "Trận 6 | 135 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Felype Morais",
+            "stats": "135 lbs - Nam",
+            "flag": "🇧🇷",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 5",
+          "fighter1": {
+            "name": "Manh Hai Nguyen",
+            "stats": "Trận 5 | 132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Chi Cong Dinh",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 4",
+          "fighter1": {
+            "name": "Ba Nhi Nguyen",
+            "stats": "Trận 4 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Van Luong Pham",
+            "stats": "145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Dinh Khai Bui",
+            "stats": "Trận 3 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Van Quy Dang",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Huu Han Nguyen",
+            "stats": "Trận 2 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Quoc Cong Dam Vu",
+            "stats": "145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Liam James Arnold",
+            "stats": "Trận 1 | 125 lbs - Nam",
+            "flag": "🇺🇸",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Van Quyen Pham",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

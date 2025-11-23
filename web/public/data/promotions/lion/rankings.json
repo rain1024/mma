@@ -1,0 +1,119 @@
+{
+  "pfpRankings": [
+    { "rank": 1, "name": "Nghiêm Văn Ý", "record": "3-0-0", "move": "↑" },
+    { "rank": 2, "name": "Jovidon Khojaev", "record": "1-0-0", "move": "↑" },
+    { "rank": 3, "name": "Armando De Crescenzo", "record": "1-0-0", "move": "↑" },
+    { "rank": 4, "name": "Phạm Văn Nam", "record": "2-0-0", "move": "-" },
+    { "rank": 5, "name": "Dương Thị Thanh Bình", "record": "2-0-0", "move": "-" },
+    { "rank": 6, "name": "Chelsey Cashwell", "record": "2-0-0", "move": "↑" },
+    { "rank": 7, "name": "Nguyễn Thị Thanh Trúc", "record": "2-0-0", "move": "-" },
+    { "rank": 8, "name": "Ngoc Luong Tran", "record": "3-0-0", "move": "↑" },
+    { "rank": 9, "name": "Robson Olivera", "record": "Champion 60kg", "move": "-" },
+    { "rank": 10, "name": "Phạm Công Minh", "record": "Champion 84kg", "move": "-" }
+  ],
+  "divisions": {
+    "flyweight": {
+      "champion": {
+        "name": "Phạm Văn Nam",
+        "record": "2-0-0",
+        "country": "Vietnam",
+        "flag": "🇻🇳"
+      },
+      "rankings": [
+        { "rank": 1, "name": "Dương Thị Thanh Bình", "record": "2-0-0", "move": "-" },
+        { "rank": 2, "name": "Nguyễn Thị Thanh Trúc", "record": "2-0-0", "move": "-" },
+        { "rank": 3, "name": "Phu Thinh Nguyen", "record": "1-0-0", "move": "↑" },
+        { "rank": 4, "name": "Trong Kim Tran", "record": "1-0-0", "move": "↑" },
+        { "rank": 5, "name": "Liam James Arnold", "record": "1-0-0", "move": "↑" }
+      ]
+    },
+    "featherweight": {
+      "champion": {
+        "name": "Nghiêm Văn Ý",
+        "record": "3-0-0",
+        "country": "Vietnam",
+        "flag": "🇻🇳"
+      },
+      "rankings": [
+        { "rank": 1, "name": "Van Minh Quang", "record": "1-0-0", "move": "↑" },
+        { "rank": 2, "name": "Thanh Ngan Pham", "record": "1-0-0", "move": "↑" },
+        { "rank": 3, "name": "Huu Han Nguyen", "record": "2-0-0", "move": "↑" },
+        { "rank": 4, "name": "Viet Anh Tran", "record": "2-0-0", "move": "↑" },
+        { "rank": 5, "name": "Ba Nhi Nguyen", "record": "1-0-0", "move": "↑" }
+      ]
+    },
+    "bantamweight": {
+      "champion": {
+        "name": "Chelsey Cashwell",
+        "record": "2-0-0",
+        "country": "USA",
+        "flag": "🇺🇸"
+      },
+      "rankings": [
+        { "rank": 1, "name": "Ngoc Luong Tran", "record": "3-0-0", "move": "↑" },
+        { "rank": 2, "name": "Van Nghia Bach", "record": "2-0-0", "move": "↑" },
+        { "rank": 3, "name": "Manh Hai Nguyen", "record": "1-0-0", "move": "↑" },
+        { "rank": 4, "name": "H. Nguyen Trường", "record": "1-0-0", "move": "↑" },
+        { "rank": 5, "name": "Thi Tam Lo", "record": "0-2-0", "move": "-" }
+      ]
+    },
+    "lightweight": {
+      "champion": {
+        "name": "Jovidon Khojaev",
+        "record": "1-0-0",
+        "country": "Uzbekistan",
+        "flag": "🇺🇿"
+      },
+      "rankings": [
+        { "rank": 1, "name": "Nguyễn Văn Kamil", "record": "1-0-0", "move": "-" },
+        { "rank": 2, "name": "Kouzi", "record": "18-2-0", "move": "-" },
+        { "rank": 3, "name": "Taiga Kawabe", "record": "15-4-0", "move": "-" },
+        { "rank": 4, "name": "Masato Kobayashi", "record": "14-3-1", "move": "-" },
+        { "rank": 5, "name": "Yuki Nishimura", "record": "12-5-0", "move": "-" }
+      ]
+    },
+    "welterweight": {
+      "champion": {
+        "name": "Armando De Crescenzo",
+        "record": "1-0-0",
+        "country": "Italy",
+        "flag": "🇮🇹"
+      },
+      "rankings": [
+        { "rank": 1, "name": "Nghiêm Văn Ý", "record": "2-0-0", "move": "-" },
+        { "rank": 2, "name": "Trần Quang Lộc", "record": "2-0-0", "move": "-" },
+        { "rank": 3, "name": "Nguyễn Hợp Hải", "record": "13-3-0", "move": "-" },
+        { "rank": 4, "name": "Trần Trọng Kim", "record": "11-2-0", "move": "-" },
+        { "rank": 5, "name": "Nguyễn Quốc Huy", "record": "10-4-0", "move": "-" }
+      ]
+    },
+    "middleweight": {
+      "champion": {
+        "name": "Phạm Công Minh",
+        "record": "Champion 84kg",
+        "country": "Vietnam",
+        "flag": "🇻🇳"
+      },
+      "rankings": [
+        { "rank": 1, "name": "Aleksei Filonenko", "record": "2-0-0", "move": "-" },
+        { "rank": 2, "name": "Lý Văn Huỳnh", "record": "1-1-0", "move": "-" },
+        { "rank": 3, "name": "Thanh Chuong Do", "record": "1-0-0", "move": "↑" },
+        { "rank": 4, "name": "Jesse Bernal", "record": "1-0-0", "move": "↑" },
+        { "rank": 5, "name": "Đỗ Thành Chương", "record": "0-0-0", "move": "-" }
+      ]
+    },
+    "light-heavyweight": {
+      "champion": {
+        "name": "Phạm Công Minh",
+        "record": "Champion 84kg",
+        "country": "Vietnam",
+        "flag": "🇻🇳"
+      },
+      "rankings": [
+        { "rank": 1, "name": "Zakhar Dzmitrychenka", "record": "2-0-0", "move": "↑" },
+        { "rank": 2, "name": "Quoc Toan Tran", "record": "0-1-0", "move": "-" },
+        { "rank": 3, "name": "Hong Giang Le", "record": "0-1-0", "move": "-" }
+      ]
+    }
+  }
+}

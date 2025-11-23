@@ -1,0 +1,10 @@
+{
+  "id": "ufc",
+  "name": "UFC",
+  "subtitle": "Ultimate Fighting Championship",
+  "theme": "ufc-theme",
+  "color": "#d20a0a",
+  "events": [
+    "ufc309"
+  ]
+}

@@ -41,6 +41,15 @@ Implement feature từ spec file, cập nhật tests và chạy Playwright tests
 - Re-run tests sau mỗi lần fix
 - Lặp lại cho đến khi **ALL TESTS PASS**
 
+### 6. Run Web
+
+**Run web server** on port 3000 to manually verify feature hoạt động
+
+```bash
+cd web && PORT=3000 npm run dev
+```
+
+
 ## Success Criteria
 - ✅ Tất cả tests pass (100%)
 - ✅ Không có lỗi runtime

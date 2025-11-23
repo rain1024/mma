@@ -1,0 +1,90 @@
+{
+  "id": "lc28",
+  "logo": "LC28",
+  "title": "Lion Championship 28",
+  "date": "08:00 | 08.11.2024",
+  "location": "Quang Truong Corona Resort and Casino, Phú Quốc",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 6",
+          "fighter1": {
+            "name": "Zhou Luo",
+            "stats": "Trận 6 | 150 lbs - Nam",
+            "flag": "🇨🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "The Anh Ha",
+            "stats": "150 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 4",
+          "fighter1": {
+            "name": "Chayut Rojanakat",
+            "stats": "Trận 4 | 155 lbs - Nam",
+            "flag": "🇹🇭",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Gleb Ovcharov",
+            "stats": "155 lbs - Nam",
+            "flag": "🇷🇺",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Minh Hoang Le",
+            "stats": "Trận 3 | 132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Chi Cong Dinh",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Phuc Hau Do",
+            "stats": "Trận 2 | 143 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Anh Đức Phạm",
+            "stats": "143 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Thoan Nguyen Thanh",
+            "stats": "Trận 1 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Ngoc Tin Huynh",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

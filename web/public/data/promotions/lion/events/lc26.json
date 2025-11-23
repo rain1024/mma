@@ -1,0 +1,125 @@
+{
+  "id": "lc26",
+  "logo": "LC26",
+  "title": "Lion Championship 2025",
+  "date": "20:00 | 13.09.2025",
+  "location": "Nhà Thi Đấu Tây Hồ | 101 Đường Xuân La, Tây Hồ, Hà Nội",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA STRIKING",
+      "matches": [
+        {
+          "round": "Trận 7",
+          "fighter1": {
+            "name": "Trương Cao Minh Phát",
+            "stats": "Trận 7 | 134 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Aaron Clarke",
+            "stats": "134 lbs - Nam",
+            "flag": "🇮🇪",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Đỗ Nguyễn Minh Quyền",
+            "stats": "Trận 1 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Nguyễn Tiến Phát",
+            "stats": "145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Phan Vũ Bảo",
+            "stats": "Trận 2 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Von Kimcheng",
+            "stats": "145 lbs - Nam",
+            "flag": "🇰🇭",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Võ Minh Nghĩa",
+            "stats": "Trận 3 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tha Vanthorn",
+            "stats": "125 lbs - Nam",
+            "flag": "🇰🇭",
+            "winner": false
+          }
+        }
+      ]
+    },
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 5",
+          "fighter1": {
+            "name": "Nguyễn Hợp Hải",
+            "stats": "Trận 5 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Danh Quốc",
+            "stats": "145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 6",
+          "fighter1": {
+            "name": "Trần Trọng Kim",
+            "stats": "Trận 6 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Nguyễn Phi Thịnh",
+            "stats": "145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 4",
+          "fighter1": {
+            "name": "Nguyễn Quốc Huy",
+            "stats": "Trận 4 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Nguyễn Trung Hải",
+            "stats": "145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

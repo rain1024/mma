@@ -1,0 +1,120 @@
+{
+  "id": "lc20",
+  "logo": "LC20",
+  "title": "Lion Championship 2024",
+  "date": "19:00 | 14.12.2024",
+  "location": "Nhà Thi Đấu Tây Hồ, Hà Nội",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 7",
+          "fighter1": {
+            "name": "Van Y Nghiem",
+            "stats": "Trận 7 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Felipe Negochadle",
+            "stats": "145 lbs - Nam",
+            "flag": "🇧🇷",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 6",
+          "fighter1": {
+            "name": "Jovidon Khojaev",
+            "stats": "Trận 6 | 155 lbs - Nam",
+            "flag": "🇺🇿",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Văn Kamil Nguyễn",
+            "stats": "155 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 5",
+          "fighter1": {
+            "name": "Chelsey Cashwell",
+            "stats": "Trận 5 | 135 lbs - Nữ",
+            "flag": "🇺🇸",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Thi Tam Lo",
+            "stats": "135 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 4",
+          "fighter1": {
+            "name": "Van Minh Quang",
+            "stats": "Trận 4 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Elias Kopp",
+            "stats": "145 lbs - Nam",
+            "flag": "🇩🇪",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Ngoc Luong Tran",
+            "stats": "Trận 3 | 139 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Rin Saroth",
+            "stats": "139 lbs - Nam",
+            "flag": "🇰🇭",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Thị Phung Lò",
+            "stats": "Trận 2 | 115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tra My Tran",
+            "stats": "115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Phu Thinh Nguyen",
+            "stats": "Trận 1 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Văn Khuyến Đinh",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

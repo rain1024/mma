@@ -1,0 +1,120 @@
+{
+  "id": "lc25",
+  "logo": "LC25",
+  "title": "Lion Championship 25",
+  "date": "19:00 | 16.08.2025",
+  "location": "Cam Ranh, Khánh Hòa",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 9",
+          "fighter1": {
+            "name": "Ngoc Luong Tran",
+            "stats": "Trận 9 | 135 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tuan Van Le",
+            "stats": "135 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 7",
+          "fighter1": {
+            "name": "Quynh Hoa Nguyen Vu",
+            "stats": "Trận 7 | 115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Thị Phung Lò",
+            "stats": "115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 6",
+          "fighter1": {
+            "name": "Van Nghia Bach",
+            "stats": "Trận 6 | 135 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Minh Nhựt Trần",
+            "stats": "135 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 5",
+          "fighter1": {
+            "name": "Siyovush Gulmamadov",
+            "stats": "Trận 5 | 145 lbs - Nam",
+            "flag": "🇹🇯",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Adel Iabbarov",
+            "stats": "145 lbs - Nam",
+            "flag": "🇷🇺",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 4",
+          "fighter1": {
+            "name": "Tra My Tran",
+            "stats": "Trận 4 | 115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Karina Veis",
+            "stats": "115 lbs - Nữ",
+            "flag": "🇷🇺",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Văn Khuyến Đinh",
+            "stats": "Trận 3 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Thanh Duy Nguyễn",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Van Minh Quang",
+            "stats": "Trận 2 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Thanh Ngan Pham",
+            "stats": "145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

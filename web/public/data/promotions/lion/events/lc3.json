@@ -1,0 +1,120 @@
+{
+  "id": "lc3",
+  "logo": "LC3",
+  "title": "Lion Championship 3",
+  "date": "26.11.2022",
+  "location": "Corona Resort & Casino, Phu Quoc, Vietnam",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "CHAMPIONSHIP",
+      "matches": [
+        {
+          "round": "Main Event - LC Lightweight Championship",
+          "fighter1": {
+            "name": "Quang Lộc Trần",
+            "stats": "154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Văn Kamil Nguyễn",
+            "stats": "154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "LC Bantamweight Championship",
+          "fighter1": {
+            "name": "Trần Duy Nhất Nguyễn",
+            "stats": "134 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tiến Long Nguyễn",
+            "stats": "134 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "LC Featherweight Championship",
+          "fighter1": {
+            "name": "Van Y Nghiem",
+            "stats": "146 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Xuan Anh Trinh",
+            "stats": "146 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "LC Strawweight Championship",
+          "fighter1": {
+            "name": "Thanh Trúc Nguyễn Thị",
+            "stats": "115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Quynh Hoa Nguyen Vu",
+            "stats": "115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "LC Welterweight Championship",
+          "fighter1": {
+            "name": "Aleksei Filonenko",
+            "stats": "170 lbs - Nam",
+            "flag": "🇷🇺",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Van Huynh Ly",
+            "stats": "170 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "LC Flyweight Championship",
+          "fighter1": {
+            "name": "Thanh Binh Duong Thi",
+            "stats": "126 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Uyen Nhi Nguyen Thi",
+            "stats": "126 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "LC Flyweight Championship",
+          "fighter1": {
+            "name": "Van Nam Pham",
+            "stats": "126 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Huy Hoang Do",
+            "stats": "126 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

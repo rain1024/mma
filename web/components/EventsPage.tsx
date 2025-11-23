@@ -1,10 +1,13 @@
 import { EventData } from '@/types'
+import Link from 'next/link'
+import { generateAthleteSlug } from '@/lib/utils'
 
 interface EventsPageProps {
   eventData: EventData
+  tournament?: 'ufc' | 'lion'
 }
 
-export default function EventsPage({ eventData }: EventsPageProps) {
+export default function EventsPage({ eventData, tournament = 'lion' }: EventsPageProps) {
   return (
     <div className="events-page">
       <div className="event-header">
@@ -25,6 +28,18 @@ export default function EventsPage({ eventData }: EventsPageProps) {
               ? 'winner-right'
               : ''
 
+            // Generate unique match ID
+            const matchId = `${eventData.id}-${categoryIndex}-${matchIndex}`
+
+            // Generate video player URL
+            const videoPlayerUrl = match.video
+              ? `/matches/${matchId}?type=youtube&url=${encodeURIComponent(match.video)}&tournament=${tournament}`
+              : null
+
+            // Generate athlete slugs for navigation
+            const fighter1Slug = generateAthleteSlug(match.fighter1.name)
+            const fighter2Slug = generateAthleteSlug(match.fighter2.name)
+
             return (
               <div key={matchIndex} className={`fight-card ${winnerClass}`}>
                 <div className="fighter">
@@ -32,7 +47,9 @@ export default function EventsPage({ eventData }: EventsPageProps) {
                     <div className="fighter-flag">{match.fighter1.flag}</div>
                   </div>
                   <div className="fighter-details">
-                    <div className="fighter-name-text">{match.fighter1.name}</div>
+                    <Link href={`/athletes/${fighter1Slug}`} className="fighter-name-link">
+                      <div className="fighter-name-text">{match.fighter1.name}</div>
+                    </Link>
                     <div className="fighter-stats">{match.fighter1.stats}</div>
                   </div>
                 </div>
@@ -40,15 +57,10 @@ export default function EventsPage({ eventData }: EventsPageProps) {
                 <div className="vs-divider">
                   <span>VS</span>
                   <span className="fight-round">{match.round}</span>
-                  {match.video && (
-                    <a
-                      href={match.video}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="watch-video-btn"
-                    >
+                  {videoPlayerUrl && (
+                    <Link href={videoPlayerUrl} className="watch-video-btn">
                       Watch Video
-                    </a>
+                    </Link>
                   )}
                 </div>
 
@@ -57,7 +69,9 @@ export default function EventsPage({ eventData }: EventsPageProps) {
                     <div className="fighter-flag">{match.fighter2.flag}</div>
                   </div>
                   <div className="fighter-details">
-                    <div className="fighter-name-text">{match.fighter2.name}</div>
+                    <Link href={`/athletes/${fighter2Slug}`} className="fighter-name-link">
+                      <div className="fighter-name-text">{match.fighter2.name}</div>
+                    </Link>
                     <div className="fighter-stats">{match.fighter2.stats}</div>
                   </div>
                 </div>
@@ -219,11 +233,37 @@ export default function EventsPage({ eventData }: EventsPageProps) {
           flex: 1;
         }
 
+        :global(.fighter-name-link) {
+          text-decoration: none !important;
+          color: inherit !important;
+          display: inline-block;
+          transition: all 0.2s ease;
+        }
+
+        .fighter:not(.right) :global(.fighter-name-link:hover) {
+          transform: translateX(4px);
+        }
+
+        .fighter.right :global(.fighter-name-link:hover) {
+          transform: translateX(-4px);
+        }
+
+        :global(.fighter-name-link:hover .fighter-name-text) {
+          color: var(--primary-color, #d20a0a);
+          text-decoration: underline;
+        }
+
+        :global(body.lion-theme .fighter-name-link:hover .fighter-name-text) {
+          color: #ff8c00;
+        }
+
         .fighter-name-text {
           font-size: 24px;
           font-weight: bold;
           margin-bottom: 5px;
           text-transform: uppercase;
+          cursor: pointer;
+          transition: color 0.2s ease;
         }
 
         .fighter-stats {
@@ -252,30 +292,36 @@ export default function EventsPage({ eventData }: EventsPageProps) {
           text-transform: uppercase;
         }
 
-        .watch-video-btn {
+        :global(.watch-video-btn) {
+          display: inline-block;
           margin-top: 10px;
-          padding: 8px 20px;
-          background-color: #d20a0a;
-          color: #fff;
-          text-decoration: none;
+          padding: 10px 24px;
+          background-color: #d20a0a !important;
+          color: #fff !important;
+          text-decoration: none !important;
           border-radius: 5px;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: bold;
           text-transform: uppercase;
           letter-spacing: 1px;
-          transition: background-color 0.3s ease;
+          transition: all 0.3s ease;
+          box-shadow: 0 2px 8px rgba(210, 10, 10, 0.4);
         }
 
-        .watch-video-btn:hover {
-          background-color: #a00808;
+        :global(.watch-video-btn:hover) {
+          background-color: #a00808 !important;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(210, 10, 10, 0.6);
         }
 
-        :global(body.lion-theme) .watch-video-btn {
-          background-color: #ff8c00;
+        :global(body.lion-theme .watch-video-btn) {
+          background-color: #ff8c00 !important;
+          box-shadow: 0 2px 8px rgba(255, 140, 0, 0.4);
         }
 
-        :global(body.lion-theme) .watch-video-btn:hover {
-          background-color: #cc7000;
+        :global(body.lion-theme .watch-video-btn:hover) {
+          background-color: #cc7000 !important;
+          box-shadow: 0 4px 12px rgba(255, 140, 0, 0.6);
         }
 
         @media (max-width: 768px) {

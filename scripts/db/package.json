@@ -1,0 +1,31 @@
+{
+  "name": "mma-athletes-db",
+  "version": "1.0.0",
+  "description": "Athletes database CRUD operations for MMA tournaments",
+  "main": "dist/athletes.js",
+  "types": "dist/athletes.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "test": "npm run build && node dist/athletes.test.js",
+    "cli:athletes": "npm run build && node dist/athletes.js",
+    "cli:events": "npm run build && node dist/events.js",
+    "cli:promotions": "npm run build && node dist/promotions.js",
+    "import:tapology": "npm run build && ts-node import_tapology.ts",
+    "cli": "npm run cli:athletes"
+  },
+  "keywords": [
+    "mma",
+    "athletes",
+    "database",
+    "crud",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0"
+  }
+}

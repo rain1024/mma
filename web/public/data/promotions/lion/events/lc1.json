@@ -1,0 +1,150 @@
+{
+  "id": "lc1",
+  "logo": "LC1",
+  "title": "Lion Championship 1",
+  "date": "18.09.2022",
+  "location": "Rach Mieu Sports Complex, Ho Chi Minh City, Vietnam",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Main Event",
+          "fighter1": {
+            "name": "Trần Duy Nhất Nguyễn",
+            "stats": "134 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tuan Van Le",
+            "stats": "134 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 8",
+          "fighter1": {
+            "name": "Ngọc Cảnh Phạm",
+            "stats": "126 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Ba Hoi Pham",
+            "stats": "126 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 7",
+          "fighter1": {
+            "name": "Xuan Anh Trinh",
+            "stats": "146 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Phuc Hau Do",
+            "stats": "146 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 6",
+          "fighter1": {
+            "name": "Thanh Trúc Nguyễn Thị",
+            "stats": "115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Thuy Nga Vu Thi",
+            "stats": "115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 5",
+          "fighter1": {
+            "name": "Tung Lam Nghiem",
+            "stats": "154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Trung Hải Nguyễn",
+            "stats": "154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 4",
+          "fighter1": {
+            "name": "Van Y Nghiem",
+            "stats": "146 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Nam Thang Hoang",
+            "stats": "146 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Van Vu Le",
+            "stats": "146 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Minh Nhựt Trần",
+            "stats": "146 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Uyen Nhi Nguyen Thi",
+            "stats": "126 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tra Vy Bui",
+            "stats": "126 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Thanh Do Nguyen",
+            "stats": "126 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Trong Kim Tran",
+            "stats": "126 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

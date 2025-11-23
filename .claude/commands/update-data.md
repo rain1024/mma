@@ -4,7 +4,7 @@ This command guides you through updating the MMA tournament data based on a figh
 
 ## Task Overview
 
-When the user provides a fight card image or JSON file, extract all fight information and update the appropriate data files in `web/public/data/{tournament}/` directory.
+When the user provides a fight card image or JSON file, extract all fight information and update the appropriate data files in `web/public/data/promotions/{tournament}/` directory.
 
 ## Input Methods
 
@@ -176,13 +176,29 @@ Before completing, verify:
 - [ ] JSON syntax is valid (no trailing commas, proper quotes)
 - [ ] Fighter records are updated if event is completed
 
-### 6. Create Task List
+### 6. Run Web Server
+
+After completing all data updates, start the development server to verify the changes:
+
+```bash
+cd web && PORT=3000 npm run dev
+```
+
+This will:
+- Start the Next.js development server on port 3000
+- Allow you to preview the updated event and fighter data
+- Verify that all changes are displaying correctly in the UI
+
+Access the application at: **http://localhost:3000**
+
+### 7. Create Task List
 
 Always use the TodoWrite tool to track:
 1. Extract fight information from fight card image
 2. Create new event entry in events.json
 3. Add new fighters to athletes.json
 4. Update existing fighter records (if event is completed)
+5. Run web server on port 3000
 
 ## Common Issues and Solutions
 

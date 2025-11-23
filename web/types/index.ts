@@ -16,6 +16,11 @@ export interface Division {
   label: string;
 }
 
+export interface URL {
+  link: string;
+  type: 'website' | 'youtube' | 'other' | 'tapology';
+}
+
 export interface Athlete {
   id: number;
   name: string;
@@ -25,6 +30,8 @@ export interface Athlete {
   country: string;
   flag: string;
   gender?: string;
+  alternativeNames?: string[]; // Alternative names in different languages/countries
+  urls?: URL[]; // External links (Tapology, Sherdog, etc.)
 }
 
 export interface TournamentData {
@@ -68,4 +75,9 @@ export interface EventData {
 
 export interface EventsData {
   [key: string]: EventData;
+}
+
+export interface Timestamp {
+  time: number; // Time in seconds
+  label: string; // Description of what happens at this timestamp
 }

@@ -1,0 +1,180 @@
+{
+  "id": "lc12",
+  "logo": "LC12",
+  "title": "Lion Championship 12",
+  "date": "19:00 | 13.04.2024",
+  "location": "Rach Mieu Stadium, Ho Chi Minh City",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 12",
+          "fighter1": {
+            "name": "Ngoc Luong Tran",
+            "stats": "Trận 12 | 132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Truong Sinh Bui",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 11",
+          "fighter1": {
+            "name": "Trong Kim Tran",
+            "stats": "Trận 11 | 126 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Thanh Tùng Võ",
+            "stats": "126 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 10",
+          "fighter1": {
+            "name": "Minh Nhựt Trần",
+            "stats": "Trận 10 | 132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tuan Van Le",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 9",
+          "fighter1": {
+            "name": "Jesse Bernal",
+            "stats": "Trận 9 | 170 lbs - Nam",
+            "flag": "🇺🇸",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Hoang Minh Dang",
+            "stats": "170 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 7",
+          "fighter1": {
+            "name": "Kiệt Trần",
+            "stats": "Trận 7 | 123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Vi Nhat Truong",
+            "stats": "123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 6",
+          "fighter1": {
+            "name": "Hồng Giang Lê",
+            "stats": "Trận 6 | 185 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Đức Tuấn Đào",
+            "stats": "185 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 5",
+          "fighter1": {
+            "name": "Quoc Danh",
+            "stats": "Trận 5 | 132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Nguyên Phúc Lê",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 4",
+          "fighter1": {
+            "name": "Hồng Quân Nguyễn",
+            "stats": "Trận 4 | 154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Quốc Huy Nguyễn",
+            "stats": "154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Hoang Lam Nguyen",
+            "stats": "Trận 3 | 143 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Duy Thuần Nguyễn",
+            "stats": "143 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Đình Văn Lê",
+            "stats": "Trận 2 | 185 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tiến Mỹ Nguyễn",
+            "stats": "185 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Thanh Duy Nguyễn",
+            "stats": "Trận 1 | 123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Quang Kiệt Trương",
+            "stats": "123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

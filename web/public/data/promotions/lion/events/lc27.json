@@ -1,0 +1,162 @@
+{
+  "id": "lc27",
+  "logo": "LC27",
+  "title": "Lion Championship 2025",
+  "date": "19:30 | 11.10.2025",
+  "location": "Nhà Thi Đấu Tây Hồ | 101 Đường Xuân La, Tây Hồ, Hà Nội",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 9",
+          "fighter1": {
+            "name": "Lý Văn Huỳnh",
+            "stats": "Trận 9 | 170 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          },
+          "fighter2": {
+            "name": "Đỗ Thành Chương",
+            "stats": "170 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "video": "https://youtu.be/BsNMsP8seRg?t=2"
+        }
+      ]
+    },
+    {
+      "category": "MMA STRIKING",
+      "matches": [
+        {
+          "round": "Trận 8",
+          "fighter1": {
+            "name": "Trần Quốc Tuấn",
+            "stats": "Trận 8 | 132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Vorapon Jayamram",
+            "stats": "132 lbs - Nam",
+            "flag": "🇹🇭",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "KPA Thuận",
+            "stats": "Trận 3 | 132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          },
+          "fighter2": {
+            "name": "Nguyễn Tấn An",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          }
+        },
+        {
+          "round": "Trận 4",
+          "fighter1": {
+            "name": "Nguyễn Văn Lâm",
+            "stats": "Trận 4 | 132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          },
+          "fighter2": {
+            "name": "Lưu Huy Đức",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Võ Tiến Đạt",
+            "stats": "Trận 1 | 123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          },
+          "fighter2": {
+            "name": "Trần Huy Hải",
+            "stats": "123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Phan Trọng Hiếu",
+            "stats": "Trận 2 | 132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          },
+          "fighter2": {
+            "name": "Trần Vĩ Quang",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          }
+        }
+      ]
+    },
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 5",
+          "fighter1": {
+            "name": "Phạm Văn Hào",
+            "stats": "Trận 5 | 123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Trần Văn Trọng",
+            "stats": "123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 6",
+          "fighter1": {
+            "name": "Võ Vũ Lê",
+            "stats": "Trận 6 | 123 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Trần Lê Phi Khanh",
+            "stats": "123 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": false
+          },
+          "video": "https://youtu.be/BsNMsP8seRg?t=8894"
+        },
+        {
+          "round": "Trận 7",
+          "fighter1": {
+            "name": "Đinh Văn Khuyên",
+            "stats": "Trận 7 | 123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          },
+          "fighter2": {
+            "name": "Bùi Đình Khải",
+            "stats": "123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          }
+        }
+      ]
+    }
+  ]
+}

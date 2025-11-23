@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import Navigation from '@/components/Navigation'
 import EventsList from '@/components/EventsList'
 import AthletesPage from '@/components/AthletesPage'
+import RankingsPage from '@/components/RankingsPage'
 import { TournamentData, EventData } from '@/types'
 
 export default function Home() {
@@ -23,25 +24,49 @@ export default function Home() {
         const [
           ufcAthletesRes,
           ufcRankingsRes,
-          ufcEventsRes,
+          ufcPromotionRes,
           lionAthletesRes,
           lionRankingsRes,
-          lionEventsRes,
+          lionPromotionRes,
         ] = await Promise.all([
-          fetch('/data/ufc/athletes.json'),
-          fetch('/data/ufc/rankings.json'),
-          fetch('/data/ufc/events.json'),
-          fetch('/data/lion/athletes.json'),
-          fetch('/data/lion/rankings.json'),
-          fetch('/data/lion/events.json'),
+          fetch('/data/promotions/ufc/athletes.json'),
+          fetch('/data/promotions/ufc/rankings.json'),
+          fetch('/data/promotions/ufc/promotion.json'),
+          fetch('/data/promotions/lion/athletes.json'),
+          fetch('/data/promotions/lion/rankings.json'),
+          fetch('/data/promotions/lion/promotion.json'),
         ])
 
         const ufcAthletes = await ufcAthletesRes.json()
         const ufcRankings = await ufcRankingsRes.json()
-        const ufcEvents = await ufcEventsRes.json()
+        const ufcPromotion = await ufcPromotionRes.json()
         const lionAthletes = await lionAthletesRes.json()
         const lionRankings = await lionRankingsRes.json()
-        const lionEvents = await lionEventsRes.json()
+        const lionPromotion = await lionPromotionRes.json()
+
+        // Load individual event files (handle both old and new format)
+        const loadEvents = async (eventsData: any, tournament: string) => {
+          // Check if events is array of objects (old format) or array of strings (new format)
+          if (!eventsData.events || eventsData.events.length === 0) return []
+
+          const firstEvent = eventsData.events[0]
+          if (typeof firstEvent === 'object' && firstEvent.id) {
+            // Old format: array of event objects
+            return eventsData.events
+          } else if (typeof firstEvent === 'string') {
+            // New format: array of event IDs
+            const eventPromises = eventsData.events.map((eventId: string) =>
+              fetch(`/data/promotions/${tournament}/events/${eventId}.json`).then(res => res.json())
+            )
+            return await Promise.all(eventPromises)
+          }
+          return []
+        }
+
+        const [ufcEvents, lionEvents] = await Promise.all([
+          loadEvents(ufcPromotion, 'ufc'),
+          loadEvents(lionPromotion, 'lion'),
+        ])
 
         // Merge data for each tournament
         const ufc = {
@@ -66,8 +91,8 @@ export default function Home() {
 
         // Set events data
         setAllEvents({
-          ufc: ufcEvents.events || [],
-          lion: lionEvents.events || [],
+          ufc: ufcEvents || [],
+          lion: lionEvents || [],
         })
       } catch (error) {
         console.error('Error loading data:', error)
@@ -90,11 +115,10 @@ export default function Home() {
   }, [pathname, router])
 
   useEffect(() => {
-    // Update theme
+    // Update theme - ensure clean state
+    document.body.classList.remove('lion-theme')
     if (currentTournament === 'lion') {
       document.body.classList.add('lion-theme')
-    } else {
-      document.body.classList.remove('lion-theme')
     }
   }, [currentTournament])
 
@@ -118,8 +142,8 @@ export default function Home() {
         {currentPage === 'events' && (
           <EventsList events={allEvents[currentTournament]} tournament={currentTournament} />
         )}
-        {currentPage === 'rankings' && (
-          <div className="page-title">Rankings Page - Coming Soon</div>
+        {currentPage === 'rankings' && currentTournamentData && (
+          <RankingsPage tournamentData={currentTournamentData} />
         )}
         {currentPage === 'athletes' && currentTournamentData && (
           <AthletesPage tournamentData={currentTournamentData} />

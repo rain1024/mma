@@ -70,7 +70,13 @@ test.describe('Navigation', () => {
 
     // UFC theme (no lion-theme class)
     await page.click('button:has-text("UFC")')
-    await page.waitForTimeout(500) // Wait for theme to apply
+
+    // Wait for theme to be removed by checking the body class
+    await page.waitForFunction(
+      () => !document.body.classList.contains('lion-theme'),
+      { timeout: 5000 }
+    )
+
     const ufcBody = await page.locator('body')
     await expect(ufcBody).not.toHaveClass(/lion-theme/)
   })

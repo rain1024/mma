@@ -1,16 +1,24 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { TournamentData } from '@/types'
+import { generateAthleteSlug } from '@/lib/utils'
 
 interface AthletesPageProps {
   tournamentData: TournamentData
 }
 
 export default function AthletesPage({ tournamentData }: AthletesPageProps) {
+  const router = useRouter()
   const [genderFilter, setGenderFilter] = useState<'all' | 'men' | 'women'>('all')
   const [divisionFilter, setDivisionFilter] = useState<string>('all')
   const [searchQuery, setSearchQuery] = useState('')
+
+  const handleAthleteClick = (athleteName: string) => {
+    const slug = generateAthleteSlug(athleteName)
+    router.push(`/athletes/${slug}`)
+  }
 
   if (!tournamentData || !tournamentData.athletes) {
     return <div className="loading">Loading athletes...</div>
@@ -18,9 +26,16 @@ export default function AthletesPage({ tournamentData }: AthletesPageProps) {
 
   // Filter athletes
   const filteredAthletes = tournamentData.athletes.filter((athlete) => {
-    // Search filter
-    if (searchQuery && !athlete.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-      return false
+    // Search filter - searches in both name and alternative names
+    if (searchQuery) {
+      const searchLower = searchQuery.toLowerCase()
+      const matchesName = athlete.name.toLowerCase().includes(searchLower)
+      const matchesAltNames = athlete.alternativeNames?.some(altName =>
+        altName.toLowerCase().includes(searchLower)
+      )
+      if (!matchesName && !matchesAltNames) {
+        return false
+      }
     }
 
     // Division filter
@@ -93,7 +108,7 @@ export default function AthletesPage({ tournamentData }: AthletesPageProps) {
 
       <div className="athletes-grid">
         {filteredAthletes.map((athlete) => (
-          <div key={athlete.id} className="athlete-card">
+          <div key={athlete.id} className="athlete-card" onClick={() => handleAthleteClick(athlete.name)}>
             <div className="athlete-image">
               <div className="placeholder-image">
                 {athlete.flag || '🥊'}

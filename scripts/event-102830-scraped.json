@@ -1,0 +1,124 @@
+{
+  "id": "lc5",
+  "eventId": "102830",
+  "url": "https://www.tapology.com/fightcenter/events/102830-lion-championship-5",
+  "logo": "LC5",
+  "title": "Lion Championship 5",
+  "date": "04.22.2023",
+  "status": "completed",
+  "promotionLinks": [
+    {
+      "url": "https://www.facebook.com/lionchampionshipvietnam",
+      "text": "Lion Championship"
+    }
+  ],
+  "fights": [
+    {
+      "category": "CHAMPIONSHIP",
+      "matches": [
+        {
+          "round": "",
+          "fighter1": {
+            "name": "Thanh Do Nguyen",
+            "link": "https://www.tapology.com/fightcenter/fighters/393938-thanh-do-nguyen",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Ngọc Cảnh Phạm",
+            "link": "https://www.tapology.com/fightcenter/fighters/393939-ngoc-canh-pham",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "",
+          "fighter1": {
+            "name": "Ngoc Luong Tran",
+            "link": "https://www.tapology.com/fightcenter/fighters/393936-ngoc-luong-tran",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Robson de Oliveira",
+            "link": "https://www.tapology.com/fightcenter/fighters/376729-robson-de-oliveira",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "",
+          "fighter1": {
+            "name": "Van Hoang Ban",
+            "link": "https://www.tapology.com/fightcenter/fighters/384840-van-hoang-ban",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "The Anh Le Van",
+            "link": "https://www.tapology.com/fightcenter/fighters/393935-the-anh-le-van",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "",
+          "fighter1": {
+            "name": "Minh Nhựt Trần",
+            "link": "https://www.tapology.com/fightcenter/fighters/393934-minh-nhut-tran",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Trung Hải Nguyễn",
+            "link": "https://www.tapology.com/fightcenter/fighters/393933-trung-hai-nguyen",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "",
+          "fighter1": {
+            "name": "Truong Sinh Bui",
+            "link": "https://www.tapology.com/fightcenter/fighters/393932-truong-sinh-bui",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tuan Van Le",
+            "link": "https://www.tapology.com/fightcenter/fighters/358389-tuan-van-le",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "",
+          "fighter1": {
+            "name": "Hoang Thach Nguyen",
+            "link": "https://www.tapology.com/fightcenter/fighters/393931-hoang-thach-nguyen",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Phu Quy Nguyen",
+            "link": "https://www.tapology.com/fightcenter/fighters/393930-phu-quy-nguyen",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+# TypeScript compiled output
+dist/
+
+# Test coverage
+coverage/
+
+# Node modules
+node_modules/

@@ -1,0 +1,150 @@
+{
+  "id": "lc4",
+  "logo": "LC4",
+  "title": "Lion Championship 4: Warriors Clash",
+  "date": "01.04.2023",
+  "location": "Tay Ho Sports Complex, Hanoi, Vietnam",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Main Event",
+          "fighter1": {
+            "name": "Quang Lộc Trần",
+            "stats": "154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Xiaolong Li",
+            "stats": "154 lbs - Nam",
+            "flag": "🇨🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 8",
+          "fighter1": {
+            "name": "Văn Kamil Nguyễn",
+            "stats": "154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tung Lam Nghiem",
+            "stats": "154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 7",
+          "fighter1": {
+            "name": "Duc Tung Duong",
+            "stats": "170 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Nhan Nghia Luu",
+            "stats": "170 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 6",
+          "fighter1": {
+            "name": "Van Hoang Ban",
+            "stats": "154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Thang Nguyen Dang",
+            "stats": "154 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 5",
+          "fighter1": {
+            "name": "Phuc Hau Do",
+            "stats": "143 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Ba Nhi Nguyen",
+            "stats": "143 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 4",
+          "fighter1": {
+            "name": "Ngoc Lam Tran",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "The Toan Lai",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Huy Hoàng Lê",
+            "stats": "123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Thanh Tùng Võ",
+            "stats": "123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Trong Kim Tran",
+            "stats": "123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Van Quy Dang",
+            "stats": "123 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Quoc Dung Dinh",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Chi Cong Dinh",
+            "stats": "132 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

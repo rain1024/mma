@@ -1,0 +1,75 @@
+{
+  "id": "lc21",
+  "logo": "LC21",
+  "title": "Lion Championship 21",
+  "date": "19:00 | 12.04.2025",
+  "location": "Tay Ho Stadium, Hanoi",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 4",
+          "fighter1": {
+            "name": "Tra My Tran",
+            "stats": "Trận 4 | 115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Chelsea Moore",
+            "stats": "115 lbs - Nữ",
+            "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Ngoc Tin Huynh",
+            "stats": "Trận 3 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Kiệt Trần",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Tuan Van Le",
+            "stats": "Trận 2 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Huy Hoàng Lê",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Dinh Khai Bui",
+            "stats": "Trận 1 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Liam James Arnold",
+            "stats": "125 lbs - Nam",
+            "flag": "🇬🇧",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

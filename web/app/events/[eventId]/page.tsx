@@ -25,25 +25,25 @@ export default function EventDetailPage() {
         const [
           ufcAthletesRes,
           ufcRankingsRes,
-          ufcEventsRes,
+          ufcPromotionRes,
           lionAthletesRes,
           lionRankingsRes,
-          lionEventsRes,
+          lionPromotionRes,
         ] = await Promise.all([
-          fetch('/data/ufc/athletes.json'),
-          fetch('/data/ufc/rankings.json'),
-          fetch('/data/ufc/events.json'),
-          fetch('/data/lion/athletes.json'),
-          fetch('/data/lion/rankings.json'),
-          fetch('/data/lion/events.json'),
+          fetch('/data/promotions/ufc/athletes.json'),
+          fetch('/data/promotions/ufc/rankings.json'),
+          fetch('/data/promotions/ufc/promotion.json'),
+          fetch('/data/promotions/lion/athletes.json'),
+          fetch('/data/promotions/lion/rankings.json'),
+          fetch('/data/promotions/lion/promotion.json'),
         ])
 
         const ufcAthletes = await ufcAthletesRes.json()
         const ufcRankings = await ufcRankingsRes.json()
-        const ufcEvents = await ufcEventsRes.json()
+        const ufcPromotion = await ufcPromotionRes.json()
         const lionAthletes = await lionAthletesRes.json()
         const lionRankings = await lionRankingsRes.json()
-        const lionEvents = await lionEventsRes.json()
+        const lionPromotion = await lionPromotionRes.json()
 
         // Merge data for each tournament
         const ufc = {
@@ -66,20 +66,40 @@ export default function EventDetailPage() {
 
         setTournamentData({ ufc, lion })
 
-        // Find the event by ID
-        const allEvents = [...(ufcEvents.events || []), ...(lionEvents.events || [])]
-        const foundEvent = allEvents.find((event: EventData) => event.id === eventId)
+        // Determine tournament based on event ID
+        let tournament: 'ufc' | 'lion' = 'lion'
+        if (eventId.startsWith('ufc')) {
+          tournament = 'ufc'
+        } else if (eventId.startsWith('lc')) {
+          tournament = 'lion'
+        }
 
-        if (foundEvent) {
-          setEventData(foundEvent)
-          // Determine tournament based on event ID
-          if (eventId.startsWith('ufc')) {
-            setCurrentTournament('ufc')
-          } else if (eventId.startsWith('lc')) {
-            setCurrentTournament('lion')
+        setCurrentTournament(tournament)
+
+        // Load the specific event file
+        try {
+          const eventRes = await fetch(`/data/promotions/${tournament}/events/${eventId}.json`)
+          if (eventRes.ok) {
+            const event = await eventRes.json()
+            setEventData(event)
+          } else {
+            // Try to find in events array (old format)
+            const eventsData = tournament === 'ufc' ? ufcPromotion : lionPromotion
+            if (eventsData.events && Array.isArray(eventsData.events)) {
+              const foundEvent = eventsData.events.find((e: any) =>
+                typeof e === 'object' && e.id === eventId
+              )
+              if (foundEvent) {
+                setEventData(foundEvent)
+              } else {
+                router.push('/events')
+              }
+            } else {
+              router.push('/events')
+            }
           }
-        } else {
-          // Event not found, redirect to events page
+        } catch (error) {
+          console.error('Error loading event:', error)
           router.push('/events')
         }
 
@@ -94,11 +114,10 @@ export default function EventDetailPage() {
   }, [eventId, router])
 
   useEffect(() => {
-    // Update theme
+    // Update theme - ensure clean state
+    document.body.classList.remove('lion-theme')
     if (currentTournament === 'lion') {
       document.body.classList.add('lion-theme')
-    } else {
-      document.body.classList.remove('lion-theme')
     }
   }, [currentTournament])
 
@@ -144,7 +163,7 @@ export default function EventDetailPage() {
       <Navigation currentPage={currentPage} onPageChange={handlePageChange} />
 
       <main className="container">
-        <EventsPage eventData={eventData} />
+        <EventsPage eventData={eventData} tournament={currentTournament} />
       </main>
 
       <style jsx>{`

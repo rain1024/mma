@@ -1,0 +1,60 @@
+{
+  "id": "lc22",
+  "logo": "LC22",
+  "title": "Lion Championship 22",
+  "date": "19:00 | 10.05.2025",
+  "location": "Tay Ho Stadium, Hanoi",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Cong Minh Pham",
+            "stats": "Trận 3 | 185 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Zakhar Dzmitrychenka",
+            "stats": "185 lbs - Nam",
+            "flag": "🇧🇾",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Manh Hai Nguyen",
+            "stats": "Trận 2 | 135 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Huy Hoàng Phan",
+            "stats": "135 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Adel Iabbarov",
+            "stats": "Trận 1 | 155 lbs - Nam",
+            "flag": "🇷🇺",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Nhan Nghia Luu",
+            "stats": "155 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

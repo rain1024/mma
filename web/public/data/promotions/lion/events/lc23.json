@@ -1,0 +1,105 @@
+{
+  "id": "lc23",
+  "logo": "LC23",
+  "title": "Lion Championship 23",
+  "date": "19:00 | 14.06.2025",
+  "location": "Rach Mieu Stadium, Ho Chi Minh City",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 10",
+          "fighter1": {
+            "name": "Tuan Van Le",
+            "stats": "Trận 10 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Van Nam Pham",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 9",
+          "fighter1": {
+            "name": "Trong Kim Tran",
+            "stats": "Trận 9 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Dinh Khai Bui",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 8",
+          "fighter1": {
+            "name": "Van Minh Quang",
+            "stats": "Trận 8 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Mikhail Gritsanenko",
+            "stats": "145 lbs - Nam",
+            "flag": "🇷🇺",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 7",
+          "fighter1": {
+            "name": "Karina Veis",
+            "stats": "Trận 7 | 115 lbs - Nữ",
+            "flag": "🇷🇺",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Nhu Quỳnh Dao Thi",
+            "stats": "115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 6",
+          "fighter1": {
+            "name": "Phu Thinh Nguyen",
+            "stats": "Trận 6 | 125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Ngoc Tin Huynh",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 5",
+          "fighter1": {
+            "name": "Van Hung Bui",
+            "stats": "Trận 5 | 145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Quang Minh Le",
+            "stats": "145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

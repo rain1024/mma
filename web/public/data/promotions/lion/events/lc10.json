@@ -1,0 +1,118 @@
+{
+  "id": "lc10",
+  "logo": "LC10",
+  "title": "Lion Championship 10",
+  "date": "10.07.2023",
+  "location": "Corona Resort & Casino, Phu Quoc, Vietnam",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "CHAMPIONSHIP",
+      "matches": [
+        {
+          "round": "LC Strawweight Championship",
+          "fighter1": {
+            "name": "Thanh Trúc Nguyễn Thị",
+            "link": "https://www.tapology.com/fightcenter/fighters/358392-truc-thanh",
+            "stats": "115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Ngoc Bich Ho Thi",
+            "link": "https://www.tapology.com/fightcenter/fighters/393957-ho-thi-ngoc-bich",
+            "stats": "115 lbs - Nữ",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "LC Bantamweight Championship",
+          "fighter1": {
+            "name": "Chelsey Cashwell",
+            "link": "https://www.tapology.com/fightcenter/fighters/404813-chelsey-cashwell",
+            "stats": "134 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Thi Huong Nguyen",
+            "link": "https://www.tapology.com/fightcenter/fighters/399407-thi-huong-nguyen",
+            "stats": "134 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          },
+          "video": "https://youtu.be/G-VG_QBhdh4?t=5550"
+        },
+        {
+          "round": "",
+          "fighter1": {
+            "name": "Cong Minh Pham",
+            "link": "https://www.tapology.com/fightcenter/fighters/401253-cong-minh-pham",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Hong Giang Ngo",
+            "link": "https://www.tapology.com/fightcenter/fighters/358393-hong-giang-ngo",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "",
+          "fighter1": {
+            "name": "Felipe Negochadle",
+            "link": "https://www.tapology.com/fightcenter/fighters/202850-felipe-nego",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Tiến Long Nguyễn",
+            "link": "https://www.tapology.com/fightcenter/fighters/358388-tien-long-nguyen",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "",
+          "fighter1": {
+            "name": "Thanh Tung Phan",
+            "link": "https://www.tapology.com/fightcenter/fighters/399310-thanh-tung-phan",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Thanh Tùng Võ",
+            "link": "https://www.tapology.com/fightcenter/fighters/358390-thang-tung-vo",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "",
+          "fighter1": {
+            "name": "Hop Hai Nguyen",
+            "link": "https://www.tapology.com/fightcenter/fighters/399474-hop-hai-nguyen",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Chi Cong Dinh",
+            "link": "https://www.tapology.com/fightcenter/fighters/399392-chi-cong-dinh",
+            "stats": " - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}

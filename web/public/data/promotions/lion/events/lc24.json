@@ -1,0 +1,60 @@
+{
+  "id": "lc24",
+  "logo": "LC24",
+  "title": "Lion Championship 24",
+  "date": "19:00 | 12.07.2025",
+  "location": "Tay Ho Stadium, Hanoi",
+  "status": "completed",
+  "fights": [
+    {
+      "category": "MMA PRO",
+      "matches": [
+        {
+          "round": "Trận 3",
+          "fighter1": {
+            "name": "Quoc Danh",
+            "stats": "Trận 3 | 135 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Trung Hiếu Đinh",
+            "stats": "135 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 2",
+          "fighter1": {
+            "name": "Liam James Arnold",
+            "stats": "Trận 2 | 125 lbs - Nam",
+            "flag": "🇬🇧",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Phong Son Bui",
+            "stats": "125 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        },
+        {
+          "round": "Trận 1",
+          "fighter1": {
+            "name": "Harry Smith",
+            "stats": "Trận 1 | 145 lbs - Nam",
+            "flag": "🇸🇨",
+            "winner": true
+          },
+          "fighter2": {
+            "name": "Anh Đức Phạm",
+            "stats": "145 lbs - Nam",
+            "flag": "🇻🇳",
+            "winner": false
+          }
+        }
+      ]
+    }
+  ]
+}
