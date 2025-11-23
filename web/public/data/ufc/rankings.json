@@ -1,0 +1,35 @@
+{
+  "pfpRankings": [
+    { "rank": 1, "name": "Islam Makhachev", "record": "Lightweight Champion", "move": "-" },
+    { "rank": 2, "name": "Jon Jones", "record": "Heavyweight Champion", "move": "-" },
+    { "rank": 3, "name": "Alex Pereira", "record": "Light Heavyweight Champion", "move": "↑ 1" },
+    { "rank": 4, "name": "Ilia Topuria", "record": "Featherweight Champion", "move": "-" },
+    { "rank": 5, "name": "Dricus Du Plessis", "record": "Middleweight Champion", "move": "-" },
+    { "rank": 6, "name": "Belal Muhammad", "record": "Welterweight Champion", "move": "↓ 1" },
+    { "rank": 7, "name": "Merab Dvalishvili", "record": "Bantamweight Champion", "move": "-" },
+    { "rank": 8, "name": "Tom Aspinall", "record": "Heavyweight", "move": "-" },
+    { "rank": 9, "name": "Alexandre Pantoja", "record": "Flyweight Champion", "move": "-" },
+    { "rank": 10, "name": "Max Holloway", "record": "Featherweight", "move": "-" }
+  ],
+  "divisions": {
+    "lightweight": {
+      "champion": {
+        "name": "Islam Makhachev",
+        "record": "26-1-0",
+        "nickname": "The Eagle"
+      },
+      "rankings": [
+        { "rank": 1, "name": "Arman Tsarukyan", "record": "21-3-0", "move": "-" },
+        { "rank": 2, "name": "Charles Oliveira", "record": "34-10-0", "move": "-" },
+        { "rank": 3, "name": "Justin Gaethje", "record": "25-5-0", "move": "-" },
+        { "rank": 4, "name": "Michael Chandler", "record": "23-8-0", "move": "-" },
+        { "rank": 5, "name": "Dustin Poirier", "record": "30-9-0", "move": "-" },
+        { "rank": 6, "name": "Beneil Dariush", "record": "22-6-1", "move": "-" },
+        { "rank": 7, "name": "Mateusz Gamrot", "record": "24-2-0", "move": "-" },
+        { "rank": 8, "name": "Rafael Fiziev", "record": "12-2-0", "move": "-" },
+        { "rank": 9, "name": "Dan Hooker", "record": "23-12-0", "move": "↑ 2" },
+        { "rank": 10, "name": "Renato Moicano", "record": "19-5-1", "move": "-" }
+      ]
+    }
+  }
+}

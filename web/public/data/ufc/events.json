@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "id": "ufc309",
+      "logo": "UFC 309",
+      "title": "Jones vs Miocic",
+      "date": "November 16, 2024",
+      "location": "Madison Square Garden, New York, NY",
+      "status": "upcoming",
+      "fights": [
+        {
+          "category": "MAIN CARD",
+          "matches": [
+            {
+              "round": "Main Event",
+              "fighter1": {
+                "name": "Jon Jones",
+                "stats": "Heavyweight Champion",
+                "flag": "🇺🇸",
+                "winner": false
+              },
+              "fighter2": {
+                "name": "Stipe Miocic",
+                "stats": "Heavyweight",
+                "flag": "🇺🇸",
+                "winner": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

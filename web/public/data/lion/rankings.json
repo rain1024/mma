@@ -1,0 +1,35 @@
+{
+  "pfpRankings": [
+    { "rank": 1, "name": "Takeru Segawa", "record": "Featherweight Champion", "move": "-" },
+    { "rank": 2, "name": "Kouzi", "record": "Lightweight Champion", "move": "↑ 1" },
+    { "rank": 3, "name": "Keisuke Shimizu", "record": "Bantamweight Champion", "move": "-" },
+    { "rank": 4, "name": "Yuki Motoya", "record": "Welterweight Champion", "move": "↓ 1" },
+    { "rank": 5, "name": "Hidetaka Monma", "record": "Middleweight", "move": "-" },
+    { "rank": 6, "name": "Taiga Kawabe", "record": "Lightweight", "move": "↑ 2" },
+    { "rank": 7, "name": "Tatsuki Shinotsuka", "record": "Featherweight", "move": "-" },
+    { "rank": 8, "name": "Rui Ebata", "record": "Bantamweight", "move": "↓ 2" },
+    { "rank": 9, "name": "Shota Kanbe", "record": "Welterweight", "move": "-" },
+    { "rank": 10, "name": "Masato Kobayashi", "record": "Lightweight", "move": "-" }
+  ],
+  "divisions": {
+    "lightweight": {
+      "champion": {
+        "name": "Kouzi",
+        "record": "18-2-0",
+        "nickname": "The Lion King"
+      },
+      "rankings": [
+        { "rank": 1, "name": "Taiga Kawabe", "record": "15-4-0", "move": "-" },
+        { "rank": 2, "name": "Masato Kobayashi", "record": "14-3-1", "move": "↑ 1" },
+        { "rank": 3, "name": "Yuki Nishimura", "record": "12-5-0", "move": "↓ 1" },
+        { "rank": 4, "name": "Kenta Takizawa", "record": "16-2-0", "move": "-" },
+        { "rank": 5, "name": "Shoma Shibisai", "record": "11-4-0", "move": "↑ 2" },
+        { "rank": 6, "name": "Daichi Takenaka", "record": "13-6-0", "move": "-" },
+        { "rank": 7, "name": "Ryusei Ashizawa", "record": "10-3-0", "move": "↓ 2" },
+        { "rank": 8, "name": "Haruki Miura", "record": "12-7-0", "move": "-" },
+        { "rank": 9, "name": "Sho Usami", "record": "9-2-0", "move": "↑ 1" },
+        { "rank": 10, "name": "Toshiki Shimoda", "record": "11-5-1", "move": "↓ 1" }
+      ]
+    }
+  }
+}

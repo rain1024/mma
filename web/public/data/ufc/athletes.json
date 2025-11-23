@@ -1,0 +1,30 @@
+{
+  "name": "UFC",
+  "subtitle": "Official UFC Fighter Rankings",
+  "divisions": [
+    { "value": "pfp", "label": "Pound-for-Pound" },
+    { "value": "heavyweight", "label": "Heavyweight" },
+    { "value": "light-heavyweight", "label": "Light Heavyweight" },
+    { "value": "middleweight", "label": "Middleweight" },
+    { "value": "welterweight", "label": "Welterweight" },
+    { "value": "lightweight", "label": "Lightweight" },
+    { "value": "featherweight", "label": "Featherweight" },
+    { "value": "bantamweight", "label": "Bantamweight" },
+    { "value": "flyweight", "label": "Flyweight" },
+    { "value": "women-bantamweight", "label": "Women's Bantamweight" },
+    { "value": "women-flyweight", "label": "Women's Flyweight" },
+    { "value": "women-strawweight", "label": "Women's Strawweight" }
+  ],
+  "athletes": [
+    { "id": 1, "name": "Islam Makhachev", "record": "26-1-0", "nickname": "The Eagle", "division": "lightweight", "country": "Russia", "flag": "🇷🇺" },
+    { "id": 2, "name": "Jon Jones", "record": "27-1-0", "nickname": "Bones", "division": "heavyweight", "country": "USA", "flag": "🇺🇸" },
+    { "id": 3, "name": "Alex Pereira", "record": "11-2-0", "nickname": "Poatan", "division": "light-heavyweight", "country": "Brazil", "flag": "🇧🇷" },
+    { "id": 4, "name": "Ilia Topuria", "record": "16-0-0", "nickname": "El Matador", "division": "featherweight", "country": "Georgia", "flag": "🇬🇪" },
+    { "id": 5, "name": "Dricus Du Plessis", "record": "22-2-0", "nickname": "Stillknocks", "division": "middleweight", "country": "South Africa", "flag": "🇿🇦" },
+    { "id": 6, "name": "Arman Tsarukyan", "record": "21-3-0", "nickname": "Ahalkalakets", "division": "lightweight", "country": "Armenia", "flag": "🇦🇲" },
+    { "id": 7, "name": "Charles Oliveira", "record": "34-10-0", "nickname": "Do Bronx", "division": "lightweight", "country": "Brazil", "flag": "🇧🇷" },
+    { "id": 8, "name": "Justin Gaethje", "record": "25-5-0", "nickname": "The Highlight", "division": "lightweight", "country": "USA", "flag": "🇺🇸" },
+    { "id": 9, "name": "Michael Chandler", "record": "23-8-0", "nickname": "Iron", "division": "lightweight", "country": "USA", "flag": "🇺🇸" },
+    { "id": 10, "name": "Dustin Poirier", "record": "30-9-0", "nickname": "The Diamond", "division": "lightweight", "country": "USA", "flag": "🇺🇸" }
+  ]
+}

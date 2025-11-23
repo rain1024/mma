@@ -1,0 +1,7 @@
+!.CLAUDE.md
+!.claude
+!.claude/*
+
+.DS_Store
+
+*/node_modules
