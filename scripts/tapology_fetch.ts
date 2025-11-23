@@ -279,6 +279,76 @@ export async function explore_event(event_url: string): Promise<void> {
           const f1Country = getCountry(fighter1Name, f1Text);
           const f2Country = getCountry(fighter2Name, f2Text);
 
+          // Try to extract match result information
+          let matchResult = null;
+          try {
+            // Look for the result div - it has class "text-tap_darkgold" and contains method, technique, and time info
+            const resultDiv = boutContainer.querySelector('.text-tap_darkgold.font-bold.flex.flex-col');
+            if (resultDiv) {
+              const spans = Array.from(resultDiv.querySelectorAll('span'));
+
+              // Extract method and technique from the second span (uppercase)
+              const methodSpan = spans.find(span => span.className.includes('uppercase'));
+              const timeSpan = spans.find(span => span.textContent?.includes('Round') || span.textContent?.includes('Total'));
+
+              if (methodSpan && timeSpan) {
+                const methodText = methodSpan.textContent?.trim() || '';
+                const timeText = timeSpan.textContent?.trim() || '';
+
+                // Parse method and technique
+                const methodParts = methodText.split(',').map(p => p.trim());
+                const method = methodParts[0];
+                const technique = methodParts.length > 1 ? methodParts.slice(1).join(', ') : undefined;
+
+                // Parse time and round info
+                // Patterns:
+                // 1. "2:25 Round 2 of 5, 7:25 Total" (with total)
+                // 2. "1:37 Round 1 of 3" (without total, early finish)
+                // 3. "3 Rounds, 15:00 Total" (decision)
+                const timeMatchWithTotal = timeText.match(/(\d+:\d+)\s+Round\s+(\d+)\s+of\s+(\d+),\s+(\d+:\d+)\s+Total/i);
+                const timeMatchNoTotal = timeText.match(/(\d+:\d+)\s+Round\s+(\d+)\s+of\s+(\d+)$/i);
+                const roundsMatch = timeText.match(/(\d+)\s+Rounds?,\s+(\d+:\d+)\s+Total/i);
+
+                if (timeMatchWithTotal) {
+                  matchResult = {
+                    method,
+                    technique,
+                    time: timeMatchWithTotal[1],
+                    round: `Round ${timeMatchWithTotal[2]} of ${timeMatchWithTotal[3]}`,
+                    totalTime: timeMatchWithTotal[4]
+                  };
+                } else if (timeMatchNoTotal) {
+                  // For early finishes without total time - calculate it
+                  const roundNum = parseInt(timeMatchNoTotal[2]);
+                  const timeInSeconds = timeMatchNoTotal[1].split(':').map(Number);
+                  const totalSeconds = (roundNum - 1) * 5 * 60 + timeInSeconds[0] * 60 + timeInSeconds[1];
+                  const totalMinutes = Math.floor(totalSeconds / 60);
+                  const totalSecs = totalSeconds % 60;
+                  const totalTime = `${totalMinutes}:${totalSecs.toString().padStart(2, '0')}`;
+
+                  matchResult = {
+                    method,
+                    technique,
+                    time: timeMatchNoTotal[1],
+                    round: `Round ${roundNum} of ${timeMatchNoTotal[3]}`,
+                    totalTime: totalTime
+                  };
+                } else if (roundsMatch) {
+                  // For decisions
+                  matchResult = {
+                    method,
+                    technique,
+                    time: '',
+                    round: `${roundsMatch[1]} Rounds`,
+                    totalTime: roundsMatch[2]
+                  };
+                }
+              }
+            }
+          } catch (e) {
+            console.log('Could not parse match result');
+          }
+
           matches.push({
             round: round,
             fighter1: {
@@ -298,7 +368,8 @@ export async function explore_event(event_url: string): Promise<void> {
               weight: weight,
               gender: gender,
               winner: f2Winner
-            }
+            },
+            result: matchResult || undefined
           });
 
           console.log(`Match ${matches.length}: ${fighter1Name} vs ${fighter2Name}, winner: ${f1Winner ? fighter1Name : (f2Winner ? fighter2Name : 'Unknown')}`);
@@ -358,7 +429,8 @@ export async function explore_event(event_url: string): Promise<void> {
             stats: `${match.fighter2.weight} - ${match.fighter2.gender}`,
             flag: countryToFlag[match.fighter2.country] || '🏳️',
             winner: match.fighter2.winner
-          }
+          },
+          result: match.result
         }))
       }))
     };

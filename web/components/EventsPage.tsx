@@ -57,6 +57,15 @@ export default function EventsPage({ eventData, tournament = 'lion' }: EventsPag
                 <div className="vs-divider">
                   <span>VS</span>
                   <span className="fight-round">{match.round}</span>
+                  {match.result && (
+                    <div className="match-result">
+                      <div className="result-method">{match.result.method}</div>
+                      {match.result.technique && (
+                        <div className="result-technique">{match.result.technique}</div>
+                      )}
+                      <div className="result-time">{match.result.time} - {match.result.round}</div>
+                    </div>
+                  )}
                   {videoPlayerUrl && (
                     <Link href={videoPlayerUrl} className="watch-video-btn">
                       Watch Video
@@ -290,6 +299,44 @@ export default function EventsPage({ eventData, tournament = 'lion' }: EventsPag
           font-size: 12px;
           color: #666;
           text-transform: uppercase;
+        }
+
+        .match-result {
+          margin-top: 12px;
+          padding: 12px 20px;
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 6px;
+          border: 1px solid rgba(210, 10, 10, 0.3);
+        }
+
+        :global(body.lion-theme) .match-result {
+          border-color: rgba(255, 140, 0, 0.3);
+        }
+
+        .result-method {
+          font-size: 14px;
+          font-weight: bold;
+          color: #fff;
+          text-transform: uppercase;
+          margin-bottom: 4px;
+          letter-spacing: 0.5px;
+        }
+
+        .result-technique {
+          font-size: 12px;
+          color: #d20a0a;
+          margin-bottom: 4px;
+          font-weight: 600;
+        }
+
+        :global(body.lion-theme) .result-technique {
+          color: #ff8c00;
+        }
+
+        .result-time {
+          font-size: 11px;
+          color: #999;
+          font-style: italic;
         }
 
         :global(.watch-video-btn) {

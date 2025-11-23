@@ -49,6 +49,7 @@ Ghi chú:
 - Hiển thị chi tiết thông tin của một event cụ thể
 - Hiển thị danh sách các trận đấu trong event đó
 - URL của trang event detail sẽ là /events/{eventId} (ví dụ: /events/lc27)
+- Mỗi trận đấu hiển thị kết quả trận đấu, kỹ thuật dùng để thắng, thời gian kết thúc trận đấu
 - Nếu trong 1 trận có video, hiển thị nút "Watch Video" để xem video trận đấu
 - Khi click vào Althete trong trận đấu sẽ chuyển đến trang chi tiết athlete đó
 
@@ -62,6 +63,7 @@ Nếu có video, khi click vào nút "Watch Video" sẽ mở video player để 
 ## Feature Match Detail Page
 
 - Hiển thị video trận đấu
+- Hiển thị kết quả trận đấu, kỹ thuật dùng để thắng, thời gian kết thúc trận đấu
 - Hiển thị chi tiết thông tin trận đấu (đấu thủ, kết quả)
 - Thêm tính năng gãn nhãn thời gian (timestamp) với label cho video để người dùng có thể dễ dàng chuyển đến các phần quan trọng trong trận đấu.
 - Cho phép người dùng copy thông tin đã được gắn timestamp dưới dạng json để chia sẻ.

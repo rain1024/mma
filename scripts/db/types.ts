@@ -85,10 +85,19 @@ export interface MatchFighter {
   urls?: URL[];
 }
 
+export interface MatchResult {
+  method: string;        // e.g., "Submission", "KO/TKO", "Decision"
+  technique?: string;    // e.g., "Heel Hook", "Armbar", "Punches"
+  time: string;          // e.g., "2:25"
+  round: string;         // e.g., "Round 2 of 5"
+  totalTime: string;     // e.g., "7:25"
+}
+
 export interface Match {
   round: string;
   fighter1: MatchFighter;
   fighter2: MatchFighter;
+  result?: MatchResult;
   video?: string;
 }
 

@@ -62,10 +62,19 @@ interface Fighter {
   winner: boolean;
 }
 
+interface MatchResult {
+  method: string;
+  technique?: string;
+  time: string;
+  round: string;
+  totalTime: string;
+}
+
 interface Match {
   round: string;
   fighter1: Fighter;
   fighter2: Fighter;
+  result?: MatchResult;
 }
 
 interface Fight {

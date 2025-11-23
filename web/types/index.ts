@@ -51,11 +51,20 @@ export interface MatchFighter {
   winner: boolean;
 }
 
+export interface MatchResult {
+  method: string;
+  technique?: string;
+  time: string;
+  round: string;
+  totalTime: string;
+}
+
 export interface Match {
   round: string;
   fighter1: MatchFighter;
   fighter2: MatchFighter;
   video?: string;
+  result?: MatchResult;
 }
 
 export interface FightCategory {

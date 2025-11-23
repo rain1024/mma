@@ -250,4 +250,80 @@ test.describe('Event Detail Page', () => {
     // The link should have the hover effect (we can't directly test CSS, but we can verify the element is interactable)
     await expect(firstFighterNameLink).toBeVisible()
   })
+
+  test('should display match result with method, technique, and time', async ({ page }) => {
+    await page.goto('/events/lc10')
+    await page.waitForSelector('.fight-card', { timeout: 5000 })
+
+    // Look for match result elements
+    const matchResult = page.locator('.match-result').first()
+    await expect(matchResult).toBeVisible()
+
+    // Should display method
+    const resultMethod = matchResult.locator('.result-method')
+    await expect(resultMethod).toBeVisible()
+    const methodText = await resultMethod.textContent()
+    expect(methodText).toBeTruthy()
+    expect(methodText).toMatch(/^(Submission|KO\/TKO|Decision)$/i)
+
+    // Should display time
+    const resultTime = matchResult.locator('.result-time')
+    await expect(resultTime).toBeVisible()
+    const timeText = await resultTime.textContent()
+    expect(timeText).toBeTruthy()
+    expect(timeText).toMatch(/\d+:\d+/)
+  })
+
+  test('should display technique when available in match result', async ({ page }) => {
+    await page.goto('/events/lc10')
+    await page.waitForSelector('.fight-card', { timeout: 5000 })
+
+    // Find a match with technique (submissions and KO/TKO usually have techniques)
+    const matchResults = page.locator('.match-result')
+    const count = await matchResults.count()
+
+    let foundTechnique = false
+    for (let i = 0; i < count; i++) {
+      const result = matchResults.nth(i)
+      const technique = result.locator('.result-technique')
+      if (await technique.count() > 0) {
+        const techniqueText = await technique.textContent()
+        if (techniqueText && techniqueText.trim() !== '') {
+          foundTechnique = true
+          // Verify it's a valid technique
+          expect(techniqueText).toMatch(/(Heel Hook|Armbar|Rear Naked Choke|Injury|Exhaustion|TKO|KO)/i)
+          break
+        }
+      }
+    }
+
+    expect(foundTechnique).toBe(true)
+  })
+
+  test('should display match result for all completed fights in an event', async ({ page }) => {
+    await page.goto('/events/lc10')
+    await page.waitForSelector('.fight-card', { timeout: 5000 })
+
+    const fightCards = page.locator('.fight-card')
+    const totalFights = await fightCards.count()
+
+    const matchResults = page.locator('.match-result')
+    const resultsCount = await matchResults.count()
+
+    // All fights in lc10 are completed and should have results
+    expect(resultsCount).toBe(totalFights)
+  })
+
+  test('should display round information in match result', async ({ page }) => {
+    await page.goto('/events/lc10')
+    await page.waitForSelector('.fight-card', { timeout: 5000 })
+
+    const firstMatchResult = page.locator('.match-result').first()
+    const resultTime = firstMatchResult.locator('.result-time')
+
+    const timeText = await resultTime.textContent()
+    expect(timeText).toBeTruthy()
+    // Should contain round information like "Round 2 of 5" or "3 Rounds"
+    expect(timeText).toMatch(/Round \d+ of \d+|3 Rounds/i)
+  })
 })

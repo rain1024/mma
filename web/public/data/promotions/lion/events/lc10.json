@@ -24,6 +24,13 @@
             "stats": "115 lbs - Nữ",
             "flag": "🇻🇳",
             "winner": false
+          },
+          "result": {
+            "method": "Submission",
+            "technique": "Heel Hook",
+            "time": "2:25",
+            "round": "Round 2 of 5",
+            "totalTime": "7:25"
           }
         },
         {
@@ -42,7 +49,13 @@
             "flag": "🇻🇳",
             "winner": false
           },
-          "video": "https://youtu.be/G-VG_QBhdh4?t=5550"
+          "result": {
+            "method": "Submission",
+            "technique": "Armbar",
+            "time": "4:26",
+            "round": "Round 3 of 5",
+            "totalTime": "14:26"
+          }
         },
         {
           "round": "",
@@ -59,6 +72,13 @@
             "stats": " - Nam",
             "flag": "🇻🇳",
             "winner": false
+          },
+          "result": {
+            "method": "KO/TKO",
+            "technique": "Injury",
+            "time": "1:37",
+            "round": "Round 1 of 3",
+            "totalTime": "1:37"
           }
         },
         {
@@ -76,6 +96,13 @@
             "stats": " - Nam",
             "flag": "🇻🇳",
             "winner": false
+          },
+          "result": {
+            "method": "Submission",
+            "technique": "Rear Naked Choke",
+            "time": "1:36",
+            "round": "Round 1 of 3",
+            "totalTime": "1:36"
           }
         },
         {
@@ -93,6 +120,12 @@
             "stats": " - Nam",
             "flag": "🇻🇳",
             "winner": false
+          },
+          "result": {
+            "method": "Decision",
+            "time": "",
+            "round": "3 Rounds",
+            "totalTime": "15:00"
           }
         },
         {
@@ -110,6 +143,13 @@
             "stats": " - Nam",
             "flag": "🇻🇳",
             "winner": false
+          },
+          "result": {
+            "method": "KO/TKO",
+            "technique": "Exhaustion",
+            "time": "2:53",
+            "round": "Round 3 of 3",
+            "totalTime": "12:53"
           }
         }
       ]

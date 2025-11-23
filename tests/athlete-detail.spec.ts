@@ -9,7 +9,7 @@ test.describe('Athlete Detail Page', () => {
     await expect(page.locator('.athlete-name')).toContainText('Chelsey Cashwell', { timeout: 10000 })
 
     // Verify other athlete details
-    await expect(page.locator('.stat-value').filter({ hasText: '6-0-0' })).toBeVisible()
+    await expect(page.locator('.stat-value').filter({ hasText: '7-0-0' })).toBeVisible()
     await expect(page.locator('.stat-value').filter({ hasText: 'Bantamweight' })).toBeVisible()
     await expect(page.locator('.stat-value').filter({ hasText: 'USA' })).toBeVisible()
     await expect(page.locator('.stat-value').filter({ hasText: 'Female' })).toBeVisible()
