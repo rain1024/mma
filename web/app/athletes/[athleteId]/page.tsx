@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import Navigation from '@/components/Navigation'
 import { TournamentData, EventData, Athlete, Match } from '@/types'
 import { findAthleteBySlug, generateAthleteSlug } from '@/lib/utils'
+import { fetchEvents } from '@/lib/api'
 
 interface FightResult {
   eventId: string
@@ -37,25 +38,23 @@ export default function AthleteDetailPage() {
         const [
           ufcAthletesRes,
           ufcRankingsRes,
-          ufcPromotionRes,
           lionAthletesRes,
           lionRankingsRes,
-          lionPromotionRes,
+          ufcEventsResult,
+          lionEventsResult,
         ] = await Promise.all([
           fetch('/data/promotions/ufc/athletes.json'),
           fetch('/data/promotions/ufc/rankings.json'),
-          fetch('/data/promotions/ufc/promotion.json'),
           fetch('/data/promotions/lion/athletes.json'),
           fetch('/data/promotions/lion/rankings.json'),
-          fetch('/data/promotions/lion/promotion.json'),
+          fetchEvents('ufc'),
+          fetchEvents('lion'),
         ])
 
         const ufcAthletes = await ufcAthletesRes.json()
         const ufcRankings = await ufcRankingsRes.json()
-        const ufcPromotion = await ufcPromotionRes.json()
         const lionAthletes = await lionAthletesRes.json()
         const lionRankings = await lionRankingsRes.json()
-        const lionPromotion = await lionPromotionRes.json()
 
         const ufc = {
           ...ufcAthletes,
@@ -76,9 +75,14 @@ export default function AthleteDetailPage() {
         }
 
         setTournamentData({ ufc, lion })
+
+        // Get events from API results
+        const ufcEvents = ufcEventsResult.data || []
+        const lionEvents = lionEventsResult.data || []
+
         setAllEvents({
-          ufc: ufcPromotion.events || [],
-          lion: lionPromotion.events || [],
+          ufc: ufcEvents,
+          lion: lionEvents,
         })
 
         // Find athlete from both tournaments
@@ -94,20 +98,12 @@ export default function AthleteDetailPage() {
           setAthlete(foundAthlete)
           setCurrentTournament(tournament)
 
-          // Build fight history
-          const eventIds = tournament === 'lion' ? lionPromotion.events : ufcPromotion.events
+          // Build fight history from API events
+          const events = tournament === 'lion' ? lionEvents : ufcEvents
           const history: FightResult[] = []
 
-          // Fetch all event files
-          const eventPromises = eventIds.map((eventId: string) =>
-            fetch(`/data/promotions/${tournament}/events/${eventId}.json`)
-              .then(res => res.json())
-              .catch(() => null)
-          )
-          const events = await Promise.all(eventPromises)
-
-          // Filter out null events and build fight history
-          events.filter(Boolean).forEach((event: EventData) => {
+          // Build fight history from events
+          events.forEach((event: EventData) => {
             event.fights.forEach((category) => {
               category.matches.forEach((match: Match) => {
                 const fighter1Name = match.fighter1.name

@@ -43,6 +43,7 @@ Ghi chú:
 - Hiển thị danh sách các events của giải đấu tương ứng
 - Hiển thị thông tin cơ bản của event mới nhất
 - URL của trang events sẽ là /events
+- Kết nối với API để lấy dữ liệu events từ backend service
 
 ## Feature Event Detail Page
 

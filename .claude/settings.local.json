@@ -50,7 +50,15 @@
       "Bash(node test-athlete-page.js:*)",
       "Bash(npx playwright --version)",
       "Bash(chmod:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(npm install:*)",
+      "Bash(yarn dev)",
+      "Bash(PORT=3000 yarn dev:*)",
+      "Bash(PORT=4000 npm run dev:*)",
+      "Bash(npm run migrate:*)",
+      "Bash(./service/scripts/create-promotions.sh:*)",
+      "Bash(/Users/anhv/projects/mma/service/scripts/create-promotions.sh)",
+      "Bash(npm run test:coverage:*)"
     ],
     "deny": [],
     "ask": []

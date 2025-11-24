@@ -1,0 +1,1262 @@
+openapi: 3.1.0
+info:
+  title: MMA Tournament API
+  version: 1.0.0
+  description: |
+    API for managing MMA tournament data including athletes, events, rankings, and matches.
+    Supports multiple tournaments (UFC, Lion Championship, etc.) with comprehensive CRUD operations.
+  contact:
+    name: API Support
+  license:
+    name: MIT
+
+servers:
+  - url: http://localhost:4000
+    description: Local development server
+  - url: http://localhost:4000/api
+    description: Local development API base
+
+tags:
+  - name: Health
+    description: Health check endpoints
+  - name: Athletes
+    description: Fighter roster management
+  - name: Events
+    description: Event and fight card management
+  - name: Rankings
+    description: Division and P4P rankings management
+  - name: Promotions
+    description: Promotion organization management
+
+paths:
+  /health:
+    get:
+      summary: Health check
+      description: Check if the API service is running
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  timestamp:
+                    type: string
+                    format: date-time
+                    example: '2025-11-24T01:19:44.190Z'
+
+  /api/athletes:
+    get:
+      summary: Get all athletes
+      description: Retrieve all athletes for a tournament with optional filtering
+      tags:
+        - Athletes
+      parameters:
+        - name: tournament
+          in: query
+          description: Tournament identifier
+          schema:
+            type: string
+            default: ufc
+            enum: [ufc, lion]
+        - name: division
+          in: query
+          description: Filter by division
+          schema:
+            type: string
+            example: lightweight
+        - name: gender
+          in: query
+          description: Filter by gender
+          schema:
+            type: string
+            enum: [male, female]
+        - name: search
+          in: query
+          description: Search athletes by name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tournament:
+                    type: string
+                    example: ufc
+                  count:
+                    type: integer
+                    example: 1
+                  athletes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Athlete'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    post:
+      summary: Create new athlete
+      description: Add a new athlete to the database
+      tags:
+        - Athletes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AthleteInput'
+      responses:
+        '201':
+          description: Athlete created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  athlete:
+                    $ref: '#/components/schemas/Athlete'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /api/athletes/{id}:
+    get:
+      summary: Get athlete by ID
+      description: Retrieve a specific athlete by their ID
+      tags:
+        - Athletes
+      parameters:
+        - $ref: '#/components/parameters/AthleteId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  athlete:
+                    $ref: '#/components/schemas/Athlete'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    put:
+      summary: Update athlete
+      description: Update an existing athlete's information
+      tags:
+        - Athletes
+      parameters:
+        - $ref: '#/components/parameters/AthleteId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AthleteInput'
+      responses:
+        '200':
+          description: Athlete updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  athlete:
+                    $ref: '#/components/schemas/Athlete'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    delete:
+      summary: Delete athlete
+      description: Remove an athlete from the database
+      tags:
+        - Athletes
+      parameters:
+        - $ref: '#/components/parameters/AthleteId'
+      responses:
+        '200':
+          description: Athlete deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Athlete deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /api/events:
+    get:
+      summary: Get all events
+      description: Retrieve all events for a tournament
+      tags:
+        - Events
+      parameters:
+        - name: tournament
+          in: query
+          description: Tournament identifier
+          schema:
+            type: string
+            default: ufc
+            enum: [ufc, lion]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tournament:
+                    type: string
+                    example: ufc
+                  count:
+                    type: integer
+                    example: 0
+                  events:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Event'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    post:
+      summary: Create new event
+      description: Add a new event to the database
+      tags:
+        - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventInput'
+      responses:
+        '201':
+          description: Event created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  event:
+                    $ref: '#/components/schemas/Event'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /api/events/{id}:
+    get:
+      summary: Get event by ID
+      description: Retrieve a specific event with its matches
+      tags:
+        - Events
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  event:
+                    $ref: '#/components/schemas/Event'
+                  matches:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Match'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    put:
+      summary: Update event
+      description: Update an existing event's information
+      tags:
+        - Events
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventInput'
+      responses:
+        '200':
+          description: Event updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  event:
+                    $ref: '#/components/schemas/Event'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    delete:
+      summary: Delete event
+      description: Remove an event from the database
+      tags:
+        - Events
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      responses:
+        '200':
+          description: Event deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Event deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /api/events/{id}/matches:
+    post:
+      summary: Add match to event
+      description: Create a new match for a specific event
+      tags:
+        - Events
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchInput'
+      responses:
+        '201':
+          description: Match created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  match:
+                    $ref: '#/components/schemas/Match'
+        '404':
+          description: Event not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Event not found
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /api/rankings:
+    get:
+      summary: Get all rankings
+      description: Retrieve P4P rankings and all division rankings for a tournament
+      tags:
+        - Rankings
+      parameters:
+        - name: tournament
+          in: query
+          description: Tournament identifier
+          schema:
+            type: string
+            default: ufc
+            enum: [ufc, lion]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tournament:
+                    type: string
+                    example: ufc
+                  p4pRankings:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/P4PRanking'
+                  divisions:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        champion:
+                          $ref: '#/components/schemas/Ranking'
+                        rankings:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/Ranking'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    post:
+      summary: Create new ranking
+      description: Add a new division ranking
+      tags:
+        - Rankings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RankingInput'
+      responses:
+        '201':
+          description: Ranking created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  message:
+                    type: string
+                    example: Ranking created successfully
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /api/rankings/p4p:
+    get:
+      summary: Get P4P rankings
+      description: Retrieve pound-for-pound rankings for a tournament
+      tags:
+        - Rankings
+      parameters:
+        - name: tournament
+          in: query
+          description: Tournament identifier
+          schema:
+            type: string
+            default: ufc
+            enum: [ufc, lion]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tournament:
+                    type: string
+                    example: ufc
+                  p4pRankings:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/P4PRanking'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    post:
+      summary: Create new P4P ranking
+      description: Add a new pound-for-pound ranking
+      tags:
+        - Rankings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/P4PRankingInput'
+      responses:
+        '201':
+          description: P4P ranking created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  message:
+                    type: string
+                    example: P4P ranking created successfully
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /api/rankings/{division}:
+    get:
+      summary: Get rankings for specific division
+      description: Retrieve champion and rankings for a specific weight division
+      tags:
+        - Rankings
+      parameters:
+        - name: division
+          in: path
+          required: true
+          description: Weight division name
+          schema:
+            type: string
+            example: lightweight
+        - name: tournament
+          in: query
+          description: Tournament identifier
+          schema:
+            type: string
+            default: ufc
+            enum: [ufc, lion]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tournament:
+                    type: string
+                    example: ufc
+                  division:
+                    type: string
+                    example: lightweight
+                  champion:
+                    $ref: '#/components/schemas/Ranking'
+                  rankings:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Ranking'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /api/promotions:
+    get:
+      summary: Get all promotions
+      description: Retrieve all promotions
+      tags:
+        - Promotions
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 2
+                  promotions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Promotion'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    post:
+      summary: Create new promotion
+      description: Add a new promotion to the database
+      tags:
+        - Promotions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromotionInput'
+      responses:
+        '201':
+          description: Promotion created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  promotion:
+                    $ref: '#/components/schemas/Promotion'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /api/promotions/{id}:
+    get:
+      summary: Get promotion by ID
+      description: Retrieve a specific promotion by its ID
+      tags:
+        - Promotions
+      parameters:
+        - $ref: '#/components/parameters/PromotionId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  promotion:
+                    $ref: '#/components/schemas/Promotion'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    put:
+      summary: Update promotion
+      description: Update an existing promotion's information
+      tags:
+        - Promotions
+      parameters:
+        - $ref: '#/components/parameters/PromotionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromotionInput'
+      responses:
+        '200':
+          description: Promotion updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  promotion:
+                    $ref: '#/components/schemas/Promotion'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    delete:
+      summary: Delete promotion
+      description: Remove a promotion from the database
+      tags:
+        - Promotions
+      parameters:
+        - $ref: '#/components/parameters/PromotionId'
+      responses:
+        '200':
+          description: Promotion deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Promotion deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /api/promotions/{id}/events:
+    post:
+      summary: Add event to promotion
+      description: Add an event ID to a promotion's events array
+      tags:
+        - Promotions
+      parameters:
+        - $ref: '#/components/parameters/PromotionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - event_id
+              properties:
+                event_id:
+                  type: string
+                  example: ufc-310
+      responses:
+        '201':
+          description: Event added to promotion successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Event added to promotion successfully
+                  promotion:
+                    $ref: '#/components/schemas/Promotion'
+        '404':
+          description: Promotion not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Promotion not found
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    delete:
+      summary: Remove event from promotion
+      description: Remove an event ID from a promotion's events array
+      tags:
+        - Promotions
+      parameters:
+        - $ref: '#/components/parameters/PromotionId'
+        - name: event_id
+          in: query
+          required: true
+          description: Event ID to remove
+          schema:
+            type: string
+            example: ufc-310
+      responses:
+        '200':
+          description: Event removed from promotion successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Event removed from promotion successfully
+                  promotion:
+                    $ref: '#/components/schemas/Promotion'
+        '404':
+          description: Promotion or event not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Promotion not found
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    Athlete:
+      type: object
+      required:
+        - name
+        - tournament
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Test Fighter
+        tournament:
+          type: string
+          example: ufc
+        division:
+          type: string
+          example: lightweight
+        country:
+          type: string
+          example: USA
+        flag:
+          type: string
+          nullable: true
+          example: null
+        gender:
+          type: string
+          enum: [male, female]
+          nullable: true
+          example: null
+        wins:
+          type: integer
+          example: 10
+        losses:
+          type: integer
+          example: 2
+        draws:
+          type: integer
+          example: 0
+        image_url:
+          type: string
+          nullable: true
+          example: null
+        created_at:
+          type: string
+          format: date-time
+          example: '2025-11-24 01:15:09'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2025-11-24 01:15:09'
+
+    AthleteInput:
+      type: object
+      required:
+        - name
+        - tournament
+      properties:
+        name:
+          type: string
+          example: Test Fighter
+        tournament:
+          type: string
+          example: ufc
+        division:
+          type: string
+          example: lightweight
+        country:
+          type: string
+          example: USA
+        flag:
+          type: string
+          example: 🇺🇸
+        gender:
+          type: string
+          enum: [male, female]
+          example: male
+        wins:
+          type: integer
+          example: 10
+        losses:
+          type: integer
+          example: 2
+        draws:
+          type: integer
+          example: 0
+        image_url:
+          type: string
+          example: https://example.com/fighter.jpg
+
+    Event:
+      type: object
+      required:
+        - id
+        - tournament
+        - name
+      properties:
+        id:
+          type: string
+          example: ufc-300
+        tournament:
+          type: string
+          example: ufc
+        name:
+          type: string
+          example: UFC 300
+        date:
+          type: string
+          format: date
+          example: '2025-04-13'
+        location:
+          type: string
+          example: Las Vegas, Nevada
+        venue:
+          type: string
+          example: T-Mobile Arena
+        status:
+          type: string
+          enum: [upcoming, completed, cancelled]
+          example: upcoming
+        created_at:
+          type: string
+          format: date-time
+          example: '2025-11-24 01:15:09'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2025-11-24 01:15:09'
+
+    EventInput:
+      type: object
+      required:
+        - id
+        - tournament
+        - name
+      properties:
+        id:
+          type: string
+          example: ufc-300
+        tournament:
+          type: string
+          example: ufc
+        name:
+          type: string
+          example: UFC 300
+        date:
+          type: string
+          format: date
+          example: '2025-04-13'
+        location:
+          type: string
+          example: Las Vegas, Nevada
+        venue:
+          type: string
+          example: T-Mobile Arena
+        status:
+          type: string
+          enum: [upcoming, completed, cancelled]
+          example: upcoming
+
+    Match:
+      type: object
+      required:
+        - event_id
+        - fighter1_name
+        - fighter2_name
+      properties:
+        id:
+          type: integer
+          example: 1
+        event_id:
+          type: string
+          example: ufc-300
+        category:
+          type: string
+          example: main_card
+        fighter1_id:
+          type: integer
+          nullable: true
+          example: 1
+        fighter1_name:
+          type: string
+          example: Fighter One
+        fighter1_country:
+          type: string
+          example: USA
+        fighter1_flag:
+          type: string
+          example: 🇺🇸
+        fighter2_id:
+          type: integer
+          nullable: true
+          example: 2
+        fighter2_name:
+          type: string
+          example: Fighter Two
+        fighter2_country:
+          type: string
+          example: Brazil
+        fighter2_flag:
+          type: string
+          example: 🇧🇷
+        weight_class:
+          type: string
+          example: lightweight
+        winner:
+          type: integer
+          description: 1 for fighter1, 2 for fighter2, null for draw or no contest
+          nullable: true
+          example: 1
+        method:
+          type: string
+          example: KO/TKO
+        round:
+          type: integer
+          example: 3
+        time:
+          type: string
+          example: '4:35'
+
+    MatchInput:
+      type: object
+      required:
+        - fighter1_name
+        - fighter2_name
+      properties:
+        category:
+          type: string
+          example: main_card
+        fighter1_id:
+          type: integer
+          example: 1
+        fighter1_name:
+          type: string
+          example: Fighter One
+        fighter1_country:
+          type: string
+          example: USA
+        fighter1_flag:
+          type: string
+          example: 🇺🇸
+        fighter2_id:
+          type: integer
+          example: 2
+        fighter2_name:
+          type: string
+          example: Fighter Two
+        fighter2_country:
+          type: string
+          example: Brazil
+        fighter2_flag:
+          type: string
+          example: 🇧🇷
+        weight_class:
+          type: string
+          example: lightweight
+        winner:
+          type: integer
+          description: 1 for fighter1, 2 for fighter2, null for draw or no contest
+          nullable: true
+          example: 1
+        method:
+          type: string
+          example: KO/TKO
+        round:
+          type: integer
+          example: 3
+        time:
+          type: string
+          example: '4:35'
+
+    Ranking:
+      type: object
+      required:
+        - tournament
+        - division
+        - rank
+        - athlete_name
+      properties:
+        id:
+          type: integer
+          example: 1
+        tournament:
+          type: string
+          example: ufc
+        division:
+          type: string
+          example: lightweight
+        rank:
+          type: integer
+          example: 1
+        athlete_id:
+          type: integer
+          nullable: true
+          example: 1
+        athlete_name:
+          type: string
+          example: Test Fighter
+        is_champion:
+          type: boolean
+          example: false
+        created_at:
+          type: string
+          format: date-time
+          example: '2025-11-24 01:15:09'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2025-11-24 01:15:09'
+
+    RankingInput:
+      type: object
+      required:
+        - tournament
+        - division
+        - rank
+        - athlete_name
+      properties:
+        tournament:
+          type: string
+          example: ufc
+        division:
+          type: string
+          example: lightweight
+        rank:
+          type: integer
+          example: 1
+        athlete_id:
+          type: integer
+          example: 1
+        athlete_name:
+          type: string
+          example: Test Fighter
+        is_champion:
+          type: boolean
+          example: false
+
+    P4PRanking:
+      type: object
+      required:
+        - tournament
+        - rank
+        - athlete_name
+      properties:
+        id:
+          type: integer
+          example: 1
+        tournament:
+          type: string
+          example: ufc
+        rank:
+          type: integer
+          example: 1
+        athlete_id:
+          type: integer
+          nullable: true
+          example: 1
+        athlete_name:
+          type: string
+          example: Test Fighter
+        created_at:
+          type: string
+          format: date-time
+          example: '2025-11-24 01:15:09'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2025-11-24 01:15:09'
+
+    P4PRankingInput:
+      type: object
+      required:
+        - tournament
+        - rank
+        - athlete_name
+      properties:
+        tournament:
+          type: string
+          example: ufc
+        rank:
+          type: integer
+          example: 1
+        athlete_id:
+          type: integer
+          example: 1
+        athlete_name:
+          type: string
+          example: Test Fighter
+
+    Promotion:
+      type: object
+      required:
+        - id
+        - name
+        - subtitle
+        - theme
+        - color
+        - events
+      properties:
+        id:
+          type: string
+          example: ufc
+        name:
+          type: string
+          example: UFC
+        subtitle:
+          type: string
+          example: Ultimate Fighting Championship
+        theme:
+          type: string
+          example: ufc-theme
+        color:
+          type: string
+          example: '#d20a0a'
+        events:
+          type: array
+          items:
+            type: string
+          example: ['ufc-309', 'ufc-308']
+
+    PromotionInput:
+      type: object
+      required:
+        - id
+        - name
+        - subtitle
+        - theme
+        - color
+      properties:
+        id:
+          type: string
+          example: ufc
+        name:
+          type: string
+          example: UFC
+        subtitle:
+          type: string
+          example: Ultimate Fighting Championship
+        theme:
+          type: string
+          example: ufc-theme
+        color:
+          type: string
+          example: '#d20a0a'
+        events:
+          type: array
+          items:
+            type: string
+          example: ['ufc-309', 'ufc-308']
+
+  parameters:
+    AthleteId:
+      name: id
+      in: path
+      required: true
+      description: Athlete ID
+      schema:
+        type: integer
+        example: 1
+
+    EventId:
+      name: id
+      in: path
+      required: true
+      description: Event ID
+      schema:
+        type: string
+        example: ufc-300
+
+    PromotionId:
+      name: id
+      in: path
+      required: true
+      description: Promotion ID
+      schema:
+        type: string
+        example: ufc
+
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Athlete not found
+
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Failed to fetch athletes

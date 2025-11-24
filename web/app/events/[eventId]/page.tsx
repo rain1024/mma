@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import Navigation from '@/components/Navigation'
 import EventsPage from '@/components/EventsPage'
 import { TournamentData, EventData } from '@/types'
+import { fetchEventById } from '@/lib/api'
 
 export default function EventDetailPage() {
   const params = useParams()
@@ -25,25 +26,19 @@ export default function EventDetailPage() {
         const [
           ufcAthletesRes,
           ufcRankingsRes,
-          ufcPromotionRes,
           lionAthletesRes,
           lionRankingsRes,
-          lionPromotionRes,
         ] = await Promise.all([
           fetch('/data/promotions/ufc/athletes.json'),
           fetch('/data/promotions/ufc/rankings.json'),
-          fetch('/data/promotions/ufc/promotion.json'),
           fetch('/data/promotions/lion/athletes.json'),
           fetch('/data/promotions/lion/rankings.json'),
-          fetch('/data/promotions/lion/promotion.json'),
         ])
 
         const ufcAthletes = await ufcAthletesRes.json()
         const ufcRankings = await ufcRankingsRes.json()
-        const ufcPromotion = await ufcPromotionRes.json()
         const lionAthletes = await lionAthletesRes.json()
         const lionRankings = await lionRankingsRes.json()
-        const lionPromotion = await lionPromotionRes.json()
 
         // Merge data for each tournament
         const ufc = {
@@ -76,30 +71,13 @@ export default function EventDetailPage() {
 
         setCurrentTournament(tournament)
 
-        // Load the specific event file
-        try {
-          const eventRes = await fetch(`/data/promotions/${tournament}/events/${eventId}.json`)
-          if (eventRes.ok) {
-            const event = await eventRes.json()
-            setEventData(event)
-          } else {
-            // Try to find in events array (old format)
-            const eventsData = tournament === 'ufc' ? ufcPromotion : lionPromotion
-            if (eventsData.events && Array.isArray(eventsData.events)) {
-              const foundEvent = eventsData.events.find((e: any) =>
-                typeof e === 'object' && e.id === eventId
-              )
-              if (foundEvent) {
-                setEventData(foundEvent)
-              } else {
-                router.push('/events')
-              }
-            } else {
-              router.push('/events')
-            }
-          }
-        } catch (error) {
-          console.error('Error loading event:', error)
+        // Load the specific event from API
+        const eventResult = await fetchEventById(eventId, tournament)
+
+        if (eventResult.data) {
+          setEventData(eventResult.data)
+        } else {
+          console.error('Error loading event from API:', eventResult.error)
           router.push('/events')
         }
 

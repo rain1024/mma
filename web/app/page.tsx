@@ -8,6 +8,7 @@ import EventsList from '@/components/EventsList'
 import AthletesPage from '@/components/AthletesPage'
 import RankingsPage from '@/components/RankingsPage'
 import { TournamentData, EventData } from '@/types'
+import { fetchEvents } from '@/lib/api'
 
 export default function Home() {
   const router = useRouter()
@@ -24,48 +25,24 @@ export default function Home() {
         const [
           ufcAthletesRes,
           ufcRankingsRes,
-          ufcPromotionRes,
           lionAthletesRes,
           lionRankingsRes,
-          lionPromotionRes,
         ] = await Promise.all([
           fetch('/data/promotions/ufc/athletes.json'),
           fetch('/data/promotions/ufc/rankings.json'),
-          fetch('/data/promotions/ufc/promotion.json'),
           fetch('/data/promotions/lion/athletes.json'),
           fetch('/data/promotions/lion/rankings.json'),
-          fetch('/data/promotions/lion/promotion.json'),
         ])
 
         const ufcAthletes = await ufcAthletesRes.json()
         const ufcRankings = await ufcRankingsRes.json()
-        const ufcPromotion = await ufcPromotionRes.json()
         const lionAthletes = await lionAthletesRes.json()
         const lionRankings = await lionRankingsRes.json()
-        const lionPromotion = await lionPromotionRes.json()
 
-        // Load individual event files (handle both old and new format)
-        const loadEvents = async (eventsData: any, tournament: string) => {
-          // Check if events is array of objects (old format) or array of strings (new format)
-          if (!eventsData.events || eventsData.events.length === 0) return []
-
-          const firstEvent = eventsData.events[0]
-          if (typeof firstEvent === 'object' && firstEvent.id) {
-            // Old format: array of event objects
-            return eventsData.events
-          } else if (typeof firstEvent === 'string') {
-            // New format: array of event IDs
-            const eventPromises = eventsData.events.map((eventId: string) =>
-              fetch(`/data/promotions/${tournament}/events/${eventId}.json`).then(res => res.json())
-            )
-            return await Promise.all(eventPromises)
-          }
-          return []
-        }
-
-        const [ufcEvents, lionEvents] = await Promise.all([
-          loadEvents(ufcPromotion, 'ufc'),
-          loadEvents(lionPromotion, 'lion'),
+        // Fetch events from backend API
+        const [ufcEventsResult, lionEventsResult] = await Promise.all([
+          fetchEvents('ufc'),
+          fetchEvents('lion'),
         ])
 
         // Merge data for each tournament
@@ -89,11 +66,19 @@ export default function Home() {
 
         setTournamentData({ ufc, lion })
 
-        // Set events data
+        // Set events data from API
         setAllEvents({
-          ufc: ufcEvents || [],
-          lion: lionEvents || [],
+          ufc: ufcEventsResult.data || [],
+          lion: lionEventsResult.data || [],
         })
+
+        // Log API errors if any
+        if (ufcEventsResult.error) {
+          console.error('Error loading UFC events from API:', ufcEventsResult.error)
+        }
+        if (lionEventsResult.error) {
+          console.error('Error loading Lion events from API:', lionEventsResult.error)
+        }
       } catch (error) {
         console.error('Error loading data:', error)
       }
