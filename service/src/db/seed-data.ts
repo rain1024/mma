@@ -42,10 +42,20 @@ interface JsonFighter {
   winner: boolean;
 }
 
+interface JsonResult {
+  method: string;
+  technique?: string;
+  time: string;
+  round: string;
+  totalTime?: string;
+}
+
 interface JsonMatch {
   round?: string;
   fighter1: JsonFighter;
   fighter2: JsonFighter;
+  video?: string;
+  result?: JsonResult;
 }
 
 interface JsonFightCategory {
@@ -200,16 +210,29 @@ export function seedEvents(promotionId: string) {
               else if (match.fighter2.winner) winner = 2;
 
               db.prepare(`
-                INSERT INTO matches (event_id, category, fighter1_name, fighter1_flag, fighter2_name, fighter2_flag, winner)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO matches (
+                  event_id, category, round_title,
+                  fighter1_name, fighter1_flag, fighter1_stats,
+                  fighter2_name, fighter2_flag, fighter2_stats,
+                  winner, method, technique, time, result_round, video
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
               `).run(
                 eventData.id,
                 fightCategory.category,
+                match.round || null,
                 match.fighter1.name,
                 match.fighter1.flag || null,
+                match.fighter1.stats || null,
                 match.fighter2.name,
                 match.fighter2.flag || null,
-                winner
+                match.fighter2.stats || null,
+                winner,
+                match.result?.method || null,
+                match.result?.technique || null,
+                match.result?.time || null,
+                match.result?.round || null,
+                match.video || null
               );
               matchesAdded++;
             }

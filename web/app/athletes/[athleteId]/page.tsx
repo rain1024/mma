@@ -4,9 +4,21 @@ import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Navigation from '@/components/Navigation'
-import { TournamentData, EventData, Athlete, Match } from '@/types'
-import { findAthleteBySlug, generateAthleteSlug } from '@/lib/utils'
-import { fetchEvents } from '@/lib/api'
+import { TournamentData, EventData, Athlete, Match, Division } from '@/types'
+import { findAthleteBySlug } from '@/lib/utils'
+import { fetchEvents, fetchAthletes, fetchRankings, fetchPromotions } from '@/lib/api'
+
+// Default divisions for fallback
+const DEFAULT_DIVISIONS: Division[] = [
+  { value: 'heavyweight', label: 'Heavyweight' },
+  { value: 'light-heavyweight', label: 'Light Heavyweight' },
+  { value: 'middleweight', label: 'Middleweight' },
+  { value: 'welterweight', label: 'Welterweight' },
+  { value: 'lightweight', label: 'Lightweight' },
+  { value: 'featherweight', label: 'Featherweight' },
+  { value: 'bantamweight', label: 'Bantamweight' },
+  { value: 'flyweight', label: 'Flyweight' },
+]
 
 interface FightResult {
   eventId: string
@@ -27,7 +39,6 @@ export default function AthleteDetailPage() {
 
   const [currentTournament, setCurrentTournament] = useState<'ufc' | 'lion'>('lion')
   const [tournamentData, setTournamentData] = useState<{ ufc?: TournamentData; lion?: TournamentData }>({})
-  const [allEvents, setAllEvents] = useState<{ ufc: EventData[]; lion: EventData[] }>({ ufc: [], lion: [] })
   const [athlete, setAthlete] = useState<Athlete | null>(null)
   const [fightHistory, setFightHistory] = useState<FightResult[]>([])
   const [loading, setLoading] = useState(true)
@@ -35,43 +46,53 @@ export default function AthleteDetailPage() {
   useEffect(() => {
     async function loadData() {
       try {
+        // Fetch all data from API in parallel
         const [
-          ufcAthletesRes,
-          ufcRankingsRes,
-          lionAthletesRes,
-          lionRankingsRes,
+          ufcAthletesResult,
+          ufcRankingsResult,
+          lionAthletesResult,
+          lionRankingsResult,
           ufcEventsResult,
           lionEventsResult,
+          promotionsResult,
         ] = await Promise.all([
-          fetch('/data/promotions/ufc/athletes.json'),
-          fetch('/data/promotions/ufc/rankings.json'),
-          fetch('/data/promotions/lion/athletes.json'),
-          fetch('/data/promotions/lion/rankings.json'),
+          fetchAthletes('ufc'),
+          fetchRankings('ufc'),
+          fetchAthletes('lion'),
+          fetchRankings('lion'),
           fetchEvents('ufc'),
           fetchEvents('lion'),
+          fetchPromotions(),
         ])
 
-        const ufcAthletes = await ufcAthletesRes.json()
-        const ufcRankings = await ufcRankingsRes.json()
-        const lionAthletes = await lionAthletesRes.json()
-        const lionRankings = await lionRankingsRes.json()
+        // Get promotion info for names
+        const ufcPromotion = promotionsResult.data?.promotions.find(p => p.id === 'ufc')
+        const lionPromotion = promotionsResult.data?.promotions.find(p => p.id === 'lion')
 
-        const ufc = {
-          ...ufcAthletes,
-          ...ufcRankings,
-          champion: ufcRankings.divisions.lightweight.champion,
-          rankings: ufcRankings.divisions.lightweight.rankings,
-          athletes: ufcAthletes.athletes,
-          divisions: ufcAthletes.divisions,
+        // Build UFC tournament data
+        const ufcRankings = ufcRankingsResult.data
+        const lightweightDivision = ufcRankings?.divisions?.lightweight
+        const ufc: TournamentData = {
+          name: ufcPromotion?.name || 'UFC',
+          subtitle: ufcPromotion?.subtitle || 'Ultimate Fighting Championship',
+          divisions: DEFAULT_DIVISIONS,
+          athletes: ufcAthletesResult.data?.athletes || [],
+          pfpRankings: ufcRankings?.pfpRankings || [],
+          champion: lightweightDivision?.champion || { name: '', record: '', nickname: '' },
+          rankings: lightweightDivision?.rankings || [],
         }
 
-        const lion = {
-          ...lionAthletes,
-          ...lionRankings,
-          champion: lionRankings.divisions.lightweight.champion,
-          rankings: lionRankings.divisions.lightweight.rankings,
-          athletes: lionAthletes.athletes,
-          divisions: lionAthletes.divisions,
+        // Build Lion tournament data
+        const lionRankings = lionRankingsResult.data
+        const lionLightweight = lionRankings?.divisions?.lightweight
+        const lion: TournamentData = {
+          name: lionPromotion?.name || 'LION CHAMPIONSHIP',
+          subtitle: lionPromotion?.subtitle || "Vietnam's Premier MMA",
+          divisions: DEFAULT_DIVISIONS,
+          athletes: lionAthletesResult.data?.athletes || [],
+          pfpRankings: lionRankings?.pfpRankings || [],
+          champion: lionLightweight?.champion || { name: '', record: '', nickname: '' },
+          rankings: lionLightweight?.rankings || [],
         }
 
         setTournamentData({ ufc, lion })
@@ -80,17 +101,12 @@ export default function AthleteDetailPage() {
         const ufcEvents = ufcEventsResult.data || []
         const lionEvents = lionEventsResult.data || []
 
-        setAllEvents({
-          ufc: ufcEvents,
-          lion: lionEvents,
-        })
-
         // Find athlete from both tournaments
-        let foundAthlete = findAthleteBySlug(lion.athletes, athleteId)
+        let foundAthlete = findAthleteBySlug(lion.athletes || [], athleteId)
         let tournament: 'ufc' | 'lion' = 'lion'
 
         if (!foundAthlete) {
-          foundAthlete = findAthleteBySlug(ufc.athletes, athleteId)
+          foundAthlete = findAthleteBySlug(ufc.athletes || [], athleteId)
           tournament = 'ufc'
         }
 

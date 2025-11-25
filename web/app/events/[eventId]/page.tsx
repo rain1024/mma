@@ -5,8 +5,20 @@ import { useParams, useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Navigation from '@/components/Navigation'
 import EventsPage from '@/components/EventsPage'
-import { TournamentData, EventData } from '@/types'
-import { fetchEventById } from '@/lib/api'
+import { TournamentData, EventData, Division } from '@/types'
+import { fetchEventById, fetchPromotions } from '@/lib/api'
+
+// Default divisions for fallback
+const DEFAULT_DIVISIONS: Division[] = [
+  { value: 'heavyweight', label: 'Heavyweight' },
+  { value: 'light-heavyweight', label: 'Light Heavyweight' },
+  { value: 'middleweight', label: 'Middleweight' },
+  { value: 'welterweight', label: 'Welterweight' },
+  { value: 'lightweight', label: 'Lightweight' },
+  { value: 'featherweight', label: 'Featherweight' },
+  { value: 'bantamweight', label: 'Bantamweight' },
+  { value: 'flyweight', label: 'Flyweight' },
+]
 
 export default function EventDetailPage() {
   const params = useParams()
@@ -23,44 +35,6 @@ export default function EventDetailPage() {
     // Load data
     async function loadData() {
       try {
-        const [
-          ufcAthletesRes,
-          ufcRankingsRes,
-          lionAthletesRes,
-          lionRankingsRes,
-        ] = await Promise.all([
-          fetch('/data/promotions/ufc/athletes.json'),
-          fetch('/data/promotions/ufc/rankings.json'),
-          fetch('/data/promotions/lion/athletes.json'),
-          fetch('/data/promotions/lion/rankings.json'),
-        ])
-
-        const ufcAthletes = await ufcAthletesRes.json()
-        const ufcRankings = await ufcRankingsRes.json()
-        const lionAthletes = await lionAthletesRes.json()
-        const lionRankings = await lionRankingsRes.json()
-
-        // Merge data for each tournament
-        const ufc = {
-          ...ufcAthletes,
-          ...ufcRankings,
-          champion: ufcRankings.divisions.lightweight.champion,
-          rankings: ufcRankings.divisions.lightweight.rankings,
-          athletes: ufcAthletes.athletes,
-          divisions: ufcAthletes.divisions,
-        }
-
-        const lion = {
-          ...lionAthletes,
-          ...lionRankings,
-          champion: lionRankings.divisions.lightweight.champion,
-          rankings: lionRankings.divisions.lightweight.rankings,
-          athletes: lionAthletes.athletes,
-          divisions: lionAthletes.divisions,
-        }
-
-        setTournamentData({ ufc, lion })
-
         // Determine tournament based on event ID
         let tournament: 'ufc' | 'lion' = 'lion'
         if (eventId.startsWith('ufc')) {
@@ -71,8 +45,38 @@ export default function EventDetailPage() {
 
         setCurrentTournament(tournament)
 
-        // Load the specific event from API
-        const eventResult = await fetchEventById(eventId, tournament)
+        // Fetch event and promotions in parallel
+        const [eventResult, promotionsResult] = await Promise.all([
+          fetchEventById(eventId, tournament),
+          fetchPromotions(),
+        ])
+
+        // Get promotion info for names
+        const ufcPromotion = promotionsResult.data?.promotions.find(p => p.id === 'ufc')
+        const lionPromotion = promotionsResult.data?.promotions.find(p => p.id === 'lion')
+
+        // Build tournament data (minimal, just for header display)
+        const ufc: TournamentData = {
+          name: ufcPromotion?.name || 'UFC',
+          subtitle: ufcPromotion?.subtitle || 'Ultimate Fighting Championship',
+          divisions: DEFAULT_DIVISIONS,
+          athletes: [],
+          pfpRankings: [],
+          champion: { name: '', record: '', nickname: '' },
+          rankings: [],
+        }
+
+        const lion: TournamentData = {
+          name: lionPromotion?.name || 'LION CHAMPIONSHIP',
+          subtitle: lionPromotion?.subtitle || "Vietnam's Premier MMA",
+          divisions: DEFAULT_DIVISIONS,
+          athletes: [],
+          pfpRankings: [],
+          champion: { name: '', record: '', nickname: '' },
+          rankings: [],
+        }
+
+        setTournamentData({ ufc, lion })
 
         if (eventResult.data) {
           setEventData(eventResult.data)

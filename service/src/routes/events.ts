@@ -16,23 +16,25 @@ function transformEventWithMatches(event: any, matches: any[]) {
     }
 
     categoriesMap.get(category)!.push({
-      round: match.round?.toString() || '',
+      round: match.round_title || '',
       fighter1: {
         name: match.fighter1_name,
-        stats: '',
+        stats: match.fighter1_stats || '',
         flag: match.fighter1_flag || '',
         winner: match.winner === 1
       },
       fighter2: {
         name: match.fighter2_name,
-        stats: '',
+        stats: match.fighter2_stats || '',
         flag: match.fighter2_flag || '',
         winner: match.winner === 2
       },
+      video: match.video || undefined,
       result: match.method ? {
         method: match.method,
+        technique: match.technique || '',
         time: match.time || '',
-        round: match.round?.toString() || '',
+        round: match.result_round || '',
         totalTime: ''
       } : undefined
     });
