@@ -58,7 +58,8 @@
       "Bash(npm run migrate:*)",
       "Bash(./service/scripts/create-promotions.sh:*)",
       "Bash(/Users/anhv/projects/mma/service/scripts/create-promotions.sh)",
-      "Bash(npm run test:coverage:*)"
+      "Bash(npm run test:coverage:*)",
+      "Bash(timeout 300 npm test)"
     ],
     "deny": [],
     "ask": []

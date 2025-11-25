@@ -23,6 +23,7 @@ describe('Rankings API', () => {
         .expect(200);
 
       expect(response.body).toEqual({
+        promotion_id: 'ufc',
         tournament: 'ufc',
         p4pRankings: []
       });
@@ -81,6 +82,7 @@ describe('Rankings API', () => {
         .expect(200);
 
       expect(response.body).toEqual({
+        promotion_id: 'ufc',
         tournament: 'ufc',
         p4pRankings: [],
         divisions: {}

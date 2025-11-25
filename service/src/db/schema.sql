@@ -18,14 +18,15 @@ CREATE TABLE IF NOT EXISTS athletes (
 -- Events Table
 CREATE TABLE IF NOT EXISTS events (
   id TEXT PRIMARY KEY,
-  tournament TEXT NOT NULL,
+  promotion_id TEXT NOT NULL,
   name TEXT NOT NULL,
   date TEXT,
   location TEXT,
   venue TEXT,
   status TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (promotion_id) REFERENCES promotions(id) ON DELETE CASCADE
 );
 
 -- Matches/Fights Table
@@ -84,7 +85,6 @@ CREATE TABLE IF NOT EXISTS promotions (
   subtitle TEXT NOT NULL,
   theme TEXT NOT NULL,
   color TEXT NOT NULL,
-  events TEXT NOT NULL DEFAULT '[]',
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS promotions (
 CREATE INDEX IF NOT EXISTS idx_athletes_tournament ON athletes(tournament);
 CREATE INDEX IF NOT EXISTS idx_athletes_division ON athletes(division);
 CREATE INDEX IF NOT EXISTS idx_athletes_gender ON athletes(gender);
-CREATE INDEX IF NOT EXISTS idx_events_tournament ON events(tournament);
+CREATE INDEX IF NOT EXISTS idx_events_promotion ON events(promotion_id);
 CREATE INDEX IF NOT EXISTS idx_matches_event ON matches(event_id);
 CREATE INDEX IF NOT EXISTS idx_rankings_tournament_division ON rankings(tournament, division);
 CREATE INDEX IF NOT EXISTS idx_p4p_tournament ON p4p_rankings(tournament);

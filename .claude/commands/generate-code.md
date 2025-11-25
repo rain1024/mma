@@ -46,7 +46,7 @@ Implement feature từ spec file, cập nhật tests và chạy Playwright tests
 **Run web server** on port 3000 to manually verify feature hoạt động
 
 ```bash
-cd web && PORT=3000 npm run dev
+cd web && PORT=3000 yarn dev
 ```
 
 

@@ -22,10 +22,18 @@ export default defineConfig({
     },
   ],
 
-  /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'cd ../web && npm run dev',
-    url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
-  },
+  /* Run both backend and frontend servers before starting the tests */
+  webServer: [
+    {
+      command: 'cd ../service && npm run dev',
+      url: 'http://localhost:4000/api/promotions',
+      reuseExistingServer: !process.env.CI,
+      timeout: 30000,
+    },
+    {
+      command: 'cd ../web && npm run dev',
+      url: 'http://localhost:3000',
+      reuseExistingServer: !process.env.CI,
+    },
+  ],
 })

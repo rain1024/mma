@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { PromotionModel } from '../models/promotion.model';
+import { EventModel } from '../models/event.model';
 
 const router = Router();
 
@@ -32,6 +33,29 @@ router.get('/:id', async (req: Request, res: Response) => {
   } catch (error) {
     console.error('Error fetching promotion:', error);
     res.status(500).json({ error: 'Failed to fetch promotion' });
+  }
+});
+
+// GET /api/promotions/:id/events - Get all events for a promotion
+router.get('/:id/events', async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const promotion = PromotionModel.getById(id);
+
+    if (!promotion) {
+      return res.status(404).json({ error: 'Promotion not found' });
+    }
+
+    const events = PromotionModel.getEvents(id);
+
+    res.json({
+      promotion_id: id,
+      count: events.length,
+      events
+    });
+  } catch (error) {
+    console.error('Error fetching promotion events:', error);
+    res.status(500).json({ error: 'Failed to fetch promotion events' });
   }
 });
 
@@ -80,68 +104,6 @@ router.delete('/:id', async (req: Request, res: Response) => {
   } catch (error) {
     console.error('Error deleting promotion:', error);
     res.status(500).json({ error: 'Failed to delete promotion' });
-  }
-});
-
-// POST /api/promotions/:id/events - Add event to promotion
-router.post('/:id/events', async (req: Request, res: Response) => {
-  try {
-    const { id } = req.params;
-    const { event_id } = req.body;
-
-    if (!event_id) {
-      return res.status(400).json({ error: 'event_id is required' });
-    }
-
-    const promotion = PromotionModel.getById(id);
-    if (!promotion) {
-      return res.status(404).json({ error: 'Promotion not found' });
-    }
-
-    const success = PromotionModel.addEvent(id, event_id);
-    if (!success) {
-      return res.status(500).json({ error: 'Failed to add event to promotion' });
-    }
-
-    const updatedPromotion = PromotionModel.getById(id);
-    res.status(201).json({
-      message: 'Event added to promotion successfully',
-      promotion: updatedPromotion
-    });
-  } catch (error) {
-    console.error('Error adding event to promotion:', error);
-    res.status(500).json({ error: 'Failed to add event to promotion' });
-  }
-});
-
-// DELETE /api/promotions/:id/events - Remove event from promotion
-router.delete('/:id/events', async (req: Request, res: Response) => {
-  try {
-    const { id } = req.params;
-    const { event_id } = req.query;
-
-    if (!event_id || typeof event_id !== 'string') {
-      return res.status(400).json({ error: 'event_id query parameter is required' });
-    }
-
-    const promotion = PromotionModel.getById(id);
-    if (!promotion) {
-      return res.status(404).json({ error: 'Promotion not found' });
-    }
-
-    const success = PromotionModel.removeEvent(id, event_id);
-    if (!success) {
-      return res.status(500).json({ error: 'Failed to remove event from promotion' });
-    }
-
-    const updatedPromotion = PromotionModel.getById(id);
-    res.json({
-      message: 'Event removed from promotion successfully',
-      promotion: updatedPromotion
-    });
-  } catch (error) {
-    console.error('Error removing event from promotion:', error);
-    res.status(500).json({ error: 'Failed to remove event from promotion' });
   }
 });
 

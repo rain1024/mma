@@ -6,12 +6,14 @@ const router = Router();
 // GET /api/rankings/p4p - Get P4P rankings
 router.get('/p4p', async (req: Request, res: Response) => {
   try {
-    const { tournament = 'ufc' } = req.query;
+    // Support both 'tournament' (legacy) and 'promotion_id' query params
+    const promotionId = (req.query.promotion_id || req.query.tournament || 'ufc') as string;
 
-    const p4pRankings = P4PRankingModel.getAll(tournament as string);
+    const p4pRankings = P4PRankingModel.getAll(promotionId);
 
     res.json({
-      tournament,
+      promotion_id: promotionId,
+      tournament: promotionId, // Legacy support
       p4pRankings
     });
   } catch (error) {
@@ -20,17 +22,18 @@ router.get('/p4p', async (req: Request, res: Response) => {
   }
 });
 
-// GET /api/rankings - Get all rankings for a tournament
+// GET /api/rankings - Get all rankings for a promotion/tournament
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const { tournament = 'ufc' } = req.query;
+    // Support both 'tournament' (legacy) and 'promotion_id' query params
+    const promotionId = (req.query.promotion_id || req.query.tournament || 'ufc') as string;
 
-    const divisions = RankingModel.getAllDivisions(tournament as string);
+    const divisions = RankingModel.getAllDivisions(promotionId);
     const divisionsData: any = {};
 
     divisions.forEach(division => {
-      const rankings = RankingModel.getByDivision(tournament as string, division);
-      const champion = RankingModel.getChampion(tournament as string, division);
+      const rankings = RankingModel.getByDivision(promotionId, division);
+      const champion = RankingModel.getChampion(promotionId, division);
 
       divisionsData[division] = {
         champion,
@@ -38,10 +41,11 @@ router.get('/', async (req: Request, res: Response) => {
       };
     });
 
-    const p4pRankings = P4PRankingModel.getAll(tournament as string);
+    const p4pRankings = P4PRankingModel.getAll(promotionId);
 
     res.json({
-      tournament,
+      promotion_id: promotionId,
+      tournament: promotionId, // Legacy support
       p4pRankings,
       divisions: divisionsData
     });
@@ -55,13 +59,15 @@ router.get('/', async (req: Request, res: Response) => {
 router.get('/:division', async (req: Request, res: Response) => {
   try {
     const { division } = req.params;
-    const { tournament = 'ufc' } = req.query;
+    // Support both 'tournament' (legacy) and 'promotion_id' query params
+    const promotionId = (req.query.promotion_id || req.query.tournament || 'ufc') as string;
 
-    const rankings = RankingModel.getByDivision(tournament as string, division);
-    const champion = RankingModel.getChampion(tournament as string, division);
+    const rankings = RankingModel.getByDivision(promotionId, division);
+    const champion = RankingModel.getChampion(promotionId, division);
 
     res.json({
-      tournament,
+      promotion_id: promotionId,
+      tournament: promotionId, // Legacy support
       division,
       champion,
       rankings: rankings.filter(r => !r.is_champion)

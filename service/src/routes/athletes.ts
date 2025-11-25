@@ -3,19 +3,22 @@ import { AthleteModel } from '../models/athlete.model';
 
 const router = Router();
 
-// GET /api/athletes - Get all athletes for a tournament
+// GET /api/athletes - Get all athletes for a promotion/tournament
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const { tournament = 'ufc', division, gender, search } = req.query;
+    // Support both 'tournament' (legacy) and 'promotion_id' query params
+    const promotionId = (req.query.promotion_id || req.query.tournament || 'ufc') as string;
+    const { division, gender, search } = req.query;
 
-    const athletes = AthleteModel.getAll(tournament as string, {
+    const athletes = AthleteModel.getAll(promotionId, {
       division: division as string,
       gender: gender as string,
       search: search as string
     });
 
     res.json({
-      tournament,
+      promotion_id: promotionId,
+      tournament: promotionId, // Legacy support
       count: athletes.length,
       athletes
     });

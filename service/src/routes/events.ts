@@ -13,17 +13,19 @@ function readDataFile(filePath: string): any {
   return JSON.parse(fileContent);
 }
 
-// GET /api/events - Get all events for a tournament
+// GET /api/events - Get all events for a promotion
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const { tournament = 'lion' } = req.query;
+    // Support both 'tournament' (legacy) and 'promotion_id' query params
+    const promotionId = (req.query.promotion_id || req.query.tournament || 'ufc') as string;
 
     // Read promotion.json to get list of event IDs
-    const promotion = readDataFile(`promotions/${tournament}/promotion.json`);
+    const promotion = readDataFile(`promotions/${promotionId}/promotion.json`);
 
     if (!promotion.events || promotion.events.length === 0) {
       return res.json({
-        tournament,
+        promotion_id: promotionId,
+        tournament: promotionId, // Legacy support
         count: 0,
         events: []
       });
@@ -40,7 +42,7 @@ router.get('/', async (req: Request, res: Response) => {
       // New format: array of event IDs - load individual event files
       events = promotion.events.map((eventId: string) => {
         try {
-          return readDataFile(`promotions/${tournament}/events/${eventId}.json`);
+          return readDataFile(`promotions/${promotionId}/events/${eventId}.json`);
         } catch (error) {
           console.error(`Error loading event ${eventId}:`, error);
           return null;
@@ -49,7 +51,8 @@ router.get('/', async (req: Request, res: Response) => {
     }
 
     res.json({
-      tournament,
+      promotion_id: promotionId,
+      tournament: promotionId, // Legacy support
       count: events.length,
       events
     });
@@ -63,11 +66,12 @@ router.get('/', async (req: Request, res: Response) => {
 router.get('/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { tournament = 'lion' } = req.query;
+    // Support both 'tournament' (legacy) and 'promotion_id' query params
+    const promotionId = (req.query.promotion_id || req.query.tournament || 'ufc') as string;
 
     // Try to read the event JSON file
     try {
-      const event = readDataFile(`promotions/${tournament}/events/${id}.json`);
+      const event = readDataFile(`promotions/${promotionId}/events/${id}.json`);
       res.json(event);
     } catch (fileError) {
       // If JSON file doesn't exist, return 404

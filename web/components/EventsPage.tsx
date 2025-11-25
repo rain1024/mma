@@ -17,7 +17,7 @@ export default function EventsPage({ eventData, tournament = 'lion' }: EventsPag
         <div className="event-location">{eventData.location}</div>
       </div>
 
-      {eventData.fights.map((fightCategory, categoryIndex) => (
+      {eventData.fights?.map((fightCategory, categoryIndex) => (
         <div key={categoryIndex}>
           <div className="fight-category">{fightCategory.category}</div>
 

@@ -11,12 +11,12 @@ import { fetchEvents } from '@/lib/api'
 interface FightResult {
   eventId: string
   eventTitle: string
-  eventLogo: string
+  eventLogo?: string
   eventDate: string
   opponent: string
   result: 'win' | 'loss'
   method: string
-  round: string
+  round?: string
   video?: string
 }
 
@@ -104,7 +104,7 @@ export default function AthleteDetailPage() {
 
           // Build fight history from events
           events.forEach((event: EventData) => {
-            event.fights.forEach((category) => {
+            event.fights?.forEach((category) => {
               category.matches.forEach((match: Match) => {
                 const fighter1Name = match.fighter1.name
                 const fighter2Name = match.fighter2.name

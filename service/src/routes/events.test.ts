@@ -2,7 +2,9 @@ import request from 'supertest';
 import app from '../app';
 import { EventModel } from '../models/event.model';
 import { MatchModel } from '../models/match.model';
+import { PromotionModel } from '../models/promotion.model';
 import { runMigrations } from '../db/migrate';
+import db from '../config/database';
 
 describe('Events API', () => {
   beforeAll(() => {
@@ -11,18 +13,26 @@ describe('Events API', () => {
   });
 
   beforeEach(() => {
-    // Clean up events and matches before each test
-    const events = EventModel.getAll('ufc');
-    events.forEach(event => EventModel.delete(event.id));
-    const lionEvents = EventModel.getAll('lion');
-    lionEvents.forEach(event => EventModel.delete(event.id));
+    // Clean up matches and events before each test
+    db.prepare('DELETE FROM matches').run();
+    db.prepare('DELETE FROM events').run();
+
+    // Ensure promotions exist for FK constraints (use INSERT OR IGNORE)
+    db.prepare(`
+      INSERT OR IGNORE INTO promotions (id, name, subtitle, theme, color)
+      VALUES ('ufc', 'UFC', 'Ultimate Fighting Championship', 'ufc-theme', '#d20a0a')
+    `).run();
+    db.prepare(`
+      INSERT OR IGNORE INTO promotions (id, name, subtitle, theme, color)
+      VALUES ('lion', 'Lion Championship', 'Vietnam MMA', 'lion-theme', '#ff8c00')
+    `).run();
   });
 
   describe('POST /api/events', () => {
     it('should create a new event', async () => {
       const newEvent = {
         id: 'ufc-300',
-        tournament: 'ufc',
+        promotion_id: 'ufc',
         name: 'UFC 300',
         date: '2024-04-13',
         location: 'Las Vegas, Nevada',
@@ -48,7 +58,7 @@ describe('Events API', () => {
     it('should create event with minimal required fields', async () => {
       const minimalEvent = {
         id: 'ufc-301',
-        tournament: 'ufc',
+        promotion_id: 'ufc',
         name: 'UFC 301'
       };
 
@@ -59,7 +69,7 @@ describe('Events API', () => {
 
       expect(response.body.event.id).toBe('ufc-301');
       expect(response.body.event.name).toBe('UFC 301');
-      expect(response.body.event.tournament).toBe('ufc');
+      expect(response.body.event.promotion_id).toBe('ufc');
     });
   });
 
@@ -67,7 +77,7 @@ describe('Events API', () => {
     beforeEach(() => {
       EventModel.create({
         id: 'ufc-300',
-        tournament: 'ufc',
+        promotion_id: 'ufc',
         name: 'UFC 300',
         date: '2024-04-13',
         location: 'Las Vegas, Nevada',
@@ -116,7 +126,7 @@ describe('Events API', () => {
     beforeEach(() => {
       EventModel.create({
         id: 'ufc-300',
-        tournament: 'ufc',
+        promotion_id: 'ufc',
         name: 'UFC 300'
       });
     });
@@ -150,7 +160,7 @@ describe('Events API', () => {
     beforeEach(() => {
       EventModel.create({
         id: 'ufc-300',
-        tournament: 'ufc',
+        promotion_id: 'ufc',
         name: 'UFC 300'
       });
     });

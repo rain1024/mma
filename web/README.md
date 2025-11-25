@@ -7,13 +7,13 @@ UFC and Lion Championship fighter rankings and events application built with Nex
 ### Install dependencies
 
 ```bash
-npm install
+yarn install
 ```
 
 ### Run the development server
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -61,6 +61,6 @@ All fighter rankings and event data are stored in JSON files in the `public/data
 ## Build
 
 ```bash
-npm run build
-npm start
+yarn build
+yarn start
 ```

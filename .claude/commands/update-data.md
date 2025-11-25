@@ -181,7 +181,7 @@ Before completing, verify:
 After completing all data updates, start the development server to verify the changes:
 
 ```bash
-cd web && PORT=3000 npm run dev
+cd web && PORT=3000 yarn dev
 ```
 
 This will:

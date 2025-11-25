@@ -12,7 +12,7 @@ Chạy Playwright tests và phân tích kết quả. Tự động fix các lỗi
 
 ### 1. Chạy Playwright Tests
 ```bash
-cd tests && npm test
+cd tests && npx playwright test --reporter=line
 ```
 - Tự động start dev server trên localhost:3000
 - Chạy **Chromium only** (optimized for speed)
@@ -177,17 +177,17 @@ export default defineConfig({
 
 ## Common Commands
 ```bash
-# Run all tests
-npm test
+# Run all tests (với inline report)
+npx playwright test --reporter=line
 
 # Run specific file
-npx playwright test navigation.spec.ts
+npx playwright test navigation.spec.ts --reporter=line
 
 # Run in UI mode
-npm run test:ui
+npx playwright test --ui
 
 # Run headed
-npm run test:headed
+npx playwright test --headed --reporter=line
 
 # Show last report
 npx playwright show-report

@@ -16,7 +16,7 @@ export interface Athlete {
 
 export interface Event {
   id: string;
-  tournament: string;
+  promotion_id: string;
   name: string;
   date?: string;
   location?: string;
@@ -73,5 +73,6 @@ export interface Promotion {
   subtitle: string;
   theme: string;
   color: string;
-  events: string[];
+  created_at?: string;
+  updated_at?: string;
 }

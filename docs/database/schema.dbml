@@ -1,0 +1,111 @@
+// MMA Tournament Database Schema
+// Generated from service/src/db/schema.sql
+
+Table athletes {
+  id integer [pk, increment]
+  name text [not null]
+  tournament text [not null]
+  division text
+  country text
+  flag text
+  gender text
+  wins integer [default: 0]
+  losses integer [default: 0]
+  draws integer [default: 0]
+  image_url text
+  created_at datetime [default: `CURRENT_TIMESTAMP`]
+  updated_at datetime [default: `CURRENT_TIMESTAMP`]
+
+  indexes {
+    tournament [name: 'idx_athletes_tournament']
+    division [name: 'idx_athletes_division']
+    gender [name: 'idx_athletes_gender']
+  }
+}
+
+Table events {
+  id text [pk]
+  promotion_id text [not null]
+  name text [not null]
+  date text
+  location text
+  venue text
+  status text
+  created_at datetime [default: `CURRENT_TIMESTAMP`]
+  updated_at datetime [default: `CURRENT_TIMESTAMP`]
+
+  indexes {
+    promotion_id [name: 'idx_events_promotion']
+  }
+}
+
+Table matches {
+  id integer [pk, increment]
+  event_id text [not null]
+  category text
+  fighter1_id integer
+  fighter1_name text [not null]
+  fighter1_country text
+  fighter1_flag text
+  fighter2_id integer
+  fighter2_name text [not null]
+  fighter2_country text
+  fighter2_flag text
+  weight_class text
+  winner integer
+  method text
+  round integer
+  time text
+
+  indexes {
+    event_id [name: 'idx_matches_event']
+  }
+}
+
+Table rankings {
+  id integer [pk, increment]
+  tournament text [not null]
+  division text [not null]
+  rank integer [not null]
+  athlete_id integer
+  athlete_name text [not null]
+  is_champion boolean [default: false]
+  created_at datetime [default: `CURRENT_TIMESTAMP`]
+  updated_at datetime [default: `CURRENT_TIMESTAMP`]
+
+  indexes {
+    (tournament, division) [name: 'idx_rankings_tournament_division']
+  }
+}
+
+Table p4p_rankings {
+  id integer [pk, increment]
+  tournament text [not null]
+  rank integer [not null]
+  athlete_id integer
+  athlete_name text [not null]
+  created_at datetime [default: `CURRENT_TIMESTAMP`]
+  updated_at datetime [default: `CURRENT_TIMESTAMP`]
+
+  indexes {
+    tournament [name: 'idx_p4p_tournament']
+  }
+}
+
+Table promotions {
+  id text [pk]
+  name text [not null]
+  subtitle text [not null]
+  theme text [not null]
+  color text [not null]
+  created_at datetime [default: `CURRENT_TIMESTAMP`]
+  updated_at datetime [default: `CURRENT_TIMESTAMP`]
+}
+
+// Relationships
+Ref: events.promotion_id > promotions.id [delete: cascade]
+Ref: matches.event_id > events.id [delete: cascade]
+Ref: matches.fighter1_id > athletes.id
+Ref: matches.fighter2_id > athletes.id
+Ref: rankings.athlete_id > athletes.id
+Ref: p4p_rankings.athlete_id > athletes.id

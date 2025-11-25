@@ -38,6 +38,8 @@ export interface MatchData {
   video?: string
 }
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api'
+
 export async function fetchMatchData(matchId: string, tournament: string): Promise<MatchData | null> {
   try {
     // Parse matchId format: {eventId}-{categoryIndex}-{matchIndex}
@@ -48,17 +50,17 @@ export async function fetchMatchData(matchId: string, tournament: string): Promi
     const categoryIndex = parseInt(parts[parts.length - 2])
     const eventId = parts.slice(0, -2).join('-')
 
-    // Fetch individual event file
-    const eventResponse = await fetch(`/data/promotions/${tournament}/events/${eventId}.json`)
+    // Fetch event from backend API
+    const eventResponse = await fetch(`${API_BASE_URL}/events/${eventId}?tournament=${tournament}`)
     if (!eventResponse.ok) return null
 
     const event = await eventResponse.json()
     if (!event) return null
 
-    const category = event.fights[categoryIndex]
+    const category = event.fights?.[categoryIndex]
     if (!category) return null
 
-    const match = category.matches[matchIndex]
+    const match = category.matches?.[matchIndex]
     if (!match) return null
 
     return {

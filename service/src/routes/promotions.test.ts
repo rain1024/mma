@@ -1,7 +1,9 @@
 import request from 'supertest';
 import app from '../app';
 import { PromotionModel } from '../models/promotion.model';
+import { EventModel } from '../models/event.model';
 import { runMigrations } from '../db/migrate';
+import db from '../config/database';
 
 describe('Promotions API', () => {
   beforeAll(() => {
@@ -12,9 +14,9 @@ describe('Promotions API', () => {
   });
 
   beforeEach(() => {
-    // Clean up promotions before each test
-    const promotions = PromotionModel.getAll();
-    promotions.forEach(promo => PromotionModel.delete(promo.id));
+    // Clean up events first (FK constraint), then promotions
+    db.prepare('DELETE FROM events').run();
+    db.prepare('DELETE FROM promotions').run();
   });
 
   describe('GET /api/promotions', () => {
@@ -36,8 +38,7 @@ describe('Promotions API', () => {
         name: 'UFC',
         subtitle: 'Ultimate Fighting Championship',
         theme: 'ufc-theme',
-        color: '#d20a0a',
-        events: ['ufc309']
+        color: '#d20a0a'
       });
 
       PromotionModel.create({
@@ -45,8 +46,7 @@ describe('Promotions API', () => {
         name: 'Bellator MMA',
         subtitle: 'Fighting Championship',
         theme: 'bellator-theme',
-        color: '#0066cc',
-        events: []
+        color: '#0066cc'
       });
 
       const response = await request(app)
@@ -77,8 +77,7 @@ describe('Promotions API', () => {
         name: 'UFC',
         subtitle: 'Ultimate Fighting Championship',
         theme: 'ufc-theme',
-        color: '#d20a0a',
-        events: ['ufc309']
+        color: '#d20a0a'
       });
 
       const response = await request(app)
@@ -90,11 +89,71 @@ describe('Promotions API', () => {
         name: 'UFC',
         subtitle: 'Ultimate Fighting Championship',
         theme: 'ufc-theme',
-        color: '#d20a0a',
-        events: ['ufc309']
+        color: '#d20a0a'
       });
       expect(response.body.promotion).toHaveProperty('created_at');
       expect(response.body.promotion).toHaveProperty('updated_at');
+    });
+  });
+
+  describe('GET /api/promotions/:id/events', () => {
+    beforeEach(() => {
+      PromotionModel.create({
+        id: 'ufc',
+        name: 'UFC',
+        subtitle: 'Ultimate Fighting Championship',
+        theme: 'ufc-theme',
+        color: '#d20a0a'
+      });
+    });
+
+    it('should return 404 for non-existent promotion', async () => {
+      const response = await request(app)
+        .get('/api/promotions/nonexistent/events')
+        .expect(404);
+
+      expect(response.body).toEqual({
+        error: 'Promotion not found'
+      });
+    });
+
+    it('should return empty events array when no events exist', async () => {
+      const response = await request(app)
+        .get('/api/promotions/ufc/events')
+        .expect(200);
+
+      expect(response.body).toEqual({
+        promotion_id: 'ufc',
+        count: 0,
+        events: []
+      });
+    });
+
+    it('should return events for promotion', async () => {
+      // Create some events for the promotion
+      EventModel.create({
+        id: 'ufc-300',
+        promotion_id: 'ufc',
+        name: 'UFC 300',
+        date: '2024-04-13',
+        status: 'completed'
+      });
+
+      EventModel.create({
+        id: 'ufc-301',
+        promotion_id: 'ufc',
+        name: 'UFC 301',
+        date: '2024-05-04',
+        status: 'upcoming'
+      });
+
+      const response = await request(app)
+        .get('/api/promotions/ufc/events')
+        .expect(200);
+
+      expect(response.body.promotion_id).toBe('ufc');
+      expect(response.body.count).toBe(2);
+      expect(response.body.events).toHaveLength(2);
     });
   });
 
@@ -105,8 +164,7 @@ describe('Promotions API', () => {
         name: 'Bellator MMA',
         subtitle: 'Fighting Championship',
         theme: 'bellator-theme',
-        color: '#0066cc',
-        events: ['bellator300']
+        color: '#0066cc'
       };
 
       const response = await request(app)
@@ -123,23 +181,6 @@ describe('Promotions API', () => {
       expect(saved).toBeDefined();
       expect(saved?.name).toBe('Bellator MMA');
     });
-
-    it('should create promotion with empty events array if not provided', async () => {
-      const newPromotion = {
-        id: 'one',
-        name: 'ONE Championship',
-        subtitle: 'Asian MMA',
-        theme: 'one-theme',
-        color: '#000000'
-      };
-
-      const response = await request(app)
-        .post('/api/promotions')
-        .send(newPromotion)
-        .expect(201);
-
-      expect(response.body.promotion.events).toEqual([]);
-    });
   });
 
   describe('PUT /api/promotions/:id', () => {
@@ -149,8 +190,7 @@ describe('Promotions API', () => {
         name: 'UFC',
         subtitle: 'Ultimate Fighting Championship',
         theme: 'ufc-theme',
-        color: '#d20a0a',
-        events: ['ufc309']
+        color: '#d20a0a'
       });
     });
 
@@ -181,23 +221,13 @@ describe('Promotions API', () => {
         name: 'UFC',
         subtitle: 'The Ultimate Fighting Championship',
         color: '#ff0000',
-        theme: 'ufc-theme',
-        events: ['ufc309']
+        theme: 'ufc-theme'
       });
 
       // Verify updates were saved
       const updated = PromotionModel.getById('ufc');
       expect(updated?.subtitle).toBe('The Ultimate Fighting Championship');
       expect(updated?.color).toBe('#ff0000');
-    });
-
-    it('should update events array', async () => {
-      const response = await request(app)
-        .put('/api/promotions/ufc')
-        .send({ events: ['ufc309', 'ufc310', 'ufc311'] })
-        .expect(200);
-
-      expect(response.body.promotion.events).toEqual(['ufc309', 'ufc310', 'ufc311']);
     });
   });
 
@@ -208,8 +238,7 @@ describe('Promotions API', () => {
         name: 'UFC',
         subtitle: 'Ultimate Fighting Championship',
         theme: 'ufc-theme',
-        color: '#d20a0a',
-        events: ['ufc309']
+        color: '#d20a0a'
       });
     });
 
@@ -235,118 +264,6 @@ describe('Promotions API', () => {
       // Verify it was deleted from database
       const deleted = PromotionModel.getById('ufc');
       expect(deleted).toBeUndefined();
-    });
-  });
-
-  describe('POST /api/promotions/:id/events', () => {
-    beforeEach(() => {
-      PromotionModel.create({
-        id: 'ufc',
-        name: 'UFC',
-        subtitle: 'Ultimate Fighting Championship',
-        theme: 'ufc-theme',
-        color: '#d20a0a',
-        events: ['ufc309']
-      });
-    });
-
-    it('should return 404 for non-existent promotion', async () => {
-      const response = await request(app)
-        .post('/api/promotions/nonexistent/events')
-        .send({ event_id: 'event1' })
-        .expect(404);
-
-      expect(response.body).toEqual({
-        error: 'Promotion not found'
-      });
-    });
-
-    it('should return 400 if event_id is missing', async () => {
-      const response = await request(app)
-        .post('/api/promotions/ufc/events')
-        .send({})
-        .expect(400);
-
-      expect(response.body).toEqual({
-        error: 'event_id is required'
-      });
-    });
-
-    it('should add event to promotion', async () => {
-      const response = await request(app)
-        .post('/api/promotions/ufc/events')
-        .send({ event_id: 'ufc310' })
-        .expect(201);
-
-      expect(response.body.message).toBe('Event added to promotion successfully');
-      expect(response.body.promotion.events).toEqual(['ufc309', 'ufc310']);
-
-      // Verify it was saved
-      const updated = PromotionModel.getById('ufc');
-      expect(updated?.events).toEqual(['ufc309', 'ufc310']);
-    });
-
-    it('should not add duplicate event', async () => {
-      const response = await request(app)
-        .post('/api/promotions/ufc/events')
-        .send({ event_id: 'ufc309' })
-        .expect(201);
-
-      expect(response.body.promotion.events).toEqual(['ufc309']);
-    });
-  });
-
-  describe('DELETE /api/promotions/:id/events', () => {
-    beforeEach(() => {
-      PromotionModel.create({
-        id: 'ufc',
-        name: 'UFC',
-        subtitle: 'Ultimate Fighting Championship',
-        theme: 'ufc-theme',
-        color: '#d20a0a',
-        events: ['ufc309', 'ufc310', 'ufc311']
-      });
-    });
-
-    it('should return 404 for non-existent promotion', async () => {
-      const response = await request(app)
-        .delete('/api/promotions/nonexistent/events?event_id=event1')
-        .expect(404);
-
-      expect(response.body).toEqual({
-        error: 'Promotion not found'
-      });
-    });
-
-    it('should return 400 if event_id is missing', async () => {
-      const response = await request(app)
-        .delete('/api/promotions/ufc/events')
-        .expect(400);
-
-      expect(response.body).toEqual({
-        error: 'event_id query parameter is required'
-      });
-    });
-
-    it('should remove event from promotion', async () => {
-      const response = await request(app)
-        .delete('/api/promotions/ufc/events?event_id=ufc310')
-        .expect(200);
-
-      expect(response.body.message).toBe('Event removed from promotion successfully');
-      expect(response.body.promotion.events).toEqual(['ufc309', 'ufc311']);
-
-      // Verify it was saved
-      const updated = PromotionModel.getById('ufc');
-      expect(updated?.events).toEqual(['ufc309', 'ufc311']);
-    });
-
-    it('should succeed even if event does not exist in array', async () => {
-      const response = await request(app)
-        .delete('/api/promotions/ufc/events?event_id=nonexistent')
-        .expect(200);
-
-      expect(response.body.promotion.events).toEqual(['ufc309', 'ufc310', 'ufc311']);
     });
   });
 });

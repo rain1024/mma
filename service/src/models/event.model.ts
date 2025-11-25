@@ -2,9 +2,9 @@ import db from '../config/database';
 import { Event, Match } from '../types';
 
 export class EventModel {
-  static getAll(tournament: string): Event[] {
-    const stmt = db.prepare('SELECT * FROM events WHERE tournament = ? ORDER BY date DESC');
-    return stmt.all(tournament) as Event[];
+  static getAll(promotionId: string): Event[] {
+    const stmt = db.prepare('SELECT * FROM events WHERE promotion_id = ? ORDER BY date DESC');
+    return stmt.all(promotionId) as Event[];
   }
 
   static getById(id: string): Event | undefined {
@@ -14,13 +14,13 @@ export class EventModel {
 
   static create(event: Event): string {
     const stmt = db.prepare(`
-      INSERT INTO events (id, tournament, name, date, location, venue, status)
+      INSERT INTO events (id, promotion_id, name, date, location, venue, status)
       VALUES (?, ?, ?, ?, ?, ?, ?)
     `);
 
     stmt.run(
       event.id,
-      event.tournament,
+      event.promotion_id,
       event.name,
       event.date || null,
       event.location || null,

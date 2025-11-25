@@ -24,6 +24,7 @@ describe('Athletes API', () => {
         .expect(200);
 
       expect(response.body).toEqual({
+        promotion_id: 'ufc',
         tournament: 'ufc',
         count: 0,
         athletes: []

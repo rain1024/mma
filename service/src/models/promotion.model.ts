@@ -1,33 +1,21 @@
 import db from '../config/database';
-import { Promotion } from '../types';
+import { Promotion, Event } from '../types';
 
 export class PromotionModel {
   static getAll(): Promotion[] {
     const stmt = db.prepare('SELECT * FROM promotions ORDER BY name ASC');
-    const rows = stmt.all() as any[];
-
-    return rows.map(row => ({
-      ...row,
-      events: JSON.parse(row.events)
-    }));
+    return stmt.all() as Promotion[];
   }
 
   static getById(id: string): Promotion | undefined {
     const stmt = db.prepare('SELECT * FROM promotions WHERE id = ?');
-    const row = stmt.get(id) as any;
-
-    if (!row) return undefined;
-
-    return {
-      ...row,
-      events: JSON.parse(row.events)
-    };
+    return stmt.get(id) as Promotion | undefined;
   }
 
   static create(promotion: Promotion): string {
     const stmt = db.prepare(`
-      INSERT INTO promotions (id, name, subtitle, theme, color, events)
-      VALUES (?, ?, ?, ?, ?, ?)
+      INSERT INTO promotions (id, name, subtitle, theme, color)
+      VALUES (?, ?, ?, ?, ?)
     `);
 
     stmt.run(
@@ -35,8 +23,7 @@ export class PromotionModel {
       promotion.name,
       promotion.subtitle,
       promotion.theme,
-      promotion.color,
-      JSON.stringify(promotion.events || [])
+      promotion.color
     );
 
     return promotion.id;
@@ -49,11 +36,7 @@ export class PromotionModel {
     Object.entries(promotion).forEach(([key, value]) => {
       if (key !== 'id' && key !== 'created_at' && value !== undefined) {
         fields.push(`${key} = ?`);
-        if (key === 'events') {
-          values.push(JSON.stringify(value));
-        } else {
-          values.push(value);
-        }
+        values.push(value);
       }
     });
 
@@ -74,28 +57,8 @@ export class PromotionModel {
     return result.changes > 0;
   }
 
-  static addEvent(id: string, eventId: string): boolean {
-    const promotion = this.getById(id);
-    if (!promotion) return false;
-
-    if (!promotion.events.includes(eventId)) {
-      promotion.events.push(eventId);
-      return this.update(id, { events: promotion.events });
-    }
-
-    return true;
-  }
-
-  static removeEvent(id: string, eventId: string): boolean {
-    const promotion = this.getById(id);
-    if (!promotion) return false;
-
-    const index = promotion.events.indexOf(eventId);
-    if (index > -1) {
-      promotion.events.splice(index, 1);
-      return this.update(id, { events: promotion.events });
-    }
-
-    return true;
+  static getEvents(promotionId: string): Event[] {
+    const stmt = db.prepare('SELECT * FROM events WHERE promotion_id = ? ORDER BY date DESC');
+    return stmt.all(promotionId) as Event[];
   }
 }
