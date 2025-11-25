@@ -17,13 +17,13 @@ describe('Events API', () => {
     db.prepare('DELETE FROM matches').run();
     db.prepare('DELETE FROM events').run();
 
-    // Ensure promotions exist for FK constraints (use INSERT OR IGNORE)
+    // Ensure promotions exist for FK constraints (use REPLACE to handle existing records)
     db.prepare(`
-      INSERT OR IGNORE INTO promotions (id, name, subtitle, theme, color)
+      INSERT OR REPLACE INTO promotions (id, name, subtitle, theme, color)
       VALUES ('ufc', 'UFC', 'Ultimate Fighting Championship', 'ufc-theme', '#d20a0a')
     `).run();
     db.prepare(`
-      INSERT OR IGNORE INTO promotions (id, name, subtitle, theme, color)
+      INSERT OR REPLACE INTO promotions (id, name, subtitle, theme, color)
       VALUES ('lion', 'Lion Championship', 'Vietnam MMA', 'lion-theme', '#ff8c00')
     `).run();
   });
@@ -200,8 +200,18 @@ describe('Events API', () => {
         .send(match)
         .expect(201);
 
+      // Note: 'round' is stored as 'result_round' TEXT in the database
       expect(response.body.match).toMatchObject({
-        ...match,
+        category: match.category,
+        fighter1_name: match.fighter1_name,
+        fighter1_country: match.fighter1_country,
+        fighter2_name: match.fighter2_name,
+        fighter2_country: match.fighter2_country,
+        weight_class: match.weight_class,
+        winner: match.winner,
+        method: match.method,
+        time: match.time,
+        result_round: '1',
         event_id: 'ufc-300'
       });
       expect(response.body.match).toHaveProperty('id');

@@ -16,4 +16,6 @@ module.exports = {
   coverageReporters: ['text', 'lcov', 'html'],
   moduleFileExtensions: ['ts', 'js', 'json'],
   testTimeout: 10000,
+  // Run tests serially to avoid SQLite database conflicts
+  maxWorkers: 1,
 };

@@ -22,7 +22,7 @@ export class MatchModel {
         event_id, category,
         fighter1_id, fighter1_name, fighter1_country, fighter1_flag,
         fighter2_id, fighter2_name, fighter2_country, fighter2_flag,
-        weight_class, winner, method, round, time
+        weight_class, winner, method, result_round, time
       )
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
@@ -41,7 +41,7 @@ export class MatchModel {
       match.weight_class || null,
       match.winner || null,
       match.method || null,
-      match.round || null,
+      match.round?.toString() || null, // Schema uses result_round TEXT
       match.time || null
     );
 

@@ -2,6 +2,7 @@ import request from 'supertest';
 import app from '../app';
 import { AthleteModel } from '../models/athlete.model';
 import { runMigrations } from '../db/migrate';
+import db from '../config/database';
 
 describe('Athletes API', () => {
   beforeAll(() => {
@@ -10,11 +11,13 @@ describe('Athletes API', () => {
   });
 
   beforeEach(() => {
-    // Clean up athletes before each test
-    const athletes = AthleteModel.getAll('ufc');
-    athletes.forEach(athlete => athlete.id && AthleteModel.delete(athlete.id));
-    const lionAthletes = AthleteModel.getAll('lion');
-    lionAthletes.forEach(athlete => athlete.id && AthleteModel.delete(athlete.id));
+    // Clean up tables in correct order to respect FK constraints
+    // First: delete tables that reference athletes
+    db.prepare('DELETE FROM rankings').run();
+    db.prepare('DELETE FROM p4p_rankings').run();
+    db.prepare('DELETE FROM matches').run();
+    // Then: delete athletes
+    db.prepare('DELETE FROM athletes').run();
   });
 
   describe('GET /api/athletes', () => {

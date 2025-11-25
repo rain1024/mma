@@ -1,0 +1,9 @@
+{
+  "name": "mma-monorepo",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "service",
+    "web"
+  ]
+}

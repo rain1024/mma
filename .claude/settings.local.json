@@ -62,7 +62,8 @@
       "Bash(timeout 300 npm test)",
       "Bash(sqlite3:*)",
       "Bash(npm run db:setup:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(timeout 300 npm test -- --coverage)"
     ],
     "deny": [],
     "ask": []

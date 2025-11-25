@@ -24,7 +24,7 @@ Review toàn bộ code, tài liệu và kiến trúc của dự án để hiểu
 
 ### 3. Đánh Giá Chất Lượng Code
 - Đánh giá coding patterns và conventions
-- Kiểm tra data structures và types đã đúng với thiết kế database chưa
+- Kiểm tra data structures và types đã đúng với thiết kế database (docs/database) chưa
 - Xác định code trùng lặp
 - Review xử lý lỗi
 - Kiểm tra type safety (TypeScript)

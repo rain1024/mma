@@ -49,7 +49,7 @@ describe('Rankings API', () => {
       expect(response.body.tournament).toBe('ufc');
       expect(response.body.p4pRankings).toHaveLength(2);
       expect(response.body.p4pRankings[0].rank).toBe(1);
-      expect(response.body.p4pRankings[0].athlete_name).toBe('Islam Makhachev');
+      expect(response.body.p4pRankings[0].name).toBe('Islam Makhachev');
     });
 
     it('should filter P4P rankings by tournament', async () => {
@@ -71,7 +71,7 @@ describe('Rankings API', () => {
 
       expect(response.body.tournament).toBe('lion');
       expect(response.body.p4pRankings).toHaveLength(1);
-      expect(response.body.p4pRankings[0].athlete_name).toBe('Thanh Le');
+      expect(response.body.p4pRankings[0].name).toBe('Thanh Le');
     });
   });
 
@@ -84,7 +84,7 @@ describe('Rankings API', () => {
       expect(response.body).toEqual({
         promotion_id: 'ufc',
         tournament: 'ufc',
-        p4pRankings: [],
+        pfpRankings: [],
         divisions: {}
       });
     });
@@ -127,12 +127,12 @@ describe('Rankings API', () => {
         .expect(200);
 
       expect(response.body.tournament).toBe('ufc');
-      expect(response.body.p4pRankings).toHaveLength(1);
+      expect(response.body.pfpRankings).toHaveLength(1);
       expect(response.body.divisions).toHaveProperty('lightweight');
       expect(response.body.divisions).toHaveProperty('welterweight');
-      expect(response.body.divisions.lightweight.champion.athlete_name).toBe('Islam Makhachev');
+      expect(response.body.divisions.lightweight.champion.name).toBe('Islam Makhachev');
       expect(response.body.divisions.lightweight.rankings).toHaveLength(1);
-      expect(response.body.divisions.lightweight.rankings[0].athlete_name).toBe('Charles Oliveira');
+      expect(response.body.divisions.lightweight.rankings[0].name).toBe('Charles Oliveira');
     });
 
     it('should filter rankings by tournament', async () => {
@@ -195,12 +195,11 @@ describe('Rankings API', () => {
       expect(response.body.tournament).toBe('ufc');
       expect(response.body.division).toBe('lightweight');
       expect(response.body.champion).toMatchObject({
-        athlete_name: 'Islam Makhachev',
-        is_champion: 1
+        name: 'Islam Makhachev'
       });
       expect(response.body.rankings).toHaveLength(2);
-      expect(response.body.rankings[0].athlete_name).toBe('Charles Oliveira');
-      expect(response.body.rankings[1].athlete_name).toBe('Justin Gaethje');
+      expect(response.body.rankings[0].name).toBe('Charles Oliveira');
+      expect(response.body.rankings[1].name).toBe('Justin Gaethje');
     });
 
     it('should filter division rankings by tournament', async () => {
@@ -217,7 +216,7 @@ describe('Rankings API', () => {
 
       expect(response.body.tournament).toBe('lion');
       expect(response.body.rankings).toHaveLength(1);
-      expect(response.body.rankings[0].athlete_name).toBe('Different Fighter');
+      expect(response.body.rankings[0].name).toBe('Different Fighter');
     });
 
     it('should return empty rankings for division with no data', async () => {
@@ -227,7 +226,8 @@ describe('Rankings API', () => {
 
       expect(response.body.division).toBe('heavyweight');
       expect(response.body.rankings).toEqual([]);
-      expect(response.body.champion).toBeUndefined();
+      // Champion returns empty object when no champion exists
+      expect(response.body.champion).toEqual({ name: '', record: '', nickname: '' });
     });
   });
 

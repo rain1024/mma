@@ -52,7 +52,7 @@ function seedPromotions() {
     const allPromotions = PromotionModel.getAll();
     console.log('\nPromotions in database:');
     allPromotions.forEach(promo => {
-      console.log(`  - ${promo.name} (${promo.id}): ${promo.events.length} events`);
+      console.log(`  - ${promo.name} (${promo.id})`);
     });
   } catch (error) {
     console.error('❌ Error seeding promotions:', error);
