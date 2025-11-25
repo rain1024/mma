@@ -3,6 +3,33 @@ import { RankingModel, P4PRankingModel } from '../models/ranking.model';
 
 const router = Router();
 
+// Helper function to format record string
+function formatRecord(wins: number = 0, losses: number = 0, draws: number = 0): string {
+  return `${wins}-${losses}-${draws}`;
+}
+
+// Transform ranking to frontend format
+function transformRanking(ranking: any) {
+  return {
+    rank: ranking.rank,
+    name: ranking.athlete_name,
+    record: formatRecord(ranking.wins, ranking.losses, ranking.draws),
+    move: '-'
+  };
+}
+
+// Transform champion to frontend format
+function transformChampion(champion: any) {
+  if (!champion) return { name: '', record: '', nickname: '' };
+  return {
+    name: champion.athlete_name,
+    record: formatRecord(champion.wins, champion.losses, champion.draws),
+    nickname: '',
+    country: champion.country,
+    flag: champion.flag
+  };
+}
+
 // GET /api/rankings/p4p - Get P4P rankings
 router.get('/p4p', async (req: Request, res: Response) => {
   try {
@@ -14,7 +41,7 @@ router.get('/p4p', async (req: Request, res: Response) => {
     res.json({
       promotion_id: promotionId,
       tournament: promotionId, // Legacy support
-      p4pRankings
+      p4pRankings: p4pRankings.map(transformRanking)
     });
   } catch (error) {
     console.error('Error fetching P4P rankings:', error);
@@ -36,8 +63,8 @@ router.get('/', async (req: Request, res: Response) => {
       const champion = RankingModel.getChampion(promotionId, division);
 
       divisionsData[division] = {
-        champion,
-        rankings: rankings.filter(r => !r.is_champion)
+        champion: transformChampion(champion),
+        rankings: rankings.filter(r => !r.is_champion).map(transformRanking)
       };
     });
 
@@ -46,7 +73,7 @@ router.get('/', async (req: Request, res: Response) => {
     res.json({
       promotion_id: promotionId,
       tournament: promotionId, // Legacy support
-      p4pRankings,
+      pfpRankings: p4pRankings.map(transformRanking),
       divisions: divisionsData
     });
   } catch (error) {
@@ -69,8 +96,8 @@ router.get('/:division', async (req: Request, res: Response) => {
       promotion_id: promotionId,
       tournament: promotionId, // Legacy support
       division,
-      champion,
-      rankings: rankings.filter(r => !r.is_champion)
+      champion: transformChampion(champion),
+      rankings: rankings.filter(r => !r.is_champion).map(transformRanking)
     });
   } catch (error) {
     console.error('Error fetching division rankings:', error);

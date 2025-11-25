@@ -34,6 +34,35 @@ interface JsonPromotion {
   events: string[];
 }
 
+interface JsonFighter {
+  name: string;
+  link?: string;
+  stats?: string;
+  flag: string;
+  winner: boolean;
+}
+
+interface JsonMatch {
+  round?: string;
+  fighter1: JsonFighter;
+  fighter2: JsonFighter;
+}
+
+interface JsonFightCategory {
+  category: string;
+  matches: JsonMatch[];
+}
+
+interface JsonEvent {
+  id: string;
+  logo?: string;
+  title: string;
+  date: string;
+  location: string;
+  status: string;
+  fights: JsonFightCategory[];
+}
+
 function parseRecord(record: string): { wins: number; losses: number; draws: number } {
   const match = record.match(/(\d+)-(\d+)-(\d+)/);
   if (match) {
@@ -59,7 +88,7 @@ export function seedPromotions() {
 
   for (const promotionId of promotions) {
     try {
-      const promotion = readJsonFile<JsonPromotion>(`service/data/promotions/${promotionId}/promotion.json`);
+      const promotion = readJsonFile<JsonPromotion>(`service/data/seed/${promotionId}/promotion.json`);
 
       // Check if promotion already exists
       const existing = db.prepare('SELECT id FROM promotions WHERE id = ?').get(promotionId);
@@ -89,7 +118,7 @@ export function seedAthletes(promotionId: string) {
   console.log(`🔄 Seeding athletes for ${promotionId}...`);
 
   try {
-    const data = readJsonFile<{ athletes: JsonAthlete[] }>(`web/public/data/promotions/${promotionId}/athletes.json`);
+    const data = readJsonFile<{ athletes: JsonAthlete[] }>(`service/data/seed/${promotionId}/athletes.json`);
     const athletes = data.athletes;
 
     let added = 0;
@@ -130,11 +159,79 @@ export function seedAthletes(promotionId: string) {
   }
 }
 
+export function seedEvents(promotionId: string) {
+  console.log(`🔄 Seeding events for ${promotionId}...`);
+
+  try {
+    const promotion = readJsonFile<JsonPromotion>(`service/data/seed/${promotionId}/promotion.json`);
+    const eventIds = promotion.events || [];
+
+    let eventsAdded = 0;
+    let matchesAdded = 0;
+
+    for (const eventId of eventIds) {
+      try {
+        const eventData = readJsonFile<JsonEvent>(`service/data/seed/${promotionId}/events/${eventId}.json`);
+
+        // Check if event already exists
+        const existing = db.prepare('SELECT id FROM events WHERE id = ?').get(eventId);
+
+        if (!existing) {
+          // Insert event
+          db.prepare(`
+            INSERT INTO events (id, promotion_id, name, date, location, status)
+            VALUES (?, ?, ?, ?, ?, ?)
+          `).run(
+            eventData.id,
+            promotionId,
+            eventData.title,
+            eventData.date || null,
+            eventData.location || null,
+            eventData.status || null
+          );
+          eventsAdded++;
+
+          // Insert matches for this event
+          for (const fightCategory of eventData.fights) {
+            for (const match of fightCategory.matches) {
+              // Determine winner: 1 = fighter1, 2 = fighter2, null = no winner/draw
+              let winner: number | null = null;
+              if (match.fighter1.winner) winner = 1;
+              else if (match.fighter2.winner) winner = 2;
+
+              db.prepare(`
+                INSERT INTO matches (event_id, category, fighter1_name, fighter1_flag, fighter2_name, fighter2_flag, winner)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+              `).run(
+                eventData.id,
+                fightCategory.category,
+                match.fighter1.name,
+                match.fighter1.flag || null,
+                match.fighter2.name,
+                match.fighter2.flag || null,
+                winner
+              );
+              matchesAdded++;
+            }
+          }
+        }
+      } catch (error) {
+        // Event file might not exist, skip
+        console.log(`  ⚠️ Could not load event ${eventId}`);
+      }
+    }
+
+    console.log(`  ✅ Added ${eventsAdded} events with ${matchesAdded} matches`);
+  } catch (error) {
+    console.error(`  ❌ Error seeding events for ${promotionId}:`, error);
+  }
+}
+
 export function seedRankings(promotionId: string) {
   console.log(`🔄 Seeding rankings for ${promotionId}...`);
 
   try {
-    const rankings = readJsonFile<JsonRankings>(`web/public/data/promotions/${promotionId}/rankings.json`);
+    const rankings = readJsonFile<JsonRankings>(`service/data/seed/${promotionId}/rankings.json`);
 
     // Clear existing rankings for this tournament
     db.prepare('DELETE FROM rankings WHERE tournament = ?').run(promotionId);
@@ -218,6 +315,11 @@ export function seedAllData() {
   const promotions = ['lion', 'ufc'];
   for (const promotionId of promotions) {
     seedAthletes(promotionId);
+  }
+
+  // Seed events for each promotion
+  for (const promotionId of promotions) {
+    seedEvents(promotionId);
   }
 
   // Seed rankings for each promotion

@@ -4,17 +4,21 @@ import { Ranking, P4PRanking } from '../types';
 export class RankingModel {
   static getByDivision(tournament: string, division: string): Ranking[] {
     const stmt = db.prepare(`
-      SELECT * FROM rankings
-      WHERE tournament = ? AND division = ?
-      ORDER BY rank ASC
+      SELECT r.*, a.wins, a.losses, a.draws, a.country, a.flag
+      FROM rankings r
+      LEFT JOIN athletes a ON r.athlete_id = a.id
+      WHERE r.tournament = ? AND r.division = ?
+      ORDER BY r.rank ASC
     `);
     return stmt.all(tournament, division) as Ranking[];
   }
 
   static getChampion(tournament: string, division: string): Ranking | undefined {
     const stmt = db.prepare(`
-      SELECT * FROM rankings
-      WHERE tournament = ? AND division = ? AND is_champion = 1
+      SELECT r.*, a.wins, a.losses, a.draws, a.country, a.flag
+      FROM rankings r
+      LEFT JOIN athletes a ON r.athlete_id = a.id
+      WHERE r.tournament = ? AND r.division = ? AND r.is_champion = 1
     `);
     return stmt.get(tournament, division) as Ranking | undefined;
   }
@@ -79,7 +83,13 @@ export class RankingModel {
 
 export class P4PRankingModel {
   static getAll(tournament: string): P4PRanking[] {
-    const stmt = db.prepare('SELECT * FROM p4p_rankings WHERE tournament = ? ORDER BY rank ASC');
+    const stmt = db.prepare(`
+      SELECT p.*, a.wins, a.losses, a.draws, a.division, a.country, a.flag
+      FROM p4p_rankings p
+      LEFT JOIN athletes a ON p.athlete_id = a.id
+      WHERE p.tournament = ?
+      ORDER BY p.rank ASC
+    `);
     return stmt.all(tournament) as P4PRanking[];
   }
 

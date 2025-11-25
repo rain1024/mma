@@ -1,16 +1,61 @@
 import { Router, Request, Response } from 'express';
 import { EventModel } from '../models/event.model';
 import { MatchModel } from '../models/match.model';
-import fs from 'fs';
-import path from 'path';
 
 const router = Router();
 
-// Helper function to read JSON files from service/data directory
-function readDataFile(filePath: string): any {
-  const fullPath = path.join(__dirname, '../../data', filePath);
-  const fileContent = fs.readFileSync(fullPath, 'utf-8');
-  return JSON.parse(fileContent);
+// Helper function to transform database matches to frontend format
+function transformEventWithMatches(event: any, matches: any[]) {
+  // Group matches by category
+  const categoriesMap = new Map<string, any[]>();
+
+  for (const match of matches) {
+    const category = match.category || 'MAIN CARD';
+    if (!categoriesMap.has(category)) {
+      categoriesMap.set(category, []);
+    }
+
+    categoriesMap.get(category)!.push({
+      round: match.round?.toString() || '',
+      fighter1: {
+        name: match.fighter1_name,
+        stats: '',
+        flag: match.fighter1_flag || '',
+        winner: match.winner === 1
+      },
+      fighter2: {
+        name: match.fighter2_name,
+        stats: '',
+        flag: match.fighter2_flag || '',
+        winner: match.winner === 2
+      },
+      result: match.method ? {
+        method: match.method,
+        time: match.time || '',
+        round: match.round?.toString() || '',
+        totalTime: ''
+      } : undefined
+    });
+  }
+
+  // Convert to fights array
+  const fights = Array.from(categoriesMap.entries()).map(([category, categoryMatches]) => ({
+    category,
+    matches: categoryMatches
+  }));
+
+  return {
+    id: event.id,
+    promotion_id: event.promotion_id,
+    logo: event.id.toUpperCase(),
+    title: event.name,
+    name: event.name,
+    date: event.date || '',
+    location: event.location || '',
+    venue: event.venue || '',
+    status: event.status || 'completed',
+    fights
+  };
 }
 
 // GET /api/events - Get all events for a promotion
@@ -19,36 +64,14 @@ router.get('/', async (req: Request, res: Response) => {
     // Support both 'tournament' (legacy) and 'promotion_id' query params
     const promotionId = (req.query.promotion_id || req.query.tournament || 'ufc') as string;
 
-    // Read promotion.json to get list of event IDs
-    const promotion = readDataFile(`promotions/${promotionId}/promotion.json`);
+    // Get events from database
+    const dbEvents = EventModel.getAll(promotionId);
 
-    if (!promotion.events || promotion.events.length === 0) {
-      return res.json({
-        promotion_id: promotionId,
-        tournament: promotionId, // Legacy support
-        count: 0,
-        events: []
-      });
-    }
-
-    // Check if events is array of objects (old format) or array of strings (new format)
-    const firstEvent = promotion.events[0];
-    let events: any[] = [];
-
-    if (typeof firstEvent === 'object' && firstEvent.id) {
-      // Old format: array of event objects
-      events = promotion.events;
-    } else if (typeof firstEvent === 'string') {
-      // New format: array of event IDs - load individual event files
-      events = promotion.events.map((eventId: string) => {
-        try {
-          return readDataFile(`promotions/${promotionId}/events/${eventId}.json`);
-        } catch (error) {
-          console.error(`Error loading event ${eventId}:`, error);
-          return null;
-        }
-      }).filter((event: any) => event !== null);
-    }
+    // Transform each event with its matches
+    const events = dbEvents.map(event => {
+      const matches = MatchModel.getAll(event.id);
+      return transformEventWithMatches(event, matches);
+    });
 
     res.json({
       promotion_id: promotionId,
@@ -66,17 +89,16 @@ router.get('/', async (req: Request, res: Response) => {
 router.get('/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    // Support both 'tournament' (legacy) and 'promotion_id' query params
-    const promotionId = (req.query.promotion_id || req.query.tournament || 'ufc') as string;
 
-    // Try to read the event JSON file
-    try {
-      const event = readDataFile(`promotions/${promotionId}/events/${id}.json`);
-      res.json(event);
-    } catch (fileError) {
-      // If JSON file doesn't exist, return 404
+    const event = EventModel.getById(id);
+    if (!event) {
       return res.status(404).json({ error: 'Event not found' });
     }
+
+    const matches = MatchModel.getAll(id);
+    const transformedEvent = transformEventWithMatches(event, matches);
+
+    res.json(transformedEvent);
   } catch (error) {
     console.error('Error fetching event:', error);
     res.status(500).json({ error: 'Failed to fetch event' });

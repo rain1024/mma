@@ -1,0 +1,152 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - alert [ref=e2]
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: LION CHAMPIONSHIP
+      - generic [ref=e6]:
+        - button "UFC" [ref=e7] [cursor=pointer]
+        - button "Lion Championship" [ref=e8] [cursor=pointer]
+  - navigation [ref=e9]:
+    - generic [ref=e10]:
+      - link "Athletes" [ref=e11] [cursor=pointer]:
+        - /url: /athletes
+      - link "Rankings" [ref=e12] [cursor=pointer]:
+        - /url: /rankings
+      - link "Events" [ref=e13] [cursor=pointer]:
+        - /url: /events
+      - link "News" [ref=e14] [cursor=pointer]:
+        - /url: "#"
+      - link "Watch" [ref=e15] [cursor=pointer]:
+        - /url: "#"
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]: LC27
+        - generic [ref=e20]: Lion Championship 2025
+        - generic [ref=e21]: 19:30 | 11.10.2025
+        - generic [ref=e22]: Nhà Thi Đấu Tây Hồ | 101 Đường Xuân La, Tây Hồ, Hà Nội
+      - generic [ref=e23]:
+        - generic [ref=e24]: MMA PRO
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - generic [ref=e28]: 🇻🇳
+            - link "Lý Văn Huỳnh" [ref=e30] [cursor=pointer]:
+              - /url: /athletes/l-vn-hunh
+              - generic [ref=e31]: Lý Văn Huỳnh
+          - generic [ref=e33]: VS
+          - generic [ref=e34]:
+            - generic [ref=e36]: 🇻🇳
+            - link "Đỗ Thành Chương" [ref=e38] [cursor=pointer]:
+              - /url: /athletes/-thnh-chng
+              - generic [ref=e39]: Đỗ Thành Chương
+          - text: WINNER
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - generic [ref=e43]: 🇻🇳
+            - link "Phạm Văn Hào" [ref=e45] [cursor=pointer]:
+              - /url: /athletes/phm-vn-ho
+              - generic [ref=e46]: Phạm Văn Hào
+          - generic [ref=e48]: VS
+          - generic [ref=e49]:
+            - generic [ref=e51]: 🇻🇳
+            - link "Trần Văn Trọng" [ref=e53] [cursor=pointer]:
+              - /url: /athletes/trn-vn-trng
+              - generic [ref=e54]: Trần Văn Trọng
+          - text: WINNER
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e58]: 🇻🇳
+            - link "Võ Vũ Lê" [ref=e60] [cursor=pointer]:
+              - /url: /athletes/v-v-l
+              - generic [ref=e61]: Võ Vũ Lê
+          - generic [ref=e63]: VS
+          - generic [ref=e64]:
+            - generic [ref=e66]: 🇻🇳
+            - link "Trần Lê Phi Khanh" [ref=e68] [cursor=pointer]:
+              - /url: /athletes/trn-l-phi-khanh
+              - generic [ref=e69]: Trần Lê Phi Khanh
+          - text: WINNER
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e73]: 🇻🇳
+            - link "Đinh Văn Khuyên" [ref=e75] [cursor=pointer]:
+              - /url: /athletes/inh-vn-khuyn
+              - generic [ref=e76]: Đinh Văn Khuyên
+          - generic [ref=e78]: VS
+          - generic [ref=e79]:
+            - generic [ref=e81]: 🇻🇳
+            - link "Bùi Đình Khải" [ref=e83] [cursor=pointer]:
+              - /url: /athletes/bi-nh-khi
+              - generic [ref=e84]: Bùi Đình Khải
+          - text: WINNER
+      - generic [ref=e85]:
+        - generic [ref=e86]: MMA STRIKING
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - generic [ref=e90]: 🇻🇳
+            - link "Trần Quốc Tuấn" [ref=e92] [cursor=pointer]:
+              - /url: /athletes/trn-quc-tun
+              - generic [ref=e93]: Trần Quốc Tuấn
+          - generic [ref=e95]: VS
+          - generic [ref=e96]:
+            - generic [ref=e98]: 🇹🇭
+            - link "Vorapon Jayamram" [ref=e100] [cursor=pointer]:
+              - /url: /athletes/vorapon-jayamram
+              - generic [ref=e101]: Vorapon Jayamram
+          - text: WINNER
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - generic [ref=e105]: 🇻🇳
+            - link "KPA Thuận" [ref=e107] [cursor=pointer]:
+              - /url: /athletes/kpa-thun
+              - generic [ref=e108]: KPA Thuận
+          - generic [ref=e110]: VS
+          - generic [ref=e111]:
+            - generic [ref=e113]: 🇻🇳
+            - link "Nguyễn Tấn An" [ref=e115] [cursor=pointer]:
+              - /url: /athletes/nguyn-tn-an
+              - generic [ref=e116]: Nguyễn Tấn An
+          - text: WINNER
+        - generic [ref=e117]:
+          - generic [ref=e118]:
+            - generic [ref=e120]: 🇻🇳
+            - link "Nguyễn Văn Lâm" [ref=e122] [cursor=pointer]:
+              - /url: /athletes/nguyn-vn-lm
+              - generic [ref=e123]: Nguyễn Văn Lâm
+          - generic [ref=e125]: VS
+          - generic [ref=e126]:
+            - generic [ref=e128]: 🇻🇳
+            - link "Lưu Huy Đức" [ref=e130] [cursor=pointer]:
+              - /url: /athletes/lu-huy-c
+              - generic [ref=e131]: Lưu Huy Đức
+          - text: WINNER
+        - generic [ref=e132]:
+          - generic [ref=e133]:
+            - generic [ref=e135]: 🇻🇳
+            - link "Võ Tiến Đạt" [ref=e137] [cursor=pointer]:
+              - /url: /athletes/v-tin-t
+              - generic [ref=e138]: Võ Tiến Đạt
+          - generic [ref=e140]: VS
+          - generic [ref=e141]:
+            - generic [ref=e143]: 🇻🇳
+            - link "Trần Huy Hải" [ref=e145] [cursor=pointer]:
+              - /url: /athletes/trn-huy-hi
+              - generic [ref=e146]: Trần Huy Hải
+          - text: WINNER
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - generic [ref=e150]: 🇻🇳
+            - link "Phan Trọng Hiếu" [ref=e152] [cursor=pointer]:
+              - /url: /athletes/phan-trng-hiu
+              - generic [ref=e153]: Phan Trọng Hiếu
+          - generic [ref=e155]: VS
+          - generic [ref=e156]:
+            - generic [ref=e158]: 🇻🇳
+            - link "Trần Vĩ Quang" [ref=e160] [cursor=pointer]:
+              - /url: /athletes/trn-v-quang
+              - generic [ref=e161]: Trần Vĩ Quang
+          - text: WINNER
+```
