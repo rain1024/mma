@@ -78,7 +78,8 @@
       "Bash(npm run seed:*)",
       "Bash(yarn install)",
       "Bash(yarn test:*)",
-      "Bash(yarn seed)"
+      "Bash(yarn seed)",
+      "Bash(git rm:*)"
     ],
     "deny": [],
     "ask": []
