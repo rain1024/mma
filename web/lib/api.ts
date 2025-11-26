@@ -1,4 +1,4 @@
-import { EventData, Athlete, Fighter, Champion, Division, Promotion } from '@/types'
+import { EventData, Athlete, Fighter, Champion, Promotion } from '@/types'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api'
 
@@ -103,7 +103,7 @@ export async function fetchAthletes(
     const result = await response.json()
 
     // Transform database athletes to include record string
-    const athletes = (result.athletes || []).map((athlete: any) => ({
+    const athletes = (result.athletes || []).map((athlete: Partial<Athlete> & { wins?: number; losses?: number; draws?: number }) => ({
       ...athlete,
       record: athlete.record || `${athlete.wins || 0}-${athlete.losses || 0}-${athlete.draws || 0}`
     }))

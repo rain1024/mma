@@ -116,7 +116,7 @@ export default function AthletesPage({ tournamentData }: AthletesPageProps) {
             </div>
             <div className="athlete-info">
               {athlete.nickname && (
-                <div className="athlete-nickname">"{athlete.nickname}"</div>
+                <div className="athlete-nickname">&quot;{athlete.nickname}&quot;</div>
               )}
               <div className="athlete-name">{athlete.name}</div>
               <div className="athlete-division">

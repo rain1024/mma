@@ -264,7 +264,7 @@ export default function AthleteDetailPage() {
 
             <div className="athlete-info-main">
               {athlete.nickname && (
-                <div className="athlete-nickname">"{athlete.nickname}"</div>
+                <div className="athlete-nickname">&quot;{athlete.nickname}&quot;</div>
               )}
               <h1 className="athlete-name">{athlete.name}</h1>
 

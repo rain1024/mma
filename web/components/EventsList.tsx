@@ -8,7 +8,7 @@ interface EventsListProps {
   tournament: 'ufc' | 'lion'
 }
 
-export default function EventsList({ events, tournament }: EventsListProps) {
+export default function EventsList({ events, tournament: _tournament }: EventsListProps) {
   const router = useRouter()
 
   // Sort events: upcoming first, then by date (latest first for completed)

@@ -7,7 +7,7 @@ export function generateAthleteSlug(name: string): string {
     .trim()
 }
 
-export function findAthleteBySlug(athletes: any[], slug: string) {
+export function findAthleteBySlug<T extends { name: string }>(athletes: T[], slug: string): T | undefined {
   if (!athletes || !Array.isArray(athletes)) {
     return undefined
   }

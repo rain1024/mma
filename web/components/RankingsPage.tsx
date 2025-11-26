@@ -1,6 +1,6 @@
 'use client'
 
-import { TournamentData, Fighter, Champion } from '@/types'
+import { TournamentData, Fighter } from '@/types'
 
 interface RankingsPageProps {
   tournamentData: TournamentData
@@ -53,7 +53,7 @@ export default function RankingsPage({ tournamentData }: RankingsPageProps) {
               <div className="champion-badge">Champion</div>
               <div className="champion-info">
                 <div className="champion-name">{champion.name}</div>
-                {champion.nickname && <div className="champion-nickname">"{champion.nickname}"</div>}
+                {champion.nickname && <div className="champion-nickname">&quot;{champion.nickname}&quot;</div>}
                 <div className="champion-record">{champion.record}</div>
               </div>
             </div>

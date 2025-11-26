@@ -63,7 +63,11 @@
       "Bash(sqlite3:*)",
       "Bash(npm run db:setup:*)",
       "Bash(rm:*)",
-      "Bash(timeout 300 npm test -- --coverage)"
+      "Bash(timeout 300 npm test -- --coverage)",
+      "Bash(yarn lint)",
+      "Bash(npm run lint:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix ESLint warnings and improve TypeScript types\n\n- Escape quotes in JSX with &quot; instead of raw quotes\n- Prefix unused variables with _ (e.g., _tournament)\n- Replace `any` types with proper generics in utils\n- Remove unused imports (Champion, Division)\n- Add eslint-plugin-react-hooks to dev dependencies\n- Add ESLint config file and yarn.lock\n- Remove root package.json (moved to subdirectories)\n- Update test coverage reports\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []
