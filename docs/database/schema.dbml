@@ -12,7 +12,10 @@ Table athletes {
   wins integer [default: 0]
   losses integer [default: 0]
   draws integer [default: 0]
+  nickname text
   image_url text
+  alternative_names text [note: 'JSON array of strings']
+  urls text [note: 'JSON array of ExternalURL objects']
   created_at datetime [default: `CURRENT_TIMESTAMP`]
   updated_at datetime [default: `CURRENT_TIMESTAMP`]
 

@@ -19,7 +19,7 @@ Express.js REST API service for the MMA tournament application with SQLite datab
 ### Installation
 
 ```bash
-npm install
+yarn install
 ```
 
 ### Environment Setup
@@ -40,7 +40,7 @@ Configure the environment variables:
 The database will be automatically initialized when you start the server. To manually run migrations:
 
 ```bash
-npm run migrate
+yarn migrate
 ```
 
 The SQLite database file will be created at `data/mma.db`.
@@ -50,7 +50,7 @@ The SQLite database file will be created at `data/mma.db`.
 Start the development server with hot reload:
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 The server will automatically:
@@ -63,13 +63,13 @@ The server will automatically:
 Build the TypeScript code:
 
 ```bash
-npm run build
+yarn build
 ```
 
 Start the production server:
 
 ```bash
-npm start
+yarn start
 ```
 
 ## API Endpoints

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Express.js service for MMA tournament application",
   "main": "dist/index.js",
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
@@ -10,7 +11,7 @@
     "migrate": "ts-node src/db/migrate.ts",
     "migrate:reset": "ts-node src/db/migrate.ts --reset",
     "seed": "ts-node src/db/seed-data.ts",
-    "db:setup": "npm run migrate:reset && npm run seed",
+    "db:setup": "yarn migrate:reset && yarn seed",
     "lint": "eslint src --ext .ts",
     "test": "jest",
     "test:watch": "jest --watch",

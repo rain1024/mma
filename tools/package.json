@@ -1,8 +1,9 @@
 {
-  "name": "scripts",
+  "name": "mma-tools",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "fetch_data": "node fetch_data.js",
     "build": "tsc",

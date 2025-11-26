@@ -25,13 +25,13 @@ export default defineConfig({
   /* Run both backend and frontend servers before starting the tests */
   webServer: [
     {
-      command: 'cd ../service && npm run dev',
+      command: 'cd ../service && yarn dev',
       url: 'http://localhost:4000/api/promotions',
       reuseExistingServer: !process.env.CI,
       timeout: 30000,
     },
     {
-      command: 'cd ../web && npm run dev',
+      command: 'cd ../web && yarn dev',
       url: 'http://localhost:3000',
       reuseExistingServer: !process.env.CI,
     },

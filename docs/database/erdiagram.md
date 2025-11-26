@@ -35,7 +35,10 @@ erDiagram
         integer wins
         integer losses
         integer draws
+        text nickname
         text image_url
+        text alternative_names
+        text urls
         datetime created_at
         datetime updated_at
     }

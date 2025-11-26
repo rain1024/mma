@@ -22,13 +22,28 @@ const DEFAULT_DIVISIONS: Division[] = [
   { value: 'flyweight', label: 'Flyweight' },
 ]
 
+const TOURNAMENT_STORAGE_KEY = 'mma-current-tournament'
+const DEFAULT_TOURNAMENT: 'ufc' | 'lion' = 'lion'
+
+function getStoredTournament(): 'ufc' | 'lion' {
+  if (typeof window === 'undefined') return DEFAULT_TOURNAMENT
+  const stored = localStorage.getItem(TOURNAMENT_STORAGE_KEY)
+  if (stored === 'ufc' || stored === 'lion') return stored
+  return DEFAULT_TOURNAMENT
+}
+
 export default function Home() {
   const router = useRouter()
   const pathname = usePathname()
-  const [currentTournament, setCurrentTournament] = useState<'ufc' | 'lion'>('lion')
+  const [currentTournament, setCurrentTournament] = useState<'ufc' | 'lion'>(DEFAULT_TOURNAMENT)
   const [currentPage, setCurrentPage] = useState('events')
   const [tournamentData, setTournamentData] = useState<{ ufc?: TournamentData; lion?: TournamentData }>({})
   const [allEvents, setAllEvents] = useState<{ ufc: EventData[]; lion: EventData[] }>({ ufc: [], lion: [] })
+
+  // Load tournament from localStorage on mount
+  useEffect(() => {
+    setCurrentTournament(getStoredTournament())
+  }, [])
 
   useEffect(() => {
     // Load all data from API
@@ -130,6 +145,8 @@ export default function Home() {
     if (currentTournament === 'lion') {
       document.body.classList.add('lion-theme')
     }
+    // Persist tournament selection to localStorage
+    localStorage.setItem(TOURNAMENT_STORAGE_KEY, currentTournament)
   }, [currentTournament])
 
   const handlePageChange = (page: string) => {

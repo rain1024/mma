@@ -12,8 +12,8 @@ This module provides CRUD operations for managing MMA data across different prom
 
 ```bash
 cd scripts/db
-npm install
-npm run build
+yarn install
+yarn build
 ```
 
 ## Usage
@@ -32,8 +32,8 @@ import { getAllAthletes, createAthlete } from './scripts/db/athletes';
 # From the project root:
 node scripts/db/dist/athletes.js <command> [options]
 
-# Or using npm scripts from scripts/db:
-npm run cli -- <command> [options]
+# Or using yarn scripts from scripts/db:
+yarn cli <command> [options]
 
 # Quick examples:
 node scripts/db/dist/athletes.js list lion
@@ -648,7 +648,7 @@ try {
 Run the test suite to see comprehensive examples:
 ```bash
 cd scripts/db
-npm run test
+yarn test
 ```
 
 Use the CLI for interactive testing:
@@ -656,7 +656,7 @@ Use the CLI for interactive testing:
 cd scripts/db
 node dist/athletes.js help
 # or
-npm run cli -- help
+yarn cli help
 ```
 
 ## TypeScript Types

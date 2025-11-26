@@ -4,6 +4,7 @@
   "description": "Shared types for MMA application",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch"

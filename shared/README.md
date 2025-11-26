@@ -129,7 +129,7 @@ Converts nested UI match back to flat database structure.
 ### Build
 
 ```bash
-npm run build
+yarn build
 ```
 
 This compiles TypeScript to `dist/` with type declarations.
@@ -137,7 +137,7 @@ This compiles TypeScript to `dist/` with type declarations.
 ### Watch Mode
 
 ```bash
-npm run watch
+yarn watch
 ```
 
 Auto-rebuilds on file changes.

@@ -1,10 +1,19 @@
 import db from '../config/database';
 import { Athlete } from '../types';
 
+// Helper to parse JSON fields from database
+function parseAthleteFromDb(row: Record<string, unknown>): Athlete {
+  return {
+    ...row,
+    alternativeNames: row.alternative_names ? JSON.parse(row.alternative_names as string) : undefined,
+    urls: row.urls ? JSON.parse(row.urls as string) : undefined,
+  } as Athlete;
+}
+
 export class AthleteModel {
   static getAll(tournament: string, filters?: { division?: string; gender?: string; search?: string }): Athlete[] {
     let query = 'SELECT * FROM athletes WHERE tournament = ?';
-    const params: any[] = [tournament];
+    const params: (string | number)[] = [tournament];
 
     if (filters?.division) {
       query += ' AND division = ?';
@@ -17,25 +26,28 @@ export class AthleteModel {
     }
 
     if (filters?.search) {
-      query += ' AND name LIKE ?';
+      query += ' AND (name LIKE ? OR alternative_names LIKE ?)';
+      params.push(`%${filters.search}%`);
       params.push(`%${filters.search}%`);
     }
 
     query += ' ORDER BY name ASC';
 
     const stmt = db.prepare(query);
-    return stmt.all(...params) as Athlete[];
+    const rows = stmt.all(...params) as Record<string, unknown>[];
+    return rows.map(parseAthleteFromDb);
   }
 
   static getById(id: number): Athlete | undefined {
     const stmt = db.prepare('SELECT * FROM athletes WHERE id = ?');
-    return stmt.get(id) as Athlete | undefined;
+    const row = stmt.get(id) as Record<string, unknown> | undefined;
+    return row ? parseAthleteFromDb(row) : undefined;
   }
 
   static create(athlete: Athlete): number {
     const stmt = db.prepare(`
-      INSERT INTO athletes (name, tournament, division, country, flag, gender, wins, losses, draws, image_url)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO athletes (name, tournament, division, country, flag, gender, wins, losses, draws, nickname, image_url, alternative_names, urls)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
 
     const result = stmt.run(
@@ -48,7 +60,10 @@ export class AthleteModel {
       athlete.wins || 0,
       athlete.losses || 0,
       athlete.draws || 0,
-      athlete.image_url || null
+      athlete.nickname || null,
+      athlete.image_url || null,
+      athlete.alternativeNames ? JSON.stringify(athlete.alternativeNames) : null,
+      athlete.urls ? JSON.stringify(athlete.urls) : null
     );
 
     return result.lastInsertRowid as number;
@@ -56,12 +71,27 @@ export class AthleteModel {
 
   static update(id: number, athlete: Partial<Athlete>): boolean {
     const fields: string[] = [];
-    const values: any[] = [];
+    const values: (string | number | null)[] = [];
+
+    // Map of JS property names to DB column names
+    const columnMap: Record<string, string> = {
+      alternativeNames: 'alternative_names',
+    };
+
+    // Fields that need JSON serialization
+    const jsonFields = ['alternativeNames', 'urls'];
 
     Object.entries(athlete).forEach(([key, value]) => {
       if (key !== 'id' && key !== 'created_at' && value !== undefined) {
-        fields.push(`${key} = ?`);
-        values.push(value);
+        const columnName = columnMap[key] || key;
+        fields.push(`${columnName} = ?`);
+
+        // Serialize JSON fields
+        if (jsonFields.includes(key) && value !== null) {
+          values.push(JSON.stringify(value));
+        } else {
+          values.push(value as string | number | null);
+        }
       }
     });
 
@@ -84,6 +114,7 @@ export class AthleteModel {
 
   static findByName(name: string, tournament: string): Athlete | undefined {
     const stmt = db.prepare('SELECT * FROM athletes WHERE name = ? AND tournament = ?');
-    return stmt.get(name, tournament) as Athlete | undefined;
+    const row = stmt.get(name, tournament) as Record<string, unknown> | undefined;
+    return row ? parseAthleteFromDb(row) : undefined;
   }
 }

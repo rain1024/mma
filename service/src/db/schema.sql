@@ -10,7 +10,10 @@ CREATE TABLE IF NOT EXISTS athletes (
   wins INTEGER DEFAULT 0,
   losses INTEGER DEFAULT 0,
   draws INTEGER DEFAULT 0,
+  nickname TEXT,
   image_url TEXT,
+  alternative_names TEXT,  -- JSON array of strings
+  urls TEXT,               -- JSON array of ExternalURL objects
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

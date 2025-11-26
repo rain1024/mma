@@ -17,14 +17,14 @@ Navigate to the tests directory (`/Users/anhv/projects/mma/tests`) before runnin
 ### Run all tests
 ```bash
 cd tests
-npm test
+yarn test
 # or
 npx playwright test
 ```
 
 ### Run tests in UI mode
 ```bash
-npm run test:ui
+yarn test:ui
 # or
 npx playwright test --ui
 ```
@@ -36,7 +36,7 @@ npx playwright test navigation.spec.ts
 
 ### Run tests in headed mode (see browser)
 ```bash
-npm run test:headed
+yarn test:headed
 # or
 npx playwright test --headed
 ```
@@ -82,6 +82,6 @@ npx playwright test --project=webkit
 Test configuration is in `playwright.config.ts` in this directory. The config includes:
 - Multiple browsers (Chrome, Firefox, Safari)
 - Mobile viewport testing (Pixel 5, iPhone 12)
-- Automatic dev server startup (runs `cd ../web && npm run dev`)
+- Automatic dev server startup (runs `cd ../web && yarn dev`)
 - Test retry on failure (in CI)
 - HTML reporter for results

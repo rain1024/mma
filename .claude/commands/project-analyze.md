@@ -22,29 +22,32 @@ Review toàn bộ code, tài liệu và kiến trúc của dự án để hiểu
 - Hiểu luồng dữ liệu và quản lý state
 - Phân tích database schema (nếu có)
 
-### 3. Đánh Giá Chất Lượng Code
+### 3. Chạy test 
+
+- Sử dụng lệnh /run-test để chạy và đánh giá chất lượng sản phẩm hiện tại
+- Đánh giá độ phủ test
+
+### 4. Đánh Giá Chất Lượng Code
 - Đánh giá coding patterns và conventions
 - Kiểm tra data structures và types đã đúng với thiết kế database (docs/database) chưa
 - Xác định code trùng lặp
 - Review xử lý lỗi
 - Kiểm tra type safety (TypeScript)
 - Sử dụng linting và formatting tools đúng cách
-- Sử dụng lệnh /run-test để đánh giá chất lượng tests
-- Đánh giá độ phủ test
 
-### 4. Kiểm Tra Bảo Mật
+### 5. Kiểm Tra Bảo Mật
 - Kiểm tra các vấn đề bảo mật tiềm ẩn
 - Review xác thực/phân quyền (nếu có)
 - Validate việc xử lý input
 - Kiểm tra rò rỉ dữ liệu nhạy cảm
 
-### 5. Phân Tích Hiệu Năng
+### 6. Phân Tích Hiệu Năng
 - Xác định các điểm nghẽn hiệu năng
 - Review các truy vấn database
 - Phân tích cách xử lý API response
 - Kiểm tra bundle size và lazy loading
 
-### 6. Tạo Báo Cáo
+### 7. Tạo Báo Cáo
 
 Xuất báo cáo với các phần:
 
