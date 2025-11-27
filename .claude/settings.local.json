@@ -79,7 +79,14 @@
       "Bash(yarn install)",
       "Bash(yarn test:*)",
       "Bash(yarn seed)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "SlashCommand(/project-analyze)",
+      "Bash(find:*)",
+      "Bash(sort:*)",
+      "Bash(uv init:*)",
+      "Bash(uv sync:*)",
+      "Bash(uv run:*)",
+      "Bash(yarn test:coverage:*)"
     ],
     "deny": [],
     "ask": []

@@ -24,10 +24,14 @@ Review toàn bộ code, tài liệu và kiến trúc của dự án để hiểu
 
 ### 3. Chạy test 
 
-- Sử dụng lệnh /run-test để chạy và đánh giá chất lượng sản phẩm hiện tại
-- Đánh giá độ phủ test
+- Bước 3.1: Run command /run-test để chạy và đánh giá chất lượng sản phẩm hiện tại
+```bash
+/run-test
+```
+- Bước 3.2: Đánh giá độ phủ test
 
 ### 4. Đánh Giá Chất Lượng Code
+
 - Đánh giá coding patterns và conventions
 - Kiểm tra data structures và types đã đúng với thiết kế database (docs/database) chưa
 - Xác định code trùng lặp

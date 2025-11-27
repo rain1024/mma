@@ -1,0 +1,12 @@
+[project]
+name = "industry-standard-inspect"
+version = "0.1.0"
+description = "Static analysis tool for industry standard documentation"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "rich>=13.0.0",
+]
+
+[project.scripts]
+inspect-docs = "static_analysis:main"

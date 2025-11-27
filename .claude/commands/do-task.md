@@ -28,7 +28,7 @@ Thực hiện một task cụ thể, tự động phân tích yêu cầu, implem
 
 ### 4. Verify và Test
 - Chạy build để kiểm tra lỗi compilation
-- Sử dụng lệnh /run-test để chạy toàn bộ tests
+- Run command /run-test để chạy toàn bộ tests
 
 ### 5. Fix lỗi
 - Debug và fix từng lỗi phát sinh
