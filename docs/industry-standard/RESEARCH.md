@@ -2,91 +2,101 @@
 
 ## Last Updated
 
-2025-11-26
+2025-11-27
 
 ## Progress by Pillar
 
 | Pillar | Status | Last Updated | Notes |
 |--------|--------|--------------|-------|
-| 1-OPS | ✅ Complete | 2025-11-27 | GitOps updated with Argo CD v3.2.0, Flux Graduated |
-| 2-REL | ✅ Complete | 2025-11-27 | OpenTelemetry updated with JS SDK 2.0, eBPF |
-| 3-PERF | ✅ Complete | 2025-11-27 | No major updates needed |
-| 4-SEC | ✅ Complete | 2025-11-27 | CIS v1.10.0, OWASP 2025 RC1 current |
-| 5-COST | ✅ Complete | 2025-11-27 | FOCUS 1.2 updates added |
-| 6-SUS | ✅ Complete | 2025-11-27 | ISO/IEC 21031:2024 current |
+| 1-OPS | ✅ Complete | 2025-11-27 | Added Organization, Runbooks, Continuous Improvement |
+| 2-REL | ✅ Complete | 2025-11-27 | 7 BPs covering all REL areas |
+| 3-PERF | ✅ Complete | 2025-11-27 | 6 BPs |
+| 4-SEC | ✅ Complete | 2025-11-27 | 8 BPs |
+| 5-COST | ✅ Complete | 2025-11-27 | 2 BPs |
+| 6-SUS | ✅ Complete | 2025-11-27 | 1 BP |
 
 ## Static Analysis Summary
 
 | Metric | Value |
 |--------|-------|
-| Total Files | 21 |
-| Total Lines | 4108 |
-| Valid Format | 21/21 |
+| Total Files | 34 |
+| Total Lines | ~6500 |
+| Valid Format | 34/34 |
 | Pillars | 6 |
-| Questions | 18 |
+| Best Practices | 33 |
 
-## Updates Applied (2025-11-26)
+## AWS OPS Pillar Structure (Complete)
 
-### 1-OPS: Operational Excellence
-- **OPS03-BP01-gitops.md**: Updated to Argo CD v3.2.0, Flux CNCF Graduated status
+### 4 Focus Areas với 11 Questions
 
-### 2-REL: Reliability
-- **REL03-BP01-opentelemetry.md**: Added JS SDK 2.0, eBPF Instrumentation (OBI), Demo 2.0
+| Focus Area | Questions | Description |
+|------------|-----------|-------------|
+| **Organization** | OPS01-03 | Priorities, Structure, Culture |
+| **Prepare** | OPS04-07 | Observability, CI/CD, Deployment, Readiness |
+| **Operate** | OPS08-10 | Workload Health, Ops Health, Events |
+| **Evolve** | OPS11 | Continuous Improvement |
 
-### 4-SEC: Security
-- **SEC04-BP01-container-security.md**: Updated to CIS v1.10.0, K8s v1.29/1.30/1.31
+### Mapping to Our Documentation
 
-### 5-COST: Cost Optimization
-- **COST01-BP01-finops-principles.md**: Updated FOCUS 1.2 (May 2025) with 7 new columns
+| AWS Question | Our Doc | Coverage |
+|--------------|---------|----------|
+| OPS01-03 (Organization) | OPS00-BP01-operating-model.md | ✅ |
+| OPS04 (Observability) | OPS02-BP02-observability-strategy.md | ✅ |
+| OPS05 (CI/CD) | OPS03-BP01-gitops.md | ✅ |
+| OPS06 (Deployment) | OPS03-BP01-gitops.md | ✅ |
+| OPS07 (Readiness) | OPS02-BP03-runbooks-playbooks.md | ✅ |
+| OPS08-09 (Health) | OPS02-BP02-observability-strategy.md | ✅ |
+| OPS10 (Events) | OPS02-BP03-runbooks-playbooks.md | ✅ |
+| OPS11 (Evolve) | OPS03-BP03-continuous-improvement.md | ✅ |
 
-## Key Findings from Research
+## Updates Applied (2025-11-27)
 
-### OWASP Top 10 2025 (Already Current)
-- Two new categories: A03 Supply Chain Failures, A10 Mishandling Exceptional Conditions
-- SSRF merged into Broken Access Control
-- Security Misconfiguration rose to #2
+### New Files Added
+- **OPS00-BP01-operating-model.md**: Team Topologies, DORA metrics, OPS01-03 coverage
+- **OPS02-BP03-runbooks-playbooks.md**: AWS OPS07, ORR, automation levels
+- **OPS03-BP03-continuous-improvement.md**: AWS OPS11, blameless postmortems
 
-### OpenTelemetry 2025
-- JS SDK 2.0: Node.js 18.19+/20.6+ required, breaking changes
-- eBPF Instrumentation (OBI): First alpha for zero-code instrumentation
-- Collector v0.137.0, heading to v1.0
+### OPS Pillar Now Complete
+- 4 Focus Areas covered (Organization, Prepare, Operate, Evolve)
+- 9 Best Practices total
+- All 11 AWS questions mapped
 
-### FinOps FOCUS 1.2 (May 2025)
-- 7 new columns for SaaS/PaaS support
-- New providers: Alibaba Cloud, Databricks, Grafana
-- Virtual currency tracking for credits/tokens
+## Key Research Findings
 
-### CIS Kubernetes Benchmark v1.10.0
-- Supports K8s v1.29, 1.30, 1.31
-- 20+ recommendations added/enhanced
+**AWS OPS Design Principles (8)**
+1. Organize teams around business outcomes
+2. Implement observability for actionable insights
+3. Safely automate where possible
+4. Make frequent, small, reversible changes
+5. Refine operations procedures frequently
+6. Anticipate failure
+7. Learn from all operational events
+8. Use managed services
 
-### GitOps 2025
-- Argo CD v3.2.0 available, v2.14.x EOL (Nov 4, 2025)
-- Flux CNCF Graduated, "Adopt" on Tech Radar
+**Team Topologies (4 Team Types)**
+- Stream-aligned (product delivery)
+- Platform (internal services)
+- Enabling (coaching)
+- Complicated-subsystem (specialists)
 
-### OAuth 2.1
-- Still draft (v14 as of Oct 2025), not yet final RFC
-- Core specs already adopted by industry
+**DORA Metrics (2024)**
+- Deployment Frequency
+- Lead Time for Changes
+- Change Failure Rate
+- Mean Time to Recovery
 
-## Next Steps
+## Các Bước Tiếp Theo
 
-1. [ ] Update AWS Well Architected Framework references
-
-## Standards to Consider Adding
-
-| Pillar | File | Description | Priority |
-|--------|------|-------------|----------|
-| 3-PERF | PERF01-BP03-pagination.md | Pagination strategies (cursor vs offset) | Medium |
-| 4-SEC | SEC03-BP02-sast-dast.md | Static/Dynamic Analysis tools | Medium |
-| 2-REL | REL03-BP02-prometheus-grafana.md | Metrics & dashboards | Low |
+1. [x] ~~Complete OPS pillar with all AWS questions~~
+2. [x] ~~Add Organization focus area~~
+3. [x] ~~Add Runbooks/Playbooks~~
+4. [x] ~~Add Continuous Improvement~~
+5. [ ] Add PERF02-BP02 Connection Pooling (optional)
 
 ## Research Sources
 
-- [AWS Well-Architected](https://aws.amazon.com/architecture/well-architected/)
-- [OWASP Top 10 2025](https://owasp.org/Top10/2025/)
-- [OpenTelemetry Blog 2025](https://opentelemetry.io/blog/2025/)
-- [FinOps FOCUS 1.2](https://www.finops.org/insights/focus-1-2-available/)
-- [CIS Kubernetes Benchmarks](https://www.cisecurity.org/benchmark/kubernetes)
-- [CNCF GitOps](https://www.cncf.io/blog/2025/06/09/gitops-in-2025/)
-- [NIST SP 1800-35](https://pages.nist.gov/zero-trust-architecture/)
-- [Green Software Foundation](https://greensoftware.foundation/)
+- [AWS Well-Architected OE Pillar](https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/)
+- [AWS OPS Questions](https://wa.aws.amazon.com/wellarchitected/2020-07-02T19-33-23/wat.pillar.operationalExcellence.en.html)
+- [Team Topologies](https://teamtopologies.com/)
+- [DORA Research](https://dora.dev/research/)
+- [Google SRE Book](https://sre.google/sre-book/table-of-contents/)

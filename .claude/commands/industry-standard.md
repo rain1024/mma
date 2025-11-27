@@ -105,14 +105,17 @@ Phân tích codebase hiện tại và đối chiếu với các industry standar
 ### Mô Tả
 Cập nhật và cải thiện tài liệu industry standards với thông tin mới nhất từ internet.
 
-### Workflow (5 bước)
+### Workflow (y bước)
 
-#### Bước 0: Đọc Trạng Thái Nghiên Cứu (Nếu có)
-- **QUAN TRỌNG**: Đọc file `docs/industry-standard/RESEARCH.md` trước tiên
-- Nếu file tồn tại → tiếp tục từ phần "Các Bước Tiếp Theo"
-- Nếu file không tồn tại → bắt đầu từ Bước 1
+#### Bước 1: Chạy static analysis script
+```bash
+cd scripts/industry-standard-inspect
+uv run python static_analysis.py
+```
+- Phân tích cấu trúc thư mục và định dạng files
+- Kiểm tra các sections bắt buộc (References, Date, Checklist)
 
-#### Bước 1: Inspect Industry Standards
+#### Bước 2: Inspect Industry Standards
 - Đọc tất cả files trong `docs/industry-standard/` theo cấu trúc pillars:
   ```
   1-OPS/
@@ -125,26 +128,29 @@ Cập nhật và cải thiện tài liệu industry standards với thông tin m
 - Xác định các topics và phiên bản hiện tại
 - Liệt kê các references và ngày cập nhật
 
-#### Bước 2: Chạy static analysis script
-```bash
-cd scripts/industry-standard-inspect
-uv run python static_analysis.py
-```
-- Phân tích cấu trúc thư mục và định dạng files
-- Kiểm tra các sections bắt buộc (References, Date, Checklist)
+#### Bước 3: Đọc resources chính
 
-#### Bước 3: Tìm Kiếm Cập Nhật
+- Đọc file `docs/industry-standard/RESOURCES.md` để lấy danh sách tài liệu tham khảo chính
+- Xác định các nguồn official và uy tín
+
+#### Bước 4: Đọc Trạng Thái Nghiên Cứu (Nếu có)
+- **QUAN TRỌNG**: Đọc file `docs/industry-standard/RESEARCH.md` trước tiên
+- Nếu file tồn tại → tiếp tục từ phần "Các Bước Tiếp Theo"
+
+#### Bước 5: Tìm Kiếm Cập Nhật
+- Tập trung vào mục tiêu nghiên cứu của các bước tiếp theo
 - Search trên internet cho mỗi standard
 - Tìm kiếm các standards mới cần bổ sung
 - Ưu tiên các official sources: AWS/GCP/Azure, OWASP, CNCF docs
 
-#### Bước 4: Cập Nhật Tài Liệu
+#### Bước 6: Thêm mới và cập nhật tài liệu best practice
+- Thêm mới folder / files mới area/ best practice còn thiếu
 - Update các files hiện có với thông tin mới
-- Thêm files mới cho standards còn thiếu
 - Cập nhật references và dates
 - **Giới hạn: ~100 lines (khuyến nghị), tối đa 200 lines**
 
-#### Bước 5: Lưu Trạng Thái Nghiên Cứu
+#### Bước 7: Lưu Trạng Thái Nghiên Cứu
+
 - **QUAN TRỌNG**: Cập nhật file `docs/industry-standard/RESEARCH.md`
 - Ghi lại tiến độ và các bước tiếp theo
 - **Giới hạn: Tối đa 200 dòng** - giữ ngắn gọn, chỉ thông tin cần thiết
@@ -184,7 +190,7 @@ uv run python static_analysis.py
 
 **Naming Convention cho files mới:**
 ```
-{PILLAR}{NN}-{category}/{PILLAR}{NN}-BP{MM}-{standard-name}.md
+{PILLAR}{NN}-{area}/{PILLAR}{NN}-BP{MM}-{standard-name}.md
 
 Ví dụ:
 - SEC03-detection/SEC03-BP02-sast-dast.md

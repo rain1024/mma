@@ -4,7 +4,8 @@
 
 - [12factor.net](https://12factor.net/) - Heroku (Adam Wiggins, 2011) - **Open-sourced November 2024**
 - [Beyond the Twelve-Factor App](https://www.oreilly.com/library/view/beyond-the-twelve-factor/9781492042631/) - Kevin Hoffman (O'Reilly)
-- [AWS Well-Architected - Operational Excellence](https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/)
+- [AWS Well-Architected - Operational Excellence](https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/) - **Updated April 2025**
+- [AWS Well-Architected Framework April 2025](https://aws.amazon.com/about-aws/whats-new/2025/04/new-guidance-well-architected-tool/) - 78 new best practices
 - [Google Cloud - Application Modernization](https://cloud.google.com/architecture/application-development)
 - [Microsoft Azure - Cloud Design Patterns](https://learn.microsoft.com/en-us/azure/architecture/patterns/)
 
@@ -58,6 +59,19 @@ Kevin Hoffman đề xuất 3 factors bổ sung cho cloud-native apps:
 | 13 | **API First** | Thiết kế API trước implementation | OpenAPI spec, contract-first |
 | 14 | **Telemetry** | Observable apps từ đầu | OpenTelemetry, metrics, traces |
 | 15 | **Security** | Security as first-class concern | AuthN/AuthZ, secrets management |
+
+## AWS Well-Architected OE Alignment (April 2025)
+
+| AWS OE Design Principle | 12-Factor Mapping |
+|------------------------|-------------------|
+| Organize teams around business outcomes | Factor 1: Codebase organization |
+| Implement observability | Factor 11: Logs as event streams |
+| Safely automate where possible | Factor 5: Build, Release, Run |
+| Make frequent, small, reversible changes | Factor 9: Disposability |
+| Refine operations procedures | Factor 12: Admin processes |
+| Anticipate failure | Factor 9: Fast startup, graceful shutdown |
+| Learn from all operational events | Factor 11: Logs for analysis |
+| Use managed services | Factor 4: Backing services |
 
 ## Modern Context (2024-2025)
 

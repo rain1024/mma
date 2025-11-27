@@ -10,6 +10,7 @@
 - [GraphQL Best Practices](https://graphql.org/learn/best-practices/)
 - [Stripe API Design](https://stripe.com/docs/api)
 - [Postman State of the API 2025](https://blog.postman.com/graphql-vs-rest/)
+- [AWS Performance Efficiency Pillar](https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/) - **April 2025**
 
 ## Date
 

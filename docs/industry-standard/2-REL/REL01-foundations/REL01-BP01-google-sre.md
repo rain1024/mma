@@ -6,7 +6,8 @@
 - [Google SRE Workbook](https://sre.google/workbook/table-of-contents/)
 - [The Evolution of SRE at Google (2024)](https://www.usenix.org/publications/loginonline/evolution-sre-google) - STAMP Framework
 - [Google SRE Lessons - 20 Years](https://sre.google/resources/practices-and-processes/twenty-years-of-sre-lessons-learned/)
-- [AWS Reliability Pillar](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/)
+- [AWS Reliability Pillar](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/) - **Updated April 2025**
+- [AWS Well-Architected April 2025](https://aws.amazon.com/about-aws/whats-new/2025/04/new-guidance-well-architected-tool/) - 78 best practices refreshed
 - [Microsoft Azure Reliability](https://learn.microsoft.com/en-us/azure/reliability/)
 - [Netflix Chaos Engineering](https://netflixtechblog.com/tagged/chaos-engineering)
 - [SRE Report 2025](https://www.catchpoint.com/learn/sre-report-2025)
@@ -88,6 +89,16 @@ Google SRE đã áp dụng **STAMP** (Systems-Theoretic Accident Model and Proce
 ### Kết quả tại Google:
 - Platform engineering teams với SRE practices: **50% ít downtime**
 - **40% tăng system reliability**
+
+## AWS Reliability Pillar Alignment (April 2025)
+
+| AWS Reliability Principle | SRE Mapping |
+|--------------------------|-------------|
+| Automatically recover from failure | Error budgets, auto-remediation |
+| Test recovery procedures | Chaos engineering, game days |
+| Scale horizontally | Eliminate single points of failure |
+| Stop guessing capacity | SLI/SLO for capacity planning |
+| Manage change through automation | 50% rule: automate ops work |
 
 ## AI trong SRE (2024-2025)
 
